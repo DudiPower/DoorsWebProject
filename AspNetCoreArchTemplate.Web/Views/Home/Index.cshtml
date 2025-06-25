@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Начало";
+}
+
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .background {
+        /* Фон с изображение */
+        background-image: url('/images/door-background.jpg');
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        /* Центриране по вертикала и хоризонтала */
+        display: flex;
+        flex-direction: column; /* за вертикално подреждане */
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+        font-size: 3em;
+        gap: 20px; /* разстояние между елементите */
+    }
+
+    .btn-enter {
+        font-size: 1.2em;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 5px;
+        background-color: rgba(0, 123, 255, 0.8);
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-decoration: none; /* ако е линк */
+    }
+
+        .btn-enter:hover {
+            background-color: rgba(0, 123, 255, 1);
+        }
+</style>
+
+<div class="background">
+    Добре дошли в света на вратите!
+    <a href="/Door/Index" class="btn-enter">Виж Вратите</a>
+</div>
