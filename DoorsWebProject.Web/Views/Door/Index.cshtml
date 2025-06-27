@@ -1,0 +1,19 @@
+﻿@using DoorsWebProject.Web
+@using DoorsWebProject.Web.ViewModels
+@using DoorsWebProject.Web.ViewModels.Door
+@model IEnumerable<AllDoorsIndexViewModel>
+
+@{
+    ViewData["Title"] = "All Doors";
+}
+
+<div class="door-list">
+    @foreach (var door in Model)
+    {
+        <div class="door-card">
+            <h2 class="door-model">Модел: @door.Model</h2>
+            <p class="door-id">ID: @door.Id</p>
+            <p class="door-price">Цена: @door.Price</p>
+        </div>
+    }
+</div>

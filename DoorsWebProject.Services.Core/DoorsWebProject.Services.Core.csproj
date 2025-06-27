@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AspNetCoreArchTemplate.Data.Models\DoorsWebProject.Data.Models.csproj" />
+    <ProjectReference Include="..\AspNetCoreArchTemplate.Data\DoorsWebProject.Data.csproj" />
+    <ProjectReference Include="..\AspNetCoreArchTemplate.Services.AutoMapping\DoorsWebProject.Services.AutoMapping.csproj" />
+    <ProjectReference Include="..\AspNetCoreArchTemplate.Services.Common\DoorsWebProject.Services.Common.csproj" />
+    <ProjectReference Include="..\AspNetCoreArchTemplate.Web.ViewModels\DoorsWebProject.Web.ViewModels.csproj" />
+    <ProjectReference Include="..\DoorsWebProject.Data.Models\DoorsWebProject.Data.Models.csproj" />
+    <ProjectReference Include="..\DoorsWebProject.Data\DoorsWebProject.Data.csproj" />
+    <ProjectReference Include="..\DoorsWebProject.GCommon\DoorsWebProject.GCommon.csproj" />
+    <ProjectReference Include="..\DoorsWebProject.Services.AutoMapping\DoorsWebProject.Services.AutoMapping.csproj" />
+    <ProjectReference Include="..\DoorsWebProject.Services.Common\DoorsWebProject.Services.Common.csproj" />
+    <ProjectReference Include="..\DoorsWebProject.Web.ViewModels\DoorsWebProject.Web.ViewModels.csproj" />
+  </ItemGroup>
+
+</Project>
