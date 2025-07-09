@@ -1,0 +1,36 @@
+﻿@using DoorsWebProject.Web.ViewModels.Door
+@model DoorDetailsViewModel
+
+@{
+    ViewData["Title"] = "Детайли за вратата";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 p-4">
+        <div class="row g-4">
+            <!-- Снимка на вратата -->
+            <div class="col-md-6 text-center">
+                <img src="@Model.ImageUrl" alt="Door image" class="img-fluid rounded shadow-sm" style="max-height: 500px;" />
+            </div>
+
+            <!-- Информация за вратата -->
+            <div class="col-md-6">
+                <h2 class="mb-3">@Model.Model</h2>
+                <p class="text-muted">@Model.Description</p>
+
+                <hr />
+
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Материал:</strong> @Model.Material</li>
+                    <li class="list-group-item"><strong>Височина:</strong> @Model.Height см</li>
+                    <li class="list-group-item"><strong>Ширина:</strong> @Model.Width см</li>
+                    <li class="list-group-item"><strong>Дебелина:</strong> @Model.Thickness см</li>
+                </ul>
+
+                <div class="mt-4">
+                    <a asp-action="Index" asp-controller="Doors" class="btn btn-outline-secondary">← Назад към всички врати</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

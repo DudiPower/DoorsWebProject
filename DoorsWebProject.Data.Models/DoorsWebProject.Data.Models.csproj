@@ -11,8 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AspNetCoreArchTemplate.Data.Common\DoorsWebProject.Data.Common.csproj" />
-    <ProjectReference Include="..\AspNetCoreArchTemplate.GCommon\AspNetCoreArchTemplate.GCommon.csproj" />
     <ProjectReference Include="..\DoorsWebProject.Data.Common\DoorsWebProject.Data.Common.csproj" />
     <ProjectReference Include="..\DoorsWebProject.GCommon\DoorsWebProject.GCommon.csproj" />
   </ItemGroup>

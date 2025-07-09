@@ -12,29 +12,29 @@
 	public class DoorFormInputModel
 	{
 		[Required(ErrorMessage = ModelRequiredMessage)]
-		[MinLength(DoorModelMinLength , ErrorMessage = ModelMinLengthMessage)]
-		[MaxLength(DoorModelMaxLength , ErrorMessage = ModelMaxLengthMessage)]
+		[MinLength(DoorModelMinLength, ErrorMessage = ModelMinLengthMessage)]
+		[MaxLength(DoorModelMaxLength, ErrorMessage = ModelMaxLengthMessage)]
 		public string Model { get; set; } = null!;
 
 		[Required(ErrorMessage = MaterialRequiredMessage)]
-		[MinLength(DoorMaterialMinLength , ErrorMessage = MaterialMinLengthMessage)]
-		[MaxLength(DoorMaterialMaxLength , ErrorMessage = MaterialMaxLengthMessage)]
-		public string  Material { get; set; } = null!;
+		[MinLength(DoorMaterialMinLength, ErrorMessage = MaterialMinLengthMessage)]
+		[MaxLength(DoorMaterialMaxLength, ErrorMessage = MaterialMaxLengthMessage)]
+		public string Material { get; set; } = null!;
 
 		[Required(ErrorMessage = PriceRequiredMessage)]
-		[Range(typeof(decimal) , DoorPriceMinLengthString , DoorPriceMaxLengthString , ErrorMessage = PriceRangeMessage)]
+		[Range(typeof(decimal), DoorPriceMinLengthString, DoorPriceMaxLengthString, ErrorMessage = PriceRangeMessage)]
 		public decimal Price { get; set; }
 
 		[Required(ErrorMessage = HeightRequiredMessage)]
-		[Range(DoorSizeMinLengthDouble, DoorSizeMaxLengthDouble , ErrorMessage = HeightRangeMessage)]
+		[Range(typeof(decimal), DoorHeightMinLengthString, DoorHeightMaxLengthString , ErrorMessage = HeightRangeMessage)]
 		public decimal Height { get; set; }
 
 		[Required(ErrorMessage = WidthRequiredMessage)]
-		[Range(DoorSizeMinLengthDouble, DoorSizeMaxLengthDouble, ErrorMessage = WidthRangeMessage)]
+		[Range(typeof(decimal) ,DoorWidthMinLengthString, DoorWidthMaxLengthString, ErrorMessage = WidthRangeMessage)]
 		public decimal Width { get; set; }
 
 		[Required(ErrorMessage = ThicknessRequiredMessage)]
-		[Range(DoorSizeMinLengthDouble, DoorSizeMaxLengthDouble, ErrorMessage = ThicknessRangeMessage)]
+		[Range(typeof(decimal), DoorThicknessMinLengthString ,DoorThicknessMaxLengthString, ErrorMessage = ThicknessRangeMessage)]
 		public decimal Thickness { get; set; }
 	}
 }

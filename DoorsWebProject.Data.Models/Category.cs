@@ -4,15 +4,14 @@
 
 	public class Category
 	{
-		[Key]
-		public Guid Id { get; set; } = Guid.NewGuid();
+		public Guid CategoryId { get; set; } = Guid.NewGuid();
 
-		[Required]
-		[MaxLength(200)]
 		public string Name { get; set; } = null!;
 
+		public bool IsDeleted { get; set; }
 
-		public ICollection<Door> Doors { get; set; } = 
-			 new List<Door>();
+		public ICollection<DoorCategory> CategoryDoors { get; set; } =
+			 new HashSet<DoorCategory>();
+	
 	}
 }

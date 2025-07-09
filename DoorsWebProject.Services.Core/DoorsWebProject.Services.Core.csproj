@@ -7,10 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AspNetCoreArchTemplate.Data.Models\DoorsWebProject.Data.Models.csproj" />
     <ProjectReference Include="..\AspNetCoreArchTemplate.Data\DoorsWebProject.Data.csproj" />
     <ProjectReference Include="..\AspNetCoreArchTemplate.Services.AutoMapping\DoorsWebProject.Services.AutoMapping.csproj" />
-    <ProjectReference Include="..\AspNetCoreArchTemplate.Services.Common\DoorsWebProject.Services.Common.csproj" />
     <ProjectReference Include="..\AspNetCoreArchTemplate.Web.ViewModels\DoorsWebProject.Web.ViewModels.csproj" />
     <ProjectReference Include="..\DoorsWebProject.Data.Models\DoorsWebProject.Data.Models.csproj" />
     <ProjectReference Include="..\DoorsWebProject.Data\DoorsWebProject.Data.csproj" />

@@ -18,7 +18,6 @@
   <ItemGroup>
     <ProjectReference Include="..\AspNetCoreArchTemplate.Data\DoorsWebProject.Data.csproj" />
     <ProjectReference Include="..\AspNetCoreArchTemplate.Services.Core\DoorsWebProject.Services.Core.csproj" />
-    <ProjectReference Include="..\AspNetCoreArchTemplate.Web.Infrastructure\DoorsWebProject.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\AspNetCoreArchTemplate.Web.ViewModels\DoorsWebProject.Web.ViewModels.csproj" />
     <ProjectReference Include="..\DoorsWebProject.Data\DoorsWebProject.Data.csproj" />
     <ProjectReference Include="..\DoorsWebProject.GCommon\DoorsWebProject.GCommon.csproj" />

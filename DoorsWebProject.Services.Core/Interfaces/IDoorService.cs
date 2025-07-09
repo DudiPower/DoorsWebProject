@@ -1,6 +1,6 @@
 ﻿namespace DoorsWebProject.Services.Core.Interfaces
 {
-	using DoorsWebProject.Web.ViewModels.Door;
+	using DoorsWebProject.Data.Models;
 	using DoorsWebProject.Web.ViewModels.Door;
 	using System.Collections.Generic;
 	using System.Threading.Tasks;
@@ -10,5 +10,11 @@
 		Task<IEnumerable<AllDoorsIndexViewModel>> GetAllDoorsAsync();
 
 		Task CreateDoorAsync(DoorFormInputModel doorFormInputModel);
+
+		Task <DoorDetailsViewModel> GetDoorDetailsByIdAsync(string id);
+		Task<bool> HardDeleteDoorAsync(string? id);
+
+		Task<DoorDeleteViewModel> GetDoorDeleteDetailsById(string? id);
+		Task<Door?> FindDoorByStringId(string? id);
 	}
 }

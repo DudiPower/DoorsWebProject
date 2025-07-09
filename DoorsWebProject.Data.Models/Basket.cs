@@ -1,15 +1,20 @@
 ﻿namespace DoorsWebProject.Data.Models
 {
+	using Microsoft.AspNetCore.Identity;
 	using System.Collections.Generic;
 	using System.ComponentModel.DataAnnotations;
 	using System.ComponentModel.DataAnnotations.Schema;
 
 	public class Basket
 	{
-		[Key]
-		public Guid BasketId { get; set; } = Guid.NewGuid(); 
+		public Guid BasketId { get; set; } = Guid.NewGuid();
 
-		public ICollection<Door> Doors { get; set; } 
-			= new List<Door>();
+		public string UserId { get; set; } = null!;
+		public IdentityUser User { get; set; } = null!;
+
+		public bool IsDeleted { get; set; }
+
+		public ICollection<DoorBasket> BasketDoors { get; set; } 
+			= new HashSet<DoorBasket>();
 	}
 }

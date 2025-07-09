@@ -4,18 +4,15 @@
 
 	public class Color
 	{
-
-		[Key]
 		public Guid ColorId { get; set; }
 
-		[Required]
 		public string NameColor { get; set; } = null!;
-
-		[Required]
 
 		public string HexCode { get; set; } = null!;
 
-		public ICollection<Door> Doors { get; set; } = 
-			  new List<Door>();
+		public bool IsDeleted { get; set; }
+
+		public ICollection<DoorColor> ColorDoors { get; set; } = 
+			  new HashSet<DoorColor>();
 	}
 }

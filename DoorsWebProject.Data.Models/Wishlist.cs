@@ -1,5 +1,6 @@
 ﻿namespace DoorsWebProject.Data.Models
 {
+	using Microsoft.AspNetCore.Identity;
 	using System.Collections.Generic;
 	using System.ComponentModel.DataAnnotations;
 
@@ -8,8 +9,13 @@
 		[Key]
 		public Guid WishlistId { get; set; } = Guid.NewGuid();
 
-		[Required]
-		public ICollection<Door> DoorList { get; set; } 
-			= new HashSet<Door>();
+		public string UserId { get; set; } = null!;
+
+		public IdentityUser User { get; set; } = null!;
+
+		public bool IsDeleted { get; set; }
+
+		public ICollection<DoorWishlist> WishlistDoors { get; set; } = 
+			 new HashSet<DoorWishlist>();
 	}
 }

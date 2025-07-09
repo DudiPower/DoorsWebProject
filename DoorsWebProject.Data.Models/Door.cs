@@ -5,51 +5,31 @@
 	using static DoorsWebProject.Data.Common.EntityConstants.Door;
 	public class Door
 	{
-		[Key]
-		public Guid Id { get; set; } = Guid.NewGuid();
-
-		[Required]
-		[MaxLength(DoorModelMaxLength)]
+		public Guid DoorId { get; set; } = Guid.NewGuid();
 		public string Model { get; set; } = null!;
 
-		[Required]
-		[MaxLength(DoorMaterialMaxLength)]
 		public string Material { get; set; } = null!;
+		public string? ImageUrl { get; set; }
 
-		[Required]
-		[Column(TypeName = "decimal(18, 2)")]
+		public string Description { get; set; } = null!;
 		public decimal Price { get; set; }
 
-		[Required]
-		[Column(TypeName = "decimal(18,2)")]
 		public decimal Height { get; set; }
 
-		[Required]
-		[Column(TypeName = "decimal(18,2)")]
 		public decimal Width { get; set; }
 
-		[Required]
-		[Column(TypeName = "decimal(18,2)")]
 		public decimal Thickness { get; set; }
+		public bool IsDeleted { get; set; }
 
-		[Required]
-        public Guid CategoryId { get; set; }
+		public ICollection<DoorColor> DoorColors { get; set; } = 
+			new HashSet<DoorColor>();
+		public ICollection<DoorCategory> DoorCategories { get; set; } =
+			 new HashSet<DoorCategory>();
 
-		public Category Category { get; set; } = null!;
+		public ICollection<DoorBasket> DoorBaskets { get; set; } =
+			 new HashSet<DoorBasket>();
 
-		[Required]
-
-		public Guid WishlistId { get; set; }
-
-		public Wishlist Wishlist { get; set; } = null!;
-
-		[Required]
-		public Guid BasketId { get; set; }
-
-		[ForeignKey(nameof(BasketId))]
-		public Basket Basket { get; set; } = null!;
-
-		public ICollection<Color> Colors { get; set; } = 
-			 new List<Color>();
+		public ICollection<DoorWishlist> DoorWishlists { get; set; } =
+			 new HashSet<DoorWishlist>();
 	}
 }

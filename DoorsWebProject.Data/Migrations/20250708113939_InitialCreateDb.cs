@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DoorsWebProject.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialDbCreate : Migration
+    public partial class InitialCreateDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -51,26 +51,16 @@ namespace DoorsWebProject.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Baskets",
-                columns: table => new
-                {
-                    BasketId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Baskets", x => x.BasketId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Categories",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
+                    CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Categories", x => x.Id);
+                    table.PrimaryKey("PK_Categories", x => x.CategoryId);
                 });
 
             migrationBuilder.CreateTable(
@@ -78,8 +68,9 @@ namespace DoorsWebProject.Data.Migrations
                 columns: table => new
                 {
                     ColorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    NameColor = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    HexCode = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    NameColor = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    HexCode = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
                 {
@@ -87,14 +78,23 @@ namespace DoorsWebProject.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Wishlists",
+                name: "Doors",
                 columns: table => new
                 {
-                    WishlistId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    DoorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Model = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Material = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(2048)", maxLength: 2048, nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(2500)", maxLength: 2500, nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Height = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Width = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Thickness = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Wishlists", x => x.WishlistId);
+                    table.PrimaryKey("PK_Doors", x => x.DoorId);
                 });
 
             migrationBuilder.CreateTable(
@@ -204,62 +204,136 @@ namespace DoorsWebProject.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Doors",
+                name: "Baskets",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Model = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    Material = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Size = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    BasketId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Baskets", x => x.BasketId);
+                    table.ForeignKey(
+                        name: "FK_Baskets_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Wishlists",
+                columns: table => new
+                {
                     WishlistId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Wishlists", x => x.WishlistId);
+                    table.ForeignKey(
+                        name: "FK_Wishlists_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DoorCategory",
+                columns: table => new
+                {
+                    DoorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DoorCategory", x => new { x.DoorId, x.CategoryId });
+                    table.ForeignKey(
+                        name: "FK_DoorCategory_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "CategoryId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_DoorCategory_Doors_DoorId",
+                        column: x => x.DoorId,
+                        principalTable: "Doors",
+                        principalColumn: "DoorId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DoorColor",
+                columns: table => new
+                {
+                    DoorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ColorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DoorColor", x => new { x.DoorId, x.ColorId });
+                    table.ForeignKey(
+                        name: "FK_DoorColor_Colors_ColorId",
+                        column: x => x.ColorId,
+                        principalTable: "Colors",
+                        principalColumn: "ColorId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_DoorColor_Doors_DoorId",
+                        column: x => x.DoorId,
+                        principalTable: "Doors",
+                        principalColumn: "DoorId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DoorBasket",
+                columns: table => new
+                {
+                    DoorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     BasketId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Doors", x => x.Id);
+                    table.PrimaryKey("PK_DoorBasket", x => new { x.DoorId, x.BasketId });
                     table.ForeignKey(
-                        name: "FK_Doors_Baskets_BasketId",
+                        name: "FK_DoorBasket_Baskets_BasketId",
                         column: x => x.BasketId,
                         principalTable: "Baskets",
                         principalColumn: "BasketId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Doors_Categories_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Categories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Doors_Wishlists_WishlistId",
-                        column: x => x.WishlistId,
-                        principalTable: "Wishlists",
-                        principalColumn: "WishlistId",
+                        name: "FK_DoorBasket_Doors_DoorId",
+                        column: x => x.DoorId,
+                        principalTable: "Doors",
+                        principalColumn: "DoorId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "ColorDoor",
+                name: "DoorWishlist",
                 columns: table => new
                 {
-                    ColorsColorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    DoorsId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    DoorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    WishlistId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ColorDoor", x => new { x.ColorsColorId, x.DoorsId });
+                    table.PrimaryKey("PK_DoorWishlist", x => new { x.DoorId, x.WishlistId });
                     table.ForeignKey(
-                        name: "FK_ColorDoor_Colors_ColorsColorId",
-                        column: x => x.ColorsColorId,
-                        principalTable: "Colors",
-                        principalColumn: "ColorId",
+                        name: "FK_DoorWishlist_Doors_DoorId",
+                        column: x => x.DoorId,
+                        principalTable: "Doors",
+                        principalColumn: "DoorId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ColorDoor_Doors_DoorsId",
-                        column: x => x.DoorsId,
-                        principalTable: "Doors",
-                        principalColumn: "Id",
+                        name: "FK_DoorWishlist_Wishlists_WishlistId",
+                        column: x => x.WishlistId,
+                        principalTable: "Wishlists",
+                        principalColumn: "WishlistId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -303,24 +377,34 @@ namespace DoorsWebProject.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ColorDoor_DoorsId",
-                table: "ColorDoor",
-                column: "DoorsId");
+                name: "IX_Baskets_UserId",
+                table: "Baskets",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Doors_BasketId",
-                table: "Doors",
+                name: "IX_DoorBasket_BasketId",
+                table: "DoorBasket",
                 column: "BasketId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Doors_CategoryId",
-                table: "Doors",
+                name: "IX_DoorCategory_CategoryId",
+                table: "DoorCategory",
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Doors_WishlistId",
-                table: "Doors",
+                name: "IX_DoorColor_ColorId",
+                table: "DoorColor",
+                column: "ColorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DoorWishlist_WishlistId",
+                table: "DoorWishlist",
                 column: "WishlistId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Wishlists_UserId",
+                table: "Wishlists",
+                column: "UserId");
         }
 
         /// <inheritdoc />
@@ -342,19 +426,19 @@ namespace DoorsWebProject.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "ColorDoor");
+                name: "DoorBasket");
+
+            migrationBuilder.DropTable(
+                name: "DoorCategory");
+
+            migrationBuilder.DropTable(
+                name: "DoorColor");
+
+            migrationBuilder.DropTable(
+                name: "DoorWishlist");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "Colors");
-
-            migrationBuilder.DropTable(
-                name: "Doors");
 
             migrationBuilder.DropTable(
                 name: "Baskets");
@@ -363,7 +447,16 @@ namespace DoorsWebProject.Data.Migrations
                 name: "Categories");
 
             migrationBuilder.DropTable(
+                name: "Colors");
+
+            migrationBuilder.DropTable(
+                name: "Doors");
+
+            migrationBuilder.DropTable(
                 name: "Wishlists");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
         }
     }
 }

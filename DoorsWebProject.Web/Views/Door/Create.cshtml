@@ -1,0 +1,50 @@
+﻿@model DoorsWebProject.Web.ViewModels.Door.DoorFormInputModel;
+
+@{
+    ViewData["Title"] = "Създай нова врата";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Create" method="post" class="form-horizontal">
+    <div class="form-group">
+        <label asp-for="Model" class="control-label">Име</label>
+        <input asp-for="Model" class="form-control" />
+        <span asp-validation-for="Model" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Material" class="control-label">Материал</label>
+        <input asp-for="Material" class="form-control" />
+        <span asp-validation-for="Material" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Height" class="control-label">Височина (см)</label>
+        <input asp-for="Height" class="form-control" />
+        <span asp-validation-for="Height" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Width" class="control-label">Ширина (см)</label>
+        <input asp-for="Width" class="form-control" />
+        <span asp-validation-for="Width" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Price" class="control-label">Цена</label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mt-3">
+        <input type="submit" value="Създай" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-secondary">Отказ</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

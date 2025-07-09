@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AspNetCoreArchTemplate.GCommon\AspNetCoreArchTemplate.GCommon.csproj" />
     <ProjectReference Include="..\DoorsWebProject.GCommon\DoorsWebProject.GCommon.csproj" />
   </ItemGroup>
 
