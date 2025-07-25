@@ -41,6 +41,8 @@
 			{
 				Model = doorFormInputModel.Model,
 				Material = doorFormInputModel.Material,
+				Description = doorFormInputModel.Description,
+				ImageUrl = doorFormInputModel.ImageUrl,
 				Price = doorFormInputModel.Price,
 				Height = doorFormInputModel.Height,
 				Width = doorFormInputModel.Width,
@@ -61,6 +63,20 @@
 
 			doorsDbContext.Doors.Remove(door);
 			await doorsDbContext.SaveChangesAsync();
+
+			return true;
+		}
+
+		public async Task<bool> SoftDeleteDoorAsync(string? id)
+		{
+			var door = await FindDoorByStringId(id);
+			if (door == null)
+			{
+				return false;
+			}
+
+			door.IsDeleted = true;
+			await this.doorsDbContext.SaveChangesAsync();
 
 			return true;
 		}
@@ -128,6 +144,75 @@
 				Thickness = door.Thickness.ToString()
 
 			};
+		}
+
+		public async Task<IEnumerable<AllDoorsIndexViewModel>> GetAllFilteredDoorsAsync(string filter)
+		{
+			IEnumerable<AllDoorsIndexViewModel> allDoors =
+				await this.doorsDbContext
+				.Doors
+				.Where(d => d.Type == filter)
+				.Select(d => new AllDoorsIndexViewModel()
+				{
+					Id = d.DoorId.ToString(),
+					ImageUrl = d.ImageUrl,
+					Model = d.Model,
+					Price = d.Price.ToString(),
+				})
+				.ToListAsync();
+
+			return allDoors;
+		}
+
+		public async Task<DoorFormInputModel> GetEditableDoorByIdAsync(string id)
+		{
+			var door = await doorsDbContext
+				.Doors
+				.AsNoTracking()
+				.FirstOrDefaultAsync(d => d.DoorId.ToString() == id && !d.IsDeleted);
+
+			if (door == null)
+			{
+				return null;
+			}
+
+			return new DoorFormInputModel()
+			{
+				ImageUrl = door.ImageUrl,
+				Model = door.Model,
+				Description = door.Description,
+				Material = door.Material,
+				Height = door.Height,
+				Width = door.Width,
+				Thickness = door.Thickness
+
+			};
+		}
+
+		public async Task<bool> EditDoorAsync(DoorFormInputModel doorInputModel)
+		{
+			Door? editableDoor = await this.doorsDbContext
+				.Doors
+				.SingleOrDefaultAsync(d => d.DoorId.ToString() == doorInputModel.Id);
+
+			if(editableDoor == null)
+			{
+				return false;
+			}
+
+			editableDoor.Model = doorInputModel.Model;
+			editableDoor.Material = doorInputModel.Material;
+			editableDoor.ImageUrl = doorInputModel.ImageUrl;
+			editableDoor.Description = doorInputModel.Description;
+			editableDoor.Price = doorInputModel.Price;
+            editableDoor.Height = doorInputModel.Height;
+			editableDoor.Width = doorInputModel.Width;
+			editableDoor.Thickness = doorInputModel.Thickness;
+
+			await this.doorsDbContext.SaveChangesAsync();
+
+			return true;
+
 		}
 	}
 }

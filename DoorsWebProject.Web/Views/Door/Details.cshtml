@@ -27,8 +27,18 @@
                     <li class="list-group-item"><strong>Дебелина:</strong> @Model.Thickness см</li>
                 </ul>
 
-                <div class="mt-4">
-                    <a asp-action="Index" asp-controller="Doors" class="btn btn-outline-secondary">← Назад към всички врати</a>
+                <div class="mt-4 d-flex gap-2">
+                    <a asp-action="Index" asp-controller="Doors" class="btn btn-outline-secondary">
+                        ← Назад към всички врати
+                    </a>
+
+                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">
+                        ✏️ Редактирай
+                    </a>
+
+                    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">
+                        🗑️ Изтрий
+                    </a>
                 </div>
             </div>
         </div>

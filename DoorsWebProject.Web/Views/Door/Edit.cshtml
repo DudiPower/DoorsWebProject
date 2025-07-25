@@ -1,0 +1,68 @@
+﻿@using DoorsWebProject.Web.ViewModels.Door
+@model DoorFormInputModel
+
+@{
+    ViewData["Title"] = "Edit Door";
+}
+
+<h2 class="mb-4">Edit Door</h2>
+
+<form asp-action="Edit" method="post">
+    @* Скрито поле за ID *@
+    <input asp-for="Id" type="hidden" />
+
+    <div class="form-group mb-3">
+        <label asp-for="Model" class="form-label"></label>
+        <input asp-for="Model" class="form-control" />
+        <span asp-validation-for="Model" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Material" class="form-label"></label>
+        <input asp-for="Material" class="form-control" />
+        <span asp-validation-for="Material" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Description" class="form-label"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="ImageUrl" class="form-label"></label>
+        <input asp-for="ImageUrl" class="form-control" />
+        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Price" class="form-label"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Height" class="form-label"></label>
+        <input asp-for="Height" class="form-control" />
+        <span asp-validation-for="Height" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Width" class="form-label"></label>
+        <input asp-for="Width" class="form-control" />
+        <span asp-validation-for="Width" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Thickness" class="form-label"></label>
+        <input asp-for="Thickness" class="form-control" />
+        <span asp-validation-for="Thickness" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <a asp-action="Index" class="btn btn-secondary ms-2">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

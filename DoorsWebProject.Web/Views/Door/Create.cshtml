@@ -32,13 +32,31 @@
     </div>
 
     <div class="form-group">
+        <label asp-for="Thickness" class="control-label">Дебелина (см)</label>
+        <input asp-for="Thickness" class="form-control" />
+        <span asp-validation-for="Thickness" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description" class="control-label">Описание</label>
+        <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ImageUrl" class="control-label">Image URL</label>
+        <input asp-for="ImageUrl" class="form-control" />
+        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
         <label asp-for="Price" class="control-label">Цена</label>
         <input asp-for="Price" class="form-control" />
         <span asp-validation-for="Price" class="text-danger"></span>
     </div>
 
     <div class="form-group mt-3">
-        <input type="submit" value="Създай" class="btn btn-primary" />
+        <button type="submit" class="btn btn-primary">Създай</button>
         <a asp-action="Index" class="btn btn-secondary">Отказ</a>
     </div>
 </form>

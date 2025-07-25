@@ -11,6 +11,7 @@
 		public string Material { get; set; } = null!;
 		public string? ImageUrl { get; set; }
 
+		public string Type { get; set; } = null!;
 		public string Description { get; set; } = null!;
 		public decimal Price { get; set; }
 

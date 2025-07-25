@@ -18,6 +18,8 @@
 
 			public const int DoorImageUrlMaxLength = 2048;
 
+			public const int DoorTypeMaxLength = 200;
+
 			public const int DoorDescriptionMinLength = 5;
 			public const int DoorDescriptionMaxLength = 2500;
 
@@ -59,25 +61,6 @@
 			public const int HexCodeMaxLength = 330;
 		}
 
-		public const string ModelRequiredMessage = "Model is required";
-		public const string ModelMinLengthMessage = "Model must be at least 2 characters";
-		public const string ModelMaxLengthMessage = "Model cannot exceed 200 characters";
-
-		public const string MaterialRequiredMessage = "Material is required";
-		public const string MaterialMinLengthMessage = "Material must be at least 2 characters";
-		public const string MaterialMaxLengthMessage = "Material cannot exceed 200 characters";
-
-		public const string PriceRequiredMessage = "Price is required";
-		public const string PriceRangeMessage = "Price is between 2.00 and 10000.00";
-
-		public const string HeightRequiredMessage = "Height is required";
-		public const string HeightRangeMessage = "Height is between 0.00 and 16000.00";
-
-		public const string WidthRequiredMessage = "Width is required";
-		public const string WidthRangeMessage = "Width is between 0.00 and 4000.00";
-
-		public const string ThicknessRequiredMessage = "Thickness is required";
-		public const string ThicknessRangeMessage = "Thickness is between 0.00 and 1000.00";
 
 	}
 }

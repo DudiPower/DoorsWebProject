@@ -4,6 +4,7 @@ using DoorsWebProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DoorsWebProject.Data.Migrations
 {
     [DbContext(typeof(DoorsDbContext))]
-    partial class DoorsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250716114138_RemoveSeedData")]
+    partial class RemoveSeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -130,89 +133,12 @@ namespace DoorsWebProject.Data.Migrations
                     b.Property<decimal>("Thickness")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
                     b.Property<decimal>("Width")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("DoorId");
 
                     b.ToTable("Doors");
-
-                    b.HasData(
-                        new
-                        {
-                            DoorId = new Guid("33333333-cccc-4ddd-aaaa-000000000001"),
-                            Description = "High-quality steel door with modern design.",
-                            Height = 200.0m,
-                            ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-premium-steel-doors.webp",
-                            IsDeleted = false,
-                            Material = "Steel",
-                            Model = "S100",
-                            Price = 499.99m,
-                            Thickness = 4.5m,
-                            Type = "Solid",
-                            Width = 90.0m
-                        },
-                        new
-                        {
-                            DoorId = new Guid("33333333-cccc-4ddd-aaaa-000000000002"),
-                            Description = "Elegant oak wood door with smooth finish.",
-                            Height = 200.0m,
-                            ImageUrl = "https://mla5dc5gjk9g.i.optimole.com/cb:ykaZ.3ba35/w:auto/h:auto/q:mauto/f:best/https://www.aspire-doors.co.uk/wp-content/uploads/2023/11/oak-mexicano-prefinished-lifestyle.jpg",
-                            IsDeleted = false,
-                            Material = "Oak Wood",
-                            Model = "I200",
-                            Price = 299.00m,
-                            Thickness = 4.0m,
-                            Type = "Laminated",
-                            Width = 80.0m
-                        },
-                        new
-                        {
-                            DoorId = new Guid("33333333-cccc-4ddd-aaaa-000000000003"),
-                            Description = "Stylish tempered glass door with reinforced frame.",
-                            Height = 210.0m,
-                            ImageUrl = "https://supplychaingamechanger.com/wp-content/uploads/2023/08/TemperedGlass.jpg",
-                            IsDeleted = false,
-                            Material = "Tempered Glass",
-                            Model = "SL300",
-                            Price = 399.50m,
-                            Thickness = 3.5m,
-                            Type = "Laminated",
-                            Width = 100.0m
-                        },
-                        new
-                        {
-                            DoorId = new Guid("33333333-cccc-4ddd-aaaa-000000000004"),
-                            Description = "Fireproof steel door suitable for safety exits.",
-                            Height = 210.0m,
-                            ImageUrl = "https://5.imimg.com/data5/EM/DU/NC/SELLER-8174112/man-door-500x500.png",
-                            IsDeleted = false,
-                            Material = "Steel with Fireproof Coating",
-                            Model = "F400",
-                            Price = 749.99m,
-                            Thickness = 5.0m,
-                            Type = "Solid",
-                            Width = 90.0m
-                        },
-                        new
-                        {
-                            DoorId = new Guid("33333333-cccc-4ddd-aaaa-000000000005"),
-                            Description = "Lightweight aluminum door with modern aesthetics.",
-                            Height = 220.0m,
-                            ImageUrl = "https://www.glenviewdoors.com/ExteriorAluminum/gallery/Swing-Aluminum-Exterior-Door-with-Sidelites-EAL-SWS-W6-2SL.jpg",
-                            IsDeleted = false,
-                            Material = "Aluminum",
-                            Model = "E500",
-                            Price = 599.00m,
-                            Thickness = 3.8m,
-                            Type = "PVC",
-                            Width = 100.0m
-                        });
                 });
 
             modelBuilder.Entity("DoorsWebProject.Data.Models.DoorBasket", b =>

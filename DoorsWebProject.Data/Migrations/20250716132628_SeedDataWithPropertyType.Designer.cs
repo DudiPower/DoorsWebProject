@@ -4,6 +4,7 @@ using DoorsWebProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DoorsWebProject.Data.Migrations
 {
     [DbContext(typeof(DoorsDbContext))]
-    partial class DoorsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250716132628_SeedDataWithPropertyType")]
+    partial class SeedDataWithPropertyType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -154,7 +157,7 @@ namespace DoorsWebProject.Data.Migrations
                             Model = "S100",
                             Price = 499.99m,
                             Thickness = 4.5m,
-                            Type = "Solid",
+                            Type = "Entry Door",
                             Width = 90.0m
                         },
                         new
@@ -196,7 +199,7 @@ namespace DoorsWebProject.Data.Migrations
                             Model = "F400",
                             Price = 749.99m,
                             Thickness = 5.0m,
-                            Type = "Solid",
+                            Type = "Fire Door",
                             Width = 90.0m
                         },
                         new
@@ -210,7 +213,7 @@ namespace DoorsWebProject.Data.Migrations
                             Model = "E500",
                             Price = 599.00m,
                             Thickness = 3.8m,
-                            Type = "PVC",
+                            Type = "Exterior Door",
                             Width = 100.0m
                         });
                 });
