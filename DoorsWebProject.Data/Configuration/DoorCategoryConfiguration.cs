@@ -20,12 +20,15 @@
 			builder
 				.HasOne(dc => dc.Door)
 				.WithMany(d => d.DoorCategories)
-				.HasForeignKey(dc => dc.DoorId);
+				.HasForeignKey(dc => dc.DoorId)
+				.IsRequired(false);
+
 
 			builder
-				.HasOne (dc => dc.Category)
+				.HasOne(dc => dc.Category)
 				.WithMany(c => c.CategoryDoors)
 				.HasForeignKey(dc => dc.CategoryId);
+			    
 		}
 	}
 }

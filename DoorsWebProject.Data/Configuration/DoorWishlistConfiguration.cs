@@ -20,7 +20,8 @@
 			builder
 				.HasOne(dw => dw.Door)
 				.WithMany(d => d.DoorWishlists)
-				.HasForeignKey(dw => dw.DoorId);
+				.HasForeignKey(dw => dw.DoorId)
+				.IsRequired(false);
 
 			builder
 				.HasOne(dw => dw.Wishlist)

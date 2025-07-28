@@ -65,8 +65,10 @@
 				.IsRequired()
 				.HasDefaultValue(false);
 
+
 			builder
 				.HasQueryFilter(d => d.IsDeleted == false);
+
 			builder
 				.HasData(this.SeedDoors());
 		}

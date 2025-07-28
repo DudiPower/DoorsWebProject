@@ -13,15 +13,17 @@
 
         }
 
-		public DbSet<Basket> Baskets { get; set; } = null!;
+		public virtual DbSet<Basket> Baskets { get; set; } = null!;
 
-		public DbSet<Category> Categories { get; set; } = null!;
+		public virtual DbSet<Category> Categories { get; set; } = null!;
 
-		public DbSet<Color> Colors { get; set; } = null!;
+		public virtual DbSet<Color> Colors { get; set; } = null!;
 
-		public DbSet<Door> Doors { get; set; } = null!;
+		public virtual DbSet<Door> Doors { get; set; } = null!;
 
-		public DbSet<Wishlist> Wishlists { get; set; } = null!;
+		public virtual DbSet<Wishlist> Wishlists { get; set; } = null!;
+
+		public virtual DbSet<ApplicationUserDoor> ApplicationUserDoors { get; set; } = null!;
 
 		protected override void OnModelCreating(ModelBuilder builder)
 		{

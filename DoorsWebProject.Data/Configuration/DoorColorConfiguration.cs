@@ -19,7 +19,8 @@
 			builder
 				.HasOne(dco => dco.Door)
 				.WithMany(d => d.DoorColors)
-				.HasForeignKey(dco => dco.DoorId);
+				.HasForeignKey(dco => dco.DoorId)
+				.IsRequired(false);
 
 			builder
 				.HasOne(dco => dco.Color)

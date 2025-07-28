@@ -19,7 +19,8 @@
 			builder
 				.HasOne(db => db.Door)
 				.WithMany(d => d.DoorBaskets)
-				.HasForeignKey(db => db.DoorId);
+				.HasForeignKey(db => db.DoorId)
+				.IsRequired(false);
 
 			builder
 				.HasOne(db => db.Basket)
