@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Начало";
 }
 
@@ -11,7 +10,8 @@
 <nav>
     <a asp-page="/Index">Начало</a>
     <a asp-page="/Products">Продукти</a>
-    <a href="mailto:info@vratibg.bg">Контакт: info@@vratibg.bg</a>
+    <a asp-controller="Wishlist" asp-action="Index">Любими врати ❤️</a>
+    <a href="mailto:info@vratibg.bg">Контакт: info@vratibg.bg</a>
 </nav>
 
 <section class="hero">

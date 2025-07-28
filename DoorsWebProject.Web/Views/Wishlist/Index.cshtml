@@ -1,0 +1,36 @@
+﻿@using DoorsWebProject.Web.ViewModels.Wishlist
+@model IEnumerable<WishlistViewModel>
+
+@{
+    ViewData["Title"] = "Любими врати";
+}
+
+<h2 class="mb-4">Моите любими врати</h2>
+
+@if (!Model.Any())
+{
+    <p class="text-muted">Нямате добавени врати към вашия списък с любими.</p>
+}
+else
+{
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var door in Model)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <img src="@door.ImageUrl" class="card-img-top" alt="Снимка на @door.Model" style="height: 250px; object-fit: cover;" />
+                    <div class="card-body">
+                        <h5 class="card-title">@door.Model</h5>
+                        <p class="card-text fw-bold">@door.Price лв.</p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <a asp-action="Details" asp-route-id="@door.Id" class="btn btn-outline-primary btn-sm">Детайли</a>
+                        <form method="post" asp-action="RemoveFromWishlist" asp-route-id="@door.Id">
+                            <button type="submit" class="btn btn-danger btn-sm">Премахни</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

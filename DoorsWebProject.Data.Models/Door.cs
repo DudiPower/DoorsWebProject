@@ -22,6 +22,8 @@
 		public decimal Thickness { get; set; }
 		public bool IsDeleted { get; set; }
 
+		public ICollection<ApplicationUserDoor> UserWishlists { get; set; } = 
+			new HashSet<ApplicationUserDoor>();
 		public ICollection<DoorColor> DoorColors { get; set; } = 
 			new HashSet<DoorColor>();
 		public ICollection<DoorCategory> DoorCategories { get; set; } =
