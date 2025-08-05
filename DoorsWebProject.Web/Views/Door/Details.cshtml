@@ -32,13 +32,16 @@
                         ← Назад към всички врати
                     </a>
 
-                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">
-                        ✏️ Редактирай
-                    </a>
+                    @if(this.User.Identity?.IsAuthenticated ?? false)
+                    {
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">
+                            ✏️ Редактирай
+                        </a>
 
-                    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">
-                        🗑️ Изтрий
-                    </a>
+                        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">
+                            🗑️ Изтрий
+                        </a>
+                    }
                 </div>
             </div>
         </div>

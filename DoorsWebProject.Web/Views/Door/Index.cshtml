@@ -23,9 +23,17 @@
 
             <p class="door-price">Цена: @door.Price лв.</p>
 
-            <a asp-action="Delete" asp-route-id="@door.Id" class="btn btn-danger">
-                Изтрий
-            </a>
+            <div class="d-flex gap-2">
+                <form method="post" asp-action="AddToWishlist" asp-route-id="@door.Id">
+                    <button type="submit" class="btn btn-outline-primary">
+                        🤍 Добави в любими
+                    </button>
+                </form>
+
+                <a asp-action="Delete" asp-route-id="@door.Id" class="btn btn-danger">
+                    Изтрий
+                </a>
+            </div>
         </div>
     }
 </div>

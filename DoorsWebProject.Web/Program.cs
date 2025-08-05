@@ -38,8 +38,9 @@ namespace DoorsWebProject.Web
                 .AddEntityFrameworkStores<DoorsDbContext>();
 
             builder.Services.AddScoped<IDoorService, DoorService>();
+			builder.Services.AddScoped<IWishlistService, WishlistService>();
 
-            builder.Services.AddControllersWithViews();
+			builder.Services.AddControllersWithViews();
 
             WebApplication? app = builder.Build();
             

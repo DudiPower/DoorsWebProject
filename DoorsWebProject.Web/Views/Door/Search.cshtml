@@ -1,0 +1,42 @@
+﻿@using DoorsWebProject.Web.ViewModels.Door
+@model IEnumerable<AllDoorsIndexViewModel>
+
+@{
+    ViewData["Title"] = "Резултати от търсене";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+@if (!string.IsNullOrEmpty(Context.Request.Query["searchTerm"]))
+{
+    <p>Търсене за: <strong>@Context.Request.Query["searchTerm"]</strong></p>
+}
+
+@if (!Model.Any())
+{
+    <p>Няма намерени продукти.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Снимка</th>
+                <th>Модел</th>
+                <th>Цена</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var door in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="@door.ImageUrl" alt="Снимка на @door.Model" width="100" height="100" style="object-fit: cover;" />
+                    </td>
+                    <td>@door.Model</td>
+                    <td>@door.Price.ToString()</td> @* Форматира като валута *@
+                </tr>
+            }
+        </tbody>
+    </table>
+}

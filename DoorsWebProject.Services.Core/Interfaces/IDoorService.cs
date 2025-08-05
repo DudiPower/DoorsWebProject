@@ -24,6 +24,7 @@
 		Task<DoorDeleteViewModel> GetDoorDeleteDetailsById(string? id);
 		Task<Door?> FindDoorByStringId(string? id);
 
+		Task<IEnumerable<AllDoorsIndexViewModel>> SearchingDoorsAsync(string? searchDoors);
 
 	}
 }

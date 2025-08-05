@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - OnlineShopForDoors</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Home/index.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/AspNetCoreArchTemplate.Web.styles.css" asp-append-version="true" />
 </head>
 <body>
@@ -85,6 +86,11 @@
                             <a asp-controller="Door" asp-action="Create">Създай</a>
                         </li>
                     </ul>
+
+                    <form asp-controller="Door" asp-action="Search" method="get" class="d-flex" style="margin-right: 20px;">
+                        <input type="text" name="searchTerm" class="form-control me-2" placeholder="Търси продукти..." />
+                        <button type="submit" class="btn btn-outline-light">Търси</button>
+                    </form>
 
                     <!-- Login / Register partial -->
                     <partial name="_LoginPartial" />

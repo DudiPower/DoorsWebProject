@@ -1,24 +1,42 @@
-﻿@{
+﻿@using DoorsWebProject.Web.ViewModels.Door
+ @model IEnumerable<AllDoorsIndexViewModel>
+
+
+@{
     ViewData["Title"] = "Начало";
 }
 
-<header>
-    <h1>Врати БГ</h1>
-    <p>Интериорни и входни врати</p>
-</header>
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <title>Врати БГ</title>
+</head>
+<body>
 
-<nav>
-    <a asp-page="/Index">Начало</a>
-    <a asp-page="/Products">Продукти</a>
-    <a asp-controller="Wishlist" asp-action="Index">Любими врати ❤️</a>
-    <a href="mailto:info@vratibg.bg">Контакт: info@vratibg.bg</a>
-</nav>
+    <header class="home-header">
+        <h1>Врати БГ</h1>
+        <p>Интериорни и входни врати</p>
+    </header>
 
-<section class="hero">
-    <h2>Добре дошли!</h2>
-    <p>Открийте нашите предложения за врати</p>
-</section>
+    <section class="hero">
+        <h2>Добре дошли!</h2>
+        <p>Открийте нашите предложения за висококачествени интериорни и входни врати.</p>
+    </section>
 
-<footer>
-    &copy; @DateTime.Now.Year Врати БГ
-</footer>
+    <section class="top-products">
+        <h2>Най-продавани врати</h2>
+        <div class="product-grid">
+            @foreach (var door in Model)
+            {
+                <div class="product-card">
+                    <img src="@door.ImageUrl" alt="@door.Model" />
+                    <h3>@door.Model</h3>
+                    <span class="price">@door.Price лв.</span>
+                </div>
+            }
+        </div>
+    </section>
+
+</body>
+</html>

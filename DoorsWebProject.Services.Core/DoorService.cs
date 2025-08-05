@@ -214,5 +214,23 @@
 			return true;
 
 		}
+
+		public async Task<IEnumerable<AllDoorsIndexViewModel>> SearchingDoorsAsync(string? searchDoorsName)
+		{
+			IEnumerable<AllDoorsIndexViewModel> searchDoors = await this.doorsDbContext
+				.Doors
+				.Where(d => !string.IsNullOrEmpty(searchDoorsName) && 
+				  d.Model.Contains(searchDoorsName))
+				.Select(d => new AllDoorsIndexViewModel
+				{
+					Id = d.DoorId.ToString(),
+					Model = d.Model,
+					ImageUrl = d.ImageUrl,
+					Price = d.Price.ToString(),
+				})
+				.ToListAsync();
+
+			return searchDoors;
+		}
 	}
 }

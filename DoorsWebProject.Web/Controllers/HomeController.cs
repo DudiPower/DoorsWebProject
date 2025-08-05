@@ -1,21 +1,32 @@
 namespace DoorsWebProject.Web.Controllers
 {
+	using DoorsWebProject.Services.Core.Interfaces;
+	using DoorsWebProject.Web.ViewModels.Door;
+	using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
     using System.Diagnostics;
-
     using ViewModels;
 
-    using Microsoft.AspNetCore.Mvc;
-
-    public class HomeController : Controller
+	public class HomeController : BaseController
     {
-        public HomeController(ILogger<HomeController> logger)
-        {
+		private readonly IDoorService doorService;
 
-        }
+		public HomeController(IDoorService doorService)
+		{
+			this.doorService = doorService;
+		}
+		//public HomeController(ILogger<HomeController> logger)
+  //      {
 
-        public IActionResult Index()
+  //      }
+
+        [AllowAnonymous]
+        public async Task<IActionResult> Index()
         {
-			return View();
+			IEnumerable<AllDoorsIndexViewModel> allDoors = await this.doorService
+				.GetAllDoorsAsync() ?? Enumerable.Empty<AllDoorsIndexViewModel>(); ;
+
+			return View(allDoors);
 		}
 
         public IActionResult Privacy()

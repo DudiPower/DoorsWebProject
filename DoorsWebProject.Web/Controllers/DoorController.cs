@@ -2,9 +2,10 @@
 {
 	using DoorsWebProject.Services.Core.Interfaces;
 	using DoorsWebProject.Web.ViewModels.Door;
+	using Microsoft.AspNetCore.Authorization;
 	using Microsoft.AspNetCore.Mvc;
 	using static DoorsWebProject.Web.ViewModels.ValidationMessages;
-	public class DoorController : Controller
+	public class DoorController : BaseController
 	{
 
 		private readonly IDoorService doorService;
@@ -14,6 +15,7 @@
 			this.doorService = doorService;
 		}
 		[HttpGet]
+		[AllowAnonymous]
 		public async Task<IActionResult> Index()
 		{
 			IEnumerable<AllDoorsIndexViewModel> allDoors = await this.doorService
@@ -101,6 +103,8 @@
 			}
 		}
 
+		[HttpGet]
+		[AllowAnonymous]
 		public async Task<IActionResult> Details(string id)
 		{
 			try
@@ -123,6 +127,7 @@
 			}
 		}
 
+		[AllowAnonymous]
 		public async Task<IActionResult> Smooth()
 		{
 			IEnumerable<AllDoorsIndexViewModel> allDoors = await this.doorService
@@ -131,6 +136,7 @@
 			return View(allDoors);
 		}
 
+		[AllowAnonymous]
 		public async Task<IActionResult> Glazed()
 		{
 			IEnumerable<AllDoorsIndexViewModel> allDoors = await this.doorService
@@ -190,6 +196,13 @@
 			}
 		}
 
+		public async Task<IActionResult> Search(string searchTerm)
+		{
+			IEnumerable<AllDoorsIndexViewModel> allSearchingDoors = await this.doorService
+				.SearchingDoorsAsync(searchTerm) ?? Enumerable.Empty<AllDoorsIndexViewModel>(); ;
+
+			return View(allSearchingDoors);
+		}
 
 	}
 }
