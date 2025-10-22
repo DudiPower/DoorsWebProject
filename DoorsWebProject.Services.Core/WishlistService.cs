@@ -2,6 +2,7 @@
 {
 	using DoorsWebProject.Data;
 	using DoorsWebProject.Data.Models;
+	using DoorsWebProject.Data.Repository.Interfaces;
 	using DoorsWebProject.Services.Core.Interfaces;
 	using DoorsWebProject.Web.ViewModels.Wishlist;
 	using Microsoft.EntityFrameworkCore;
@@ -14,17 +15,17 @@
 
 	public class WishlistService : IWishlistService
 	{
-		private readonly DoorsDbContext dbContext;
-
-		public WishlistService(DoorsDbContext dbContext)
+		
+		private readonly IWishlistRepository wishlistRepository;
+		public WishlistService(IWishlistRepository wishlistRepository)
 		{
-			this.dbContext = dbContext;
+			this.wishlistRepository = wishlistRepository;
 		}
 
 		public async Task<IEnumerable<WishlistViewModel>> GetWishlistDoorsAsync(string userId)
 		{
-			IEnumerable<WishlistViewModel> userWishlist = await this.dbContext
-				.ApplicationUserDoors
+			IEnumerable<WishlistViewModel> userWishlist = await this.wishlistRepository
+				.GetAllAttached()
 				.AsNoTracking()
 				.Where(aud => aud.ApplicationUserId.ToLower() == userId.ToLower())
 				.Select(aud => new WishlistViewModel
@@ -49,8 +50,8 @@
 
 				if (isValidDoorId)
 				{
-					ApplicationUserDoor? userDoorEntity = await this.dbContext
-						.ApplicationUserDoors
+					ApplicationUserDoor? userDoorEntity = await this.wishlistRepository
+						.GetAllAttached()
 						.IgnoreQueryFilters()
 						.SingleOrDefaultAsync(aud => aud.ApplicationUserId.ToLower() == userId
 						&& aud.DoorId.ToString() == doorGuid.ToString());
@@ -58,6 +59,8 @@
 					if (userDoorEntity != null)
 					{
 						userDoorEntity.IsDeleted = false;
+						result = 
+							await this.wishlistRepository.UpdateAsync(userDoorEntity);
 					}
 					else
 					{
@@ -67,14 +70,9 @@
 							DoorId = doorGuid
 						};
 
-						await this.dbContext.ApplicationUserDoors.AddAsync(userDoorEntity);
-
-
+						await this.wishlistRepository.AddAsync(userDoorEntity);
+						result = true;
 					}
-
-					await this.dbContext.SaveChangesAsync();
-
-					result = true;
 				}
 			}
 
@@ -91,16 +89,13 @@
 
 				if (isValidDoorId)
 				{
-					ApplicationUserDoor? userDoorEntity = await this.dbContext
-						.ApplicationUserDoors
+					ApplicationUserDoor? userDoorEntity = await this.wishlistRepository
 						.SingleOrDefaultAsync(aud => aud.ApplicationUserId == userId
 						&& aud.DoorId == doorGuid);
 
 					if (userDoorEntity != null)
 					{
-						userDoorEntity.IsDeleted = true;
-
-						await this.dbContext.SaveChangesAsync();
+						await this.wishlistRepository.SoftDeleteAsync(userDoorEntity);
 
 						result = true;
 					}

@@ -13,12 +13,10 @@
 	public class DoorService : IDoorService
 	{
 		private readonly IDoorRepository doorRepository;
-		private readonly DoorsDbContext doorsDbContext;
 
-		public DoorService(IDoorRepository doorRepository ,DoorsDbContext doorsDbContext)
+		public DoorService(IDoorRepository doorRepository)
 		{
 			this.doorRepository = doorRepository;
-			this.doorsDbContext = doorsDbContext;
 		}
 
 		public async Task<IEnumerable<AllDoorsIndexViewModel>> GetAllDoorsAsync()

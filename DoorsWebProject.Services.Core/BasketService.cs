@@ -13,10 +13,8 @@
 	public class BasketService : IBasketService
 	{
 		private readonly IBasketRepository basketRepository;
-		private readonly DoorsDbContext dbContext;
-		public BasketService(DoorsDbContext dbContext , IBasketRepository basketRepository)
+		public BasketService(IBasketRepository basketRepository)
 		{
-			this.dbContext = dbContext;
 			this.basketRepository = basketRepository;
 		}
 		
