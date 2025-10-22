@@ -17,6 +17,8 @@
 
 		Task<IEnumerable<TEntity>> GetAllAsync();
 
+		Task<int> CountAsync();
+
 		Task AddAsync(TEntity item);
 
 		Task AddRangeAsync(IEnumerable<TEntity> items);

@@ -1,0 +1,33 @@
+﻿@using System.Diagnostics
+@{
+    Layout = "_Layout";
+    var statusCode = ViewBag.StatusCode as int? ?? Context.Response?.StatusCode ?? 500;
+    var requestId = (ViewBag.RequestId as string) ?? Activity.Current?.Id ?? Context.TraceIdentifier;
+    var message = ViewBag.Message as string;
+    var path = ViewBag.Path as string ?? Context?.Request?.Path.ToString();
+    var showDetails = ViewBag.ShowDetails as bool? ?? false;
+    <link rel="stylesheet" href="~/css/Home/error.css" asp-append-version="true" />
+}
+
+<div class="error-container">
+    <div class="error-icon">⚠️</div>
+    <div class="error-title">Възникна грешка</div>
+    <div class="error-message">
+        Код: @statusCode
+        @if (!string.IsNullOrWhiteSpace(message))
+        {
+            <text> — @Html.Encode(message)</text>
+        }
+    </div>
+    <p class="error-message">Път: @Html.Encode(path)</p>
+    <p class="error-message">Request ID: <code>@requestId</code></p>
+    <div class="error-actions">
+        <a href="/" class="btn-primary">Към началната страница</a>
+        <button onclick="location.reload()" class="btn-secondary">Опитай отново</button>
+    </div>
+    @if (showDetails)
+    {
+        <pre style="text-align:left; margin-top:20px; background:#f8f9fa; padding:10px; border-radius:8px; overflow:auto;">@ViewBag.Exception?.ToString()</pre>
+    }
+</div>
+

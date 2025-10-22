@@ -1,0 +1,39 @@
+﻿@using DoorsWebProject.Web.ViewModels.Door
+@model IEnumerable<AllDoorsIndexViewModel>
+
+
+@foreach (var door in Model)
+{
+    <div class="door-card">
+        <h2 class="door-model">
+            <a asp-action="Details" asp-route-id="@door.Id" class="text-decoration-none text-dark">
+                Модел: @door.Model
+            </a>
+        </h2>
+
+        <div class="door-image">
+            <img src="@door.ImageUrl" alt="Снимка на @door.Model" style="max-width: 300px; height: auto;" />
+        </div>
+
+        <p class="door-price">Цена: @door.Price лв.</p>
+
+        <div class="d-flex gap-2">
+            @if (this.User.Identity?.IsAuthenticated ?? false)
+            {
+                <form asp-controller="Wishlist"
+                      asp-action="Add"
+                      method="post"
+                      style="display:inline;">
+                    <input type="hidden" name="id" value="@door.Id" />
+                    <button type="submit" class="btn btn-outline-primary">
+                        🤍 Добави в любими
+                    </button>
+                </form>
+
+            }
+            <a asp-action="Delete" asp-route-id="@door.Id" class="btn btn-danger">
+                Изтрий
+            </a>
+        </div>
+    </div>
+}

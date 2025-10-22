@@ -7,7 +7,11 @@
 
 	public class DoorsDbContext : IdentityDbContext
     {
-        public DoorsDbContext(DbContextOptions<DoorsDbContext> options)
+		public DoorsDbContext()
+		{
+		}
+
+		public DoorsDbContext(DbContextOptions<DoorsDbContext> options)
             : base(options)
         {
 
@@ -24,6 +28,7 @@
 		public virtual DbSet<Wishlist> Wishlists { get; set; } = null!;
 
 		public virtual DbSet<ApplicationUserDoor> ApplicationUserDoors { get; set; } = null!;
+
 
 		protected override void OnModelCreating(ModelBuilder builder)
 		{

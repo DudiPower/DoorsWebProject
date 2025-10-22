@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoorsWebProject.Web.Tests",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoorsWebProject.Services.Core.Tests", "DoorsWebProject.Services.Core.Tests\DoorsWebProject.Services.Core.Tests.csproj", "{B4667488-6C8B-04E7-BF56-D707E0F290B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoorsWebProject.WebApi", "DoorsApp.WebApi\DoorsWebProject.WebApi.csproj", "{F62BB926-12D8-4794-B2B4-D09255870E64}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +97,10 @@ Global
 		{B4667488-6C8B-04E7-BF56-D707E0F290B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4667488-6C8B-04E7-BF56-D707E0F290B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4667488-6C8B-04E7-BF56-D707E0F290B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F62BB926-12D8-4794-B2B4-D09255870E64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F62BB926-12D8-4794-B2B4-D09255870E64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F62BB926-12D8-4794-B2B4-D09255870E64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F62BB926-12D8-4794-B2B4-D09255870E64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -112,6 +118,7 @@ Global
 		{AC3429DC-C68E-A823-9426-D0898444C069} = {F5309D7D-C09A-4F63-9926-BBF0D4623380}
 		{0BEF6F34-CED5-2A9E-6305-3C400F3106E8} = {F5309D7D-C09A-4F63-9926-BBF0D4623380}
 		{B4667488-6C8B-04E7-BF56-D707E0F290B2} = {F5309D7D-C09A-4F63-9926-BBF0D4623380}
+		{F62BB926-12D8-4794-B2B4-D09255870E64} = {93EF63D2-F88C-45A8-A833-653989757DFE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0063E44C-41E7-488F-ABC8-30AB4DD8226E}

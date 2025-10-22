@@ -6,24 +6,58 @@
 }
 
 
+<div class="door-container" >
+</div>
+<div class="container">
+    <aside class ="sidebar">
+    <h3>Филтрирай</h3>
 
-@foreach (var door in Model)
-{
-    <div class="door-card">
-        <h2 class="door-model">
-            <a asp-action="Details" asp-route-id="@door.Id" class="text-decoration-none text-dark">
-                Модел: @door.Model
-            </a>
-        </h2>
+    <label>Категория</label>
+    <select id="categoryId">
+        <option value="">Всички</option>
+        <option value="1">Входни</option>
+        <option value="2">Вътрешни</option>
+        <option value="3">Плъзгащи</option>
+    </select>
 
-        <div class="door-image">
-            <img src="@door.ImageUrl" alt="Снимка на @door.Model" style="max-width: 300px; height: auto;" />
+    <label>Цвят</label>
+    <select id="color">
+        <option value="">Всички</option>
+        <option value="white">Бяло</option>
+        <option value="brown">Кафяво</option>
+        <option value="black">Черно</option>
+    </select>
+
+    <label>Цена</label>
+    <input type="number" id="minPrice" placeholder="Мин.">
+    <input type="number" id="maxPrice" placeholder="Макс.">
+
+    <button id="filterBtn">Филтрирай</button>
+
+        <div class="wrapper">
+            <h3>Филтър по цена</h3>
+            <div class="price-input">
+                <span id="minValue">400 лв</span>
+                <span id="maxValue">1500 лв</span>
+            </div>
+
+            <div class="slider">
+                <div class="progress"></div>
+            </div>
+
+            <div class="range-input">
+                <input type="range" id="rangeMin" min="0" max="2000" value="200">
+                <input type="range" id="rangeMax" min="0" max="2000" value="1500">
+            </div>
         </div>
+</aside>
+    <main class="content" id="doorsContainer">
+        @await Html.PartialAsync("PartialDoorView" , Model);
+    </main>
 
-        <p class="door-price">Цена: @door.Price лв.</p>
 
-        <a asp-action="Delete" asp-route-id="@door.Id" class="btn btn-danger">
-            Изтрий
-        </a>
-    </div>
-}
+</div>
+
+
+
+

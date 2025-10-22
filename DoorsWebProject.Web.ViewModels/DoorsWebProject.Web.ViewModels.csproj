@@ -7,11 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AspNetCoreArchTemplate.Services.AutoMapping\DoorsWebProject.Services.AutoMapping.csproj" />
-    <ProjectReference Include="..\DoorsWebProject.Data.Common\DoorsWebProject.Data.Common.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DoorsWebProject.Data.Models\DoorsWebProject.Data.Models.csproj" />
     <ProjectReference Include="..\DoorsWebProject.GCommon\DoorsWebProject.GCommon.csproj" />
     <ProjectReference Include="..\DoorsWebProject.Services.AutoMapping\DoorsWebProject.Services.AutoMapping.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Basket\" />
   </ItemGroup>
 
 </Project>

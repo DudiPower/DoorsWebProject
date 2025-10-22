@@ -14,7 +14,5 @@
 
 		public bool IsDeleted { get; set; }
 
-		public ICollection<DoorBasket> BasketDoors { get; set; } 
-			= new HashSet<DoorBasket>();
 	}
 }

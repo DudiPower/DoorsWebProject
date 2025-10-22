@@ -11,6 +11,9 @@
 
   <ItemGroup>
     <PackageReference Include="coverlet.collector" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.3.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
     <PackageReference Include="NUnit" Version="3.14.0" />
     <PackageReference Include="NUnit.Analyzers" Version="3.9.0" />
@@ -18,8 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AspNetCoreArchTemplate.Data\DoorsWebProject.Data.csproj" />
-    <ProjectReference Include="..\AspNetCoreArchTemplate.Services.Core\DoorsWebProject.Services.Core.csproj" />
+    <ProjectReference Include="..\DoorsWebProject.Data\DoorsWebProject.Data.csproj" />
+    <ProjectReference Include="..\DoorsWebProject.Services.Core\DoorsWebProject.Services.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

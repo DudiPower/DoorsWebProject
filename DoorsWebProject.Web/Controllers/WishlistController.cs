@@ -42,7 +42,7 @@
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> Add(string? doorId)
+		public async Task<IActionResult> Add(string? id)
 		{
 			try
 			{
@@ -54,7 +54,7 @@
 				}
 
 				bool result = await this.wishlistService
-					.AddDoorToWishlistAsync(doorId, userId);
+					.AddDoorToWishlistAsync(id, userId);
 
 				if (result == false)
 				{

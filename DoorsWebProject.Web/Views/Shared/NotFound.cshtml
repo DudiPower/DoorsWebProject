@@ -1,0 +1,21 @@
+﻿@{
+    Layout = "_Layout"; // ако не искаш layout — махни този ред
+    var path = ViewBag.Path as string ?? Context?.Request?.Path.ToString();
+    <link rel="stylesheet" href="~/css/Home/error.css" asp-append-version="true" />
+}
+
+
+<div class="notfound-container">
+    <div class="notfound-code">404</div>
+    <div class="notfound-title">Страницата не е намерена</div>
+    <div class="notfound-message">
+        Не можем да открием страницата, която търсите.<br />
+        @if (!string.IsNullOrWhiteSpace(path))
+        {
+            <span>Път: <code>@path</code></span>
+        }
+    </div>
+    <div class="notfound-actions">
+        <a href="/">Към началната страница</a>
+    </div>
+</div>

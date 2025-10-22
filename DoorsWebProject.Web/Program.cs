@@ -6,12 +6,21 @@ namespace DoorsWebProject.Web
 
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
+	using DoorsWebProject.Data.Repository.Interfaces;
+	using DoorsWebProject.Data.Repository;
 
-    public class Program
+	public class Program
     {
         public static void Main(string[] args)
         {
             WebApplicationBuilder? builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession(options =>
+            {
+				options.IdleTimeout = TimeSpan.FromMinutes(30);
+				options.Cookie.HttpOnly = true;
+				options.Cookie.IsEssential = true;
+			});
             
             string connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
             
@@ -37,8 +46,14 @@ namespace DoorsWebProject.Web
                 })
                 .AddEntityFrameworkStores<DoorsDbContext>();
 
-            builder.Services.AddScoped<IDoorService, DoorService>();
+            builder.Services.AddScoped<IDoorRepository, DoorRepository>();
+			builder.Services.AddScoped<IBasketRepository, BasketRepository>();
+			builder.Services.AddScoped<IWishlistRepository, WishlistRepository>();
+			builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+
+			builder.Services.AddScoped<IDoorService, DoorService>();
 			builder.Services.AddScoped<IWishlistService, WishlistService>();
+            builder.Services.AddScoped<IBasketService, BasketService>();
 
 			builder.Services.AddControllersWithViews();
 
@@ -54,6 +69,8 @@ namespace DoorsWebProject.Web
                 app.UseHsts();
             }
 
+            app.UseStatusCodePagesWithRedirects("/Home/Error?statusCode={0}");
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -62,7 +79,9 @@ namespace DoorsWebProject.Web
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.MapControllerRoute(
+			app.UseSession();
+
+			app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
             app.MapRazorPages();

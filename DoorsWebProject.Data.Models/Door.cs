@@ -29,8 +29,6 @@
 		public ICollection<DoorCategory> DoorCategories { get; set; } =
 			 new HashSet<DoorCategory>();
 
-		public ICollection<DoorBasket> DoorBaskets { get; set; } =
-			 new HashSet<DoorBasket>();
 
 		public ICollection<DoorWishlist> DoorWishlists { get; set; } =
 			 new HashSet<DoorWishlist>();

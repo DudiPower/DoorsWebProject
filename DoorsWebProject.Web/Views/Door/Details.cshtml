@@ -41,6 +41,10 @@
                         <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">
                             🗑️ Изтрий
                         </a>
+
+                        <a asp-controller="Basket" asp-action="Add" asp-route-id="@Model.Id" class="btn btn-primary">
+                            Кошница
+                        </a>
                     }
                 </div>
             </div>

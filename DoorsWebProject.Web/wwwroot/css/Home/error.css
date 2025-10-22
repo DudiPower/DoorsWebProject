@@ -1,0 +1,107 @@
+﻿body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f6fa;
+}
+
+.error-container {
+    max-width: 700px;
+    margin: 50px auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 30px;
+    text-align: center;
+}
+
+.error-icon {
+    font-size: 60px;
+    color: #e74c3c;
+}
+
+.error-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-top: 10px;
+}
+
+.error-message {
+    font-size: 16px;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+}
+
+.error-actions a, .error-actions button {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+.btn-primary {
+    background: #3498db;
+    color: white;
+}
+
+    .btn-primary:hover {
+        background: #2980b9;
+    }
+
+.btn-secondary {
+    background: #ecf0f1;
+    color: #2c3e50;
+}
+
+    .btn-secondary:hover {
+        background: #bdc3c7;
+    }
+
+.notfound-container {
+    max-width: 700px;
+    margin: 60px auto;
+    text-align: center;
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.notfound-code {
+    font-size: 100px;
+    font-weight: bold;
+    color: #e67e22;
+    margin-bottom: 10px;
+}
+
+.notfound-title {
+    font-size: 28px;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.notfound-message {
+    color: #7f8c8d;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.notfound-actions a {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    background: #3498db;
+    color: white;
+    transition: background 0.3s ease;
+}
+
+    .notfound-actions a:hover {
+        background: #2980b9;
+    }
+

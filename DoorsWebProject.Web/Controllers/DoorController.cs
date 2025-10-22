@@ -1,18 +1,22 @@
 ﻿namespace DoorsWebProject.Web.Controllers
 {
+	using DoorsWebProject.Data;
 	using DoorsWebProject.Services.Core.Interfaces;
 	using DoorsWebProject.Web.ViewModels.Door;
 	using Microsoft.AspNetCore.Authorization;
 	using Microsoft.AspNetCore.Mvc;
+	using Microsoft.EntityFrameworkCore;
 	using static DoorsWebProject.Web.ViewModels.ValidationMessages;
 	public class DoorController : BaseController
 	{
 
 		private readonly IDoorService doorService;
+		private readonly DoorsDbContext dbContext;
 
-		public DoorController(IDoorService doorService)
+		public DoorController(IDoorService doorService , DoorsDbContext dbContext)
 		{
 			this.doorService = doorService;
+			this.dbContext = dbContext;
 		}
 		[HttpGet]
 		[AllowAnonymous]
@@ -131,7 +135,7 @@
 		public async Task<IActionResult> Smooth()
 		{
 			IEnumerable<AllDoorsIndexViewModel> allDoors = await this.doorService
-				.GetAllFilteredDoorsAsync("Laminated") ?? Enumerable.Empty<AllDoorsIndexViewModel>(); ;
+				.GetAllFilteredDoorsAsync("Smooth") ?? Enumerable.Empty<AllDoorsIndexViewModel>(); ;
 
 			return View(allDoors);
 		}
@@ -203,6 +207,38 @@
 
 			return View(allSearchingDoors);
 		}
+
+		[HttpGet]
+		public async Task<IActionResult> Filter(int? categoryId, string? color, decimal? minPrice, decimal? maxPrice)
+		{
+			var query = dbContext.Doors.AsQueryable();
+
+			if (categoryId.HasValue)
+				query = query.Where(d => d.DoorCategories.Any(dc => dc.CategoryId.ToString() == categoryId.Value.ToString()));
+
+			//if (!string.IsNullOrEmpty(color))
+			//	query = query.Where(d => d.Color == color);
+
+			if (minPrice.HasValue)
+				query = query.Where(d => d.Price >= minPrice.Value);
+
+			if (maxPrice.HasValue)
+				query = query.Where(d => d.Price <= maxPrice.Value);
+
+		var doors = await query
+		.Select(d => new AllDoorsIndexViewModel
+		{
+			Id = d.DoorId.ToString(),
+			ImageUrl = d.ImageUrl,
+			Model = d.Model,
+			Price = d.Price.ToString("F2") // формат 2 знака след дес. запетая
+		})
+		.ToListAsync();
+
+
+			return PartialView("PartialDoorView", doors);
+		}
+
 
 	}
 }

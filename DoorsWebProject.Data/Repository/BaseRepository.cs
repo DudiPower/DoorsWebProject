@@ -7,6 +7,8 @@
 	using System.Linq.Expressions;
 	using System.Reflection;
 	using System.Threading.Tasks;
+	using static DoorsWebProject.Data.Common.ExceptionMessages;
+	using static DoorsWebProject.GCommon.ApplicationConstants;
 
 	public abstract class BaseRepository<TEntity, TKey>
 	: IRepository<TEntity, TKey>, IAsyncRepository<TEntity, TKey>
@@ -25,6 +27,12 @@
 		{
 			return this.dbSet
 				.Find(id);
+		}
+
+		public IQueryable<TEntity> GetAllAttached()
+		{
+			return this.dbSet
+				.AsQueryable();
 		}
 
 		public ValueTask<TEntity?> GetByIdAsync(TKey id)
@@ -184,8 +192,17 @@
 			return typeof(TEntity)
 				.GetProperties()
 				.FirstOrDefault(pi => pi.PropertyType == typeof(bool) &&
-												 pi.Name == "IsDeleted");
+												 pi.Name == IsDeletedPropertyName);
 		}
 
+		public int Count()
+		{
+			return this.dbSet.Count();
+		}
+
+		public Task<int> CountAsync()
+		{
+			return this.dbSet.CountAsync();
+		}
 	}
 }

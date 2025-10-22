@@ -1,0 +1,6 @@
+@DoorsApp.WebApi_HostAddress = http://localhost:5036
+
+GET {{DoorsApp.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

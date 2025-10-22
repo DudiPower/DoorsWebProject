@@ -70,6 +70,30 @@ namespace DoorsWebProject.Data.Migrations
                     b.ToTable("Baskets");
                 });
 
+            modelBuilder.Entity("DoorsWebProject.Data.Models.BasketItem", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("BasketId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("DoorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BasketId");
+
+                    b.HasIndex("DoorId");
+
+                    b.ToTable("BasketItems");
+                });
+
             modelBuilder.Entity("DoorsWebProject.Data.Models.Category", b =>
                 {
                     b.Property<Guid>("CategoryId")
@@ -171,89 +195,284 @@ namespace DoorsWebProject.Data.Migrations
                     b.HasData(
                         new
                         {
-                            DoorId = new Guid("33333333-cccc-4ddd-aaaa-000000000001"),
-                            Description = "High-quality steel door with modern design.",
-                            Height = 200.0m,
-                            ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-premium-steel-doors.webp",
+                            DoorId = new Guid("11111111-aaaa-4bbb-cccc-000000000002"),
+                            Description = "Smooth steel door with minimalist style.",
+                            Height = 210.0m,
+                            ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-smooth-steel-door.webp",
                             IsDeleted = false,
                             Material = "Steel",
-                            Model = "S100",
-                            Price = 499.99m,
-                            Thickness = 4.5m,
-                            Type = "Solid",
-                            Width = 90.0m
-                        },
-                        new
-                        {
-                            DoorId = new Guid("33333333-cccc-4ddd-aaaa-000000000002"),
-                            Description = "Elegant oak wood door with smooth finish.",
-                            Height = 200.0m,
-                            ImageUrl = "https://mla5dc5gjk9g.i.optimole.com/cb:ykaZ.3ba35/w:auto/h:auto/q:mauto/f:best/https://www.aspire-doors.co.uk/wp-content/uploads/2023/11/oak-mexicano-prefinished-lifestyle.jpg",
-                            IsDeleted = false,
-                            Material = "Oak Wood",
-                            Model = "I200",
-                            Price = 299.00m,
+                            Model = "S200",
+                            Price = 529.99m,
                             Thickness = 4.0m,
-                            Type = "Laminated",
-                            Width = 80.0m
+                            Type = "Smooth",
+                            Width = 95.0m
                         },
                         new
                         {
-                            DoorId = new Guid("33333333-cccc-4ddd-aaaa-000000000003"),
-                            Description = "Stylish tempered glass door with reinforced frame.",
-                            Height = 210.0m,
-                            ImageUrl = "https://supplychaingamechanger.com/wp-content/uploads/2023/08/TemperedGlass.jpg",
+                            DoorId = new Guid("22222222-bbbb-4ccc-dddd-000000000003"),
+                            Description = "Smooth steel door, ideal for modern apartments.",
+                            Height = 205.0m,
+                            ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-smooth-2.webp",
                             IsDeleted = false,
-                            Material = "Tempered Glass",
-                            Model = "SL300",
-                            Price = 399.50m,
-                            Thickness = 3.5m,
-                            Type = "Laminated",
-                            Width = 100.0m
+                            Material = "Steel",
+                            Model = "S250",
+                            Price = 489.99m,
+                            Thickness = 4.2m,
+                            Type = "Smooth",
+                            Width = 92.0m
                         },
                         new
                         {
-                            DoorId = new Guid("33333333-cccc-4ddd-aaaa-000000000004"),
-                            Description = "Fireproof steel door suitable for safety exits.",
-                            Height = 210.0m,
-                            ImageUrl = "https://5.imimg.com/data5/EM/DU/NC/SELLER-8174112/man-door-500x500.png",
+                            DoorId = new Guid("33333333-cccc-4ddd-eeee-000000000004"),
+                            Description = "Smooth aluminium door with matte finish.",
+                            Height = 200.0m,
+                            ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-smooth-aluminium.webp",
                             IsDeleted = false,
-                            Material = "Steel with Fireproof Coating",
-                            Model = "F400",
-                            Price = 749.99m,
-                            Thickness = 5.0m,
-                            Type = "Solid",
+                            Material = "Aluminium",
+                            Model = "S300",
+                            Price = 549.99m,
+                            Thickness = 3.8m,
+                            Type = "Smooth",
+                            Width = 88.0m
+                        },
+                        new
+                        {
+                            DoorId = new Guid("44444444-dddd-4eee-ffff-000000000005"),
+                            Description = "Profiled steel door with decorative panels.",
+                            Height = 215.0m,
+                            ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-profiled-steel-door.webp",
+                            IsDeleted = false,
+                            Material = "Steel",
+                            Model = "P100",
+                            Price = 599.99m,
+                            Thickness = 4.5m,
+                            Type = "Profiled",
+                            Width = 96.0m
+                        },
+                        new
+                        {
+                            DoorId = new Guid("55555555-eeee-4fff-aaaa-000000000006"),
+                            Description = "Profiled steel door with elegant frame.",
+                            Height = 210.0m,
+                            ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-profiled-2.webp",
+                            IsDeleted = false,
+                            Material = "Steel",
+                            Model = "P150",
+                            Price = 569.99m,
+                            Thickness = 4.3m,
+                            Type = "Profiled",
+                            Width = 94.0m
+                        },
+                        new
+                        {
+                            DoorId = new Guid("66666666-ffff-4aaa-bbbb-000000000007"),
+                            Description = "Profiled wooden door with traditional design.",
+                            Height = 205.0m,
+                            ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-profiled-wood.webp",
+                            IsDeleted = false,
+                            Material = "Wood",
+                            Model = "P200",
+                            Price = 649.99m,
+                            Thickness = 4.0m,
+                            Type = "Profiled",
                             Width = 90.0m
                         },
                         new
                         {
-                            DoorId = new Guid("33333333-cccc-4ddd-aaaa-000000000005"),
-                            Description = "Lightweight aluminum door with modern aesthetics.",
-                            Height = 220.0m,
-                            ImageUrl = "https://www.glenviewdoors.com/ExteriorAluminum/gallery/Swing-Aluminum-Exterior-Door-with-Sidelites-EAL-SWS-W6-2SL.jpg",
+                            DoorId = new Guid("77777777-aaaa-4bbb-cccc-000000000008"),
+                            Description = "Profiled aluminium door with brushed surface.",
+                            Height = 200.0m,
+                            ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-profiled-aluminium.webp",
                             IsDeleted = false,
-                            Material = "Aluminum",
-                            Model = "E500",
-                            Price = 599.00m,
-                            Thickness = 3.8m,
-                            Type = "PVC",
+                            Material = "Aluminium",
+                            Model = "P250",
+                            Price = 589.99m,
+                            Thickness = 3.7m,
+                            Type = "Profiled",
+                            Width = 88.0m
+                        },
+                        new
+                        {
+                            DoorId = new Guid("88888888-bbbb-4ccc-dddd-000000000009"),
+                            Description = "Glazed steel door with tempered glass panel.",
+                            Height = 215.0m,
+                            ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-glazed-steel-door.webp",
+                            IsDeleted = false,
+                            Material = "Steel + Glass",
+                            Model = "G100",
+                            Price = 699.99m,
+                            Thickness = 4.8m,
+                            Type = "Glazed",
+                            Width = 98.0m
+                        },
+                        new
+                        {
+                            DoorId = new Guid("99999999-cccc-4ddd-eeee-000000000010"),
+                            Description = "Glazed steel door with frosted glass insert.",
+                            Height = 210.0m,
+                            ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-glazed-2.webp",
+                            IsDeleted = false,
+                            Material = "Steel + Glass",
+                            Model = "G150",
+                            Price = 729.99m,
+                            Thickness = 4.5m,
+                            Type = "Glazed",
+                            Width = 94.0m
+                        },
+                        new
+                        {
+                            DoorId = new Guid("aaaaaaaa-dddd-4eee-ffff-000000000011"),
+                            Description = "Glazed wooden door with decorative glass.",
+                            Height = 205.0m,
+                            ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-glazed-wood.webp",
+                            IsDeleted = false,
+                            Material = "Wood + Glass",
+                            Model = "G200",
+                            Price = 759.99m,
+                            Thickness = 4.2m,
+                            Type = "Glazed",
+                            Width = 92.0m
+                        },
+                        new
+                        {
+                            DoorId = new Guid("bbbbbbbb-eeee-4fff-aaaa-000000000012"),
+                            Description = "Smooth luxury steel door with premium coating.",
+                            Height = 220.0m,
+                            ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-smooth-lux.webp",
+                            IsDeleted = false,
+                            Material = "Steel",
+                            Model = "S350",
+                            Price = 599.99m,
+                            Thickness = 4.7m,
+                            Type = "Smooth",
                             Width = 100.0m
+                        },
+                        new
+                        {
+                            DoorId = new Guid("cccccccc-ffff-4aaa-bbbb-000000000013"),
+                            Description = "Profiled steel door with ornate panel design.",
+                            Height = 210.0m,
+                            ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-profiled-lux.webp",
+                            IsDeleted = false,
+                            Material = "Steel",
+                            Model = "P300",
+                            Price = 639.99m,
+                            Thickness = 4.5m,
+                            Type = "Profiled",
+                            Width = 95.0m
+                        },
+                        new
+                        {
+                            DoorId = new Guid("dddddddd-aaaa-4bbb-cccc-000000000014"),
+                            Description = "Modern glazed door with clear glass panel.",
+                            Height = 215.0m,
+                            ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-glazed-modern.webp",
+                            IsDeleted = false,
+                            Material = "Steel + Glass",
+                            Model = "G250",
+                            Price = 749.99m,
+                            Thickness = 4.6m,
+                            Type = "Glazed",
+                            Width = 96.0m
+                        },
+                        new
+                        {
+                            DoorId = new Guid("eeeeeeee-bbbb-4ccc-dddd-000000000015"),
+                            Description = "Ultra-smooth aluminium door for contemporary homes.",
+                            Height = 205.0m,
+                            ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-smooth-ultra.webp",
+                            IsDeleted = false,
+                            Material = "Aluminium",
+                            Model = "S400",
+                            Price = 559.99m,
+                            Thickness = 4.0m,
+                            Type = "Smooth",
+                            Width = 93.0m
+                        },
+                        new
+                        {
+                            DoorId = new Guid("ffffffff-cccc-4ddd-eeee-000000000016"),
+                            Description = "Classic profiled wooden door with deep carvings.",
+                            Height = 215.0m,
+                            ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-profiled-classic.webp",
+                            IsDeleted = false,
+                            Material = "Wood",
+                            Model = "P350",
+                            Price = 689.99m,
+                            Thickness = 4.4m,
+                            Type = "Profiled",
+                            Width = 98.0m
+                        },
+                        new
+                        {
+                            DoorId = new Guid("12345678-dddd-4eee-ffff-000000000017"),
+                            Description = "Luxury glazed aluminium door with tinted glass.",
+                            Height = 220.0m,
+                            ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-glazed-lux.webp",
+                            IsDeleted = false,
+                            Material = "Aluminium + Glass",
+                            Model = "G300",
+                            Price = 799.99m,
+                            Thickness = 4.9m,
+                            Type = "Glazed",
+                            Width = 100.0m
+                        },
+                        new
+                        {
+                            DoorId = new Guid("23456789-eeee-4fff-aaaa-000000000018"),
+                            Description = "Smooth steel door with advanced security locks.",
+                            Height = 210.0m,
+                            ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-smooth-secure.webp",
+                            IsDeleted = false,
+                            Material = "Steel",
+                            Model = "S450",
+                            Price = 629.99m,
+                            Thickness = 4.6m,
+                            Type = "Smooth",
+                            Width = 95.0m
+                        },
+                        new
+                        {
+                            DoorId = new Guid("34567890-ffff-4aaa-bbbb-000000000019"),
+                            Description = "Profiled steel door reinforced for extra security.",
+                            Height = 210.0m,
+                            ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-profiled-secure.webp",
+                            IsDeleted = false,
+                            Material = "Steel",
+                            Model = "P400",
+                            Price = 669.99m,
+                            Thickness = 4.5m,
+                            Type = "Profiled",
+                            Width = 94.0m
+                        },
+                        new
+                        {
+                            DoorId = new Guid("45678901-aaaa-4bbb-cccc-000000000020"),
+                            Description = "Secure glazed steel door with impact-resistant glass.",
+                            Height = 215.0m,
+                            ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-glazed-secure.webp",
+                            IsDeleted = false,
+                            Material = "Steel + Glass",
+                            Model = "G350",
+                            Price = 789.99m,
+                            Thickness = 4.8m,
+                            Type = "Glazed",
+                            Width = 97.0m
+                        },
+                        new
+                        {
+                            DoorId = new Guid("56789012-bbbb-4ccc-dddd-000000000021"),
+                            Description = "Eco-friendly smooth aluminium door with insulation.",
+                            Height = 205.0m,
+                            ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-smooth-eco.webp",
+                            IsDeleted = false,
+                            Material = "Aluminium",
+                            Model = "S500",
+                            Price = 579.99m,
+                            Thickness = 4.1m,
+                            Type = "Smooth",
+                            Width = 92.0m
                         });
-                });
-
-            modelBuilder.Entity("DoorsWebProject.Data.Models.DoorBasket", b =>
-                {
-                    b.Property<Guid>("DoorId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("BasketId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("DoorId", "BasketId");
-
-                    b.HasIndex("BasketId");
-
-                    b.ToTable("DoorBasket");
                 });
 
             modelBuilder.Entity("DoorsWebProject.Data.Models.DoorCategory", b =>
@@ -555,19 +774,17 @@ namespace DoorsWebProject.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("DoorsWebProject.Data.Models.DoorBasket", b =>
+            modelBuilder.Entity("DoorsWebProject.Data.Models.BasketItem", b =>
                 {
-                    b.HasOne("DoorsWebProject.Data.Models.Basket", "Basket")
+                    b.HasOne("DoorsWebProject.Data.Models.Basket", null)
                         .WithMany("BasketDoors")
-                        .HasForeignKey("BasketId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BasketId");
 
                     b.HasOne("DoorsWebProject.Data.Models.Door", "Door")
                         .WithMany("DoorBaskets")
-                        .HasForeignKey("DoorId");
-
-                    b.Navigation("Basket");
+                        .HasForeignKey("DoorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Door");
                 });

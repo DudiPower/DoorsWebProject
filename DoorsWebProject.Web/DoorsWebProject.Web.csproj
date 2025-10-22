@@ -9,16 +9,16 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.15" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.15" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.15" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.3.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.15" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AspNetCoreArchTemplate.Data\DoorsWebProject.Data.csproj" />
-    <ProjectReference Include="..\AspNetCoreArchTemplate.Services.Core\DoorsWebProject.Services.Core.csproj" />
-    <ProjectReference Include="..\AspNetCoreArchTemplate.Web.ViewModels\DoorsWebProject.Web.ViewModels.csproj" />
     <ProjectReference Include="..\DoorsWebProject.Data\DoorsWebProject.Data.csproj" />
     <ProjectReference Include="..\DoorsWebProject.GCommon\DoorsWebProject.GCommon.csproj" />
     <ProjectReference Include="..\DoorsWebProject.Services.Core\DoorsWebProject.Services.Core.csproj" />

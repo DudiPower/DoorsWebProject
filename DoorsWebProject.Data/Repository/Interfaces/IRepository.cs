@@ -11,6 +11,10 @@
 		TEntity? GetById(TKey id);
 		IEnumerable<TEntity> GetAll();
 
+		IQueryable<TEntity> GetAllAttached();
+
+		int Count();
+
 		TEntity? SingleOrDefault(Func<TEntity, bool> predicate);
 
 		TEntity? FirstOrDefault(Func<TEntity, bool> predicate);

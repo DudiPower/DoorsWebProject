@@ -34,9 +34,19 @@ namespace DoorsWebProject.Web.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Error(string? statusCode)
         {
+
+            switch (statusCode)
+            {
+                case "403":
+                case "401":
+                    return View("Unauthorized");
+                case "404":
+                    return View("NotFound");
+            }
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }

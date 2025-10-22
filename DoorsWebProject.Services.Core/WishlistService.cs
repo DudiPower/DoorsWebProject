@@ -109,7 +109,5 @@
 
 			return result;
 		}
-
-		
 	}
 }
