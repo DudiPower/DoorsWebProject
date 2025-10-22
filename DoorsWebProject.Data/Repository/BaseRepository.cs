@@ -43,7 +43,8 @@
 
 		public IEnumerable<TEntity> GetAll()
 		{
-			return this.dbSet.ToArray();
+			return this.dbSet
+				.ToArray();
 		}
 
 		public async Task<IEnumerable<TEntity>> GetAllAsync()

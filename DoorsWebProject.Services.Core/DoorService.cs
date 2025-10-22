@@ -5,24 +5,27 @@
 	using System.Threading.Tasks;
 	using DoorsWebProject.Data;
 	using DoorsWebProject.Data.Models;
+	using DoorsWebProject.Data.Repository.Interfaces;
 	using DoorsWebProject.Services.Core.Interfaces;
 	using DoorsWebProject.Web.ViewModels.Door;
 	using Microsoft.EntityFrameworkCore;
 
 	public class DoorService : IDoorService
 	{
+		private readonly IDoorRepository doorRepository;
 		private readonly DoorsDbContext doorsDbContext;
 
-		public DoorService(DoorsDbContext doorsDbContext)
+		public DoorService(IDoorRepository doorRepository ,DoorsDbContext doorsDbContext)
 		{
+			this.doorRepository = doorRepository;
 			this.doorsDbContext = doorsDbContext;
 		}
 
 		public async Task<IEnumerable<AllDoorsIndexViewModel>> GetAllDoorsAsync()
 		{
 			IEnumerable<AllDoorsIndexViewModel> allDoors =
-				await this.doorsDbContext
-				.Doors
+				await this.doorRepository
+				.GetAllAttached()
 				.Select(d => new AllDoorsIndexViewModel()
 				{
 					Id = d.DoorId.ToString(),
@@ -49,8 +52,7 @@
 				Thickness = doorFormInputModel.Thickness
 			};
 
-			await this.doorsDbContext.Doors.AddAsync(newDoor);
-			await this.doorsDbContext.SaveChangesAsync();
+			await this.doorRepository.AddAsync(newDoor);
 		}
 
 		public async Task<bool> HardDeleteDoorAsync(string? id)
@@ -61,8 +63,7 @@
 				return false;
 			}
 
-			doorsDbContext.Doors.Remove(door);
-			await doorsDbContext.SaveChangesAsync();
+			await this.doorRepository.HardDeleteAsync(door);
 
 			return true;
 		}
@@ -75,10 +76,8 @@
 				return false;
 			}
 
-			door.IsDeleted = true;
-			await this.doorsDbContext.SaveChangesAsync();
-
-			return true;
+			return await this.doorRepository.SoftDeleteAsync(door);
+			
 		}
 
 		public async Task<Door?> FindDoorByStringId(string? id)
@@ -92,9 +91,8 @@
 
 				if (idIsValidToConvertToGuid)
 				{
-					door = await this.doorsDbContext
-						.Doors
-						.FindAsync(idToGuid);
+					door = await this.doorRepository
+						.GetByIdAsync(idToGuid);
 				}
 			}
 
@@ -120,10 +118,10 @@
 			return deleteDoorViewModel;
 		}
 
-		public async Task<DoorDetailsViewModel> GetDoorDetailsByIdAsync(string id)
+		public async Task<DoorDetailsViewModel?> GetDoorDetailsByIdAsync(string id)
 		{
-			var door = await doorsDbContext
-				.Doors
+			var door = await doorRepository
+				.GetAllAttached()
 				.AsNoTracking()
 				.FirstOrDefaultAsync(d => d.DoorId.ToString() == id && !d.IsDeleted);
 
@@ -135,7 +133,7 @@
 			return new DoorDetailsViewModel()
 			{
 				Id = door.DoorId.ToString(),
-				ImageUrl = door.ImageUrl,
+				ImageUrl = door.ImageUrl!,
 				Model = door.Model,
 				Description = door.Description,
 				Material = door.Material,
@@ -149,8 +147,8 @@
 		public async Task<IEnumerable<AllDoorsIndexViewModel>> GetAllFilteredDoorsAsync(string filter)
 		{
 			IEnumerable<AllDoorsIndexViewModel> allDoors =
-				await this.doorsDbContext
-				.Doors
+				await this.doorRepository
+				.GetAllAttached()
 				.Where(d => d.Type == filter)
 				.Select(d => new AllDoorsIndexViewModel()
 				{
@@ -164,10 +162,10 @@
 			return allDoors;
 		}
 
-		public async Task<DoorFormInputModel> GetEditableDoorByIdAsync(string id)
+		public async Task<DoorFormInputModel?> GetEditableDoorByIdAsync(string id)
 		{
-			var door = await doorsDbContext
-				.Doors
+			var door = await doorRepository
+				.GetAllAttached()
 				.AsNoTracking()
 				.FirstOrDefaultAsync(d => d.DoorId.ToString() == id && !d.IsDeleted);
 
@@ -191,8 +189,7 @@
 
 		public async Task<bool> EditDoorAsync(DoorFormInputModel doorInputModel)
 		{
-			Door? editableDoor = await this.doorsDbContext
-				.Doors
+			Door? editableDoor = await this.doorRepository
 				.SingleOrDefaultAsync(d => d.DoorId.ToString() == doorInputModel.Id);
 
 			if(editableDoor == null)
@@ -209,7 +206,7 @@
 			editableDoor.Width = doorInputModel.Width;
 			editableDoor.Thickness = doorInputModel.Thickness;
 
-			await this.doorsDbContext.SaveChangesAsync();
+			await this.doorRepository.UpdateAsync(editableDoor);
 
 			return true;
 
@@ -217,8 +214,8 @@
 
 		public async Task<IEnumerable<AllDoorsIndexViewModel>> SearchingDoorsAsync(string? searchDoorsName)
 		{
-			IEnumerable<AllDoorsIndexViewModel> searchDoors = await this.doorsDbContext
-				.Doors
+			IEnumerable<AllDoorsIndexViewModel> searchDoors = await this.doorRepository
+				.GetAllAttached()
 				.Where(d => !string.IsNullOrEmpty(searchDoorsName) && 
 				  d.Model.Contains(searchDoorsName))
 				.Select(d => new AllDoorsIndexViewModel

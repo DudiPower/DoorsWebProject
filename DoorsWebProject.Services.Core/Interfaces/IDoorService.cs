@@ -11,17 +11,17 @@
 
 		Task CreateDoorAsync(DoorFormInputModel doorFormInputModel);
 
-		Task <DoorDetailsViewModel> GetDoorDetailsByIdAsync(string id);
+		Task <DoorDetailsViewModel?> GetDoorDetailsByIdAsync(string id);
 		Task<bool> HardDeleteDoorAsync(string? id);
 
 		Task<bool> SoftDeleteDoorAsync(string? id);
 
 		Task<IEnumerable<AllDoorsIndexViewModel>> GetAllFilteredDoorsAsync(string filter);
 
-		Task<DoorFormInputModel> GetEditableDoorByIdAsync(string id);
+		Task<DoorFormInputModel?> GetEditableDoorByIdAsync(string id);
 
 		Task<bool> EditDoorAsync(DoorFormInputModel doorFormInputModel);
-		Task<DoorDeleteViewModel> GetDoorDeleteDetailsById(string? id);
+		Task<DoorDeleteViewModel?> GetDoorDeleteDetailsById(string? id);
 		Task<Door?> FindDoorByStringId(string? id);
 
 		Task<IEnumerable<AllDoorsIndexViewModel>> SearchingDoorsAsync(string? searchDoors);

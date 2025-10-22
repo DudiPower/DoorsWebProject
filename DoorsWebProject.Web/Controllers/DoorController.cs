@@ -28,12 +28,12 @@
 			return View(allDoors);
 		}
 
-		[HttpGet]
-		public async Task<IActionResult> Create()
-		{
+		//[HttpGet]
+		//public async Task<IActionResult> Create()
+		//{
 
-			return this.View();
-		}
+		//	return  this.View();
+		//}
 
 		[HttpPost]
 		public async Task<IActionResult> Create(DoorFormInputModel inputModel)
