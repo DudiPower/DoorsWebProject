@@ -1,0 +1,25 @@
+﻿.col-md-6 text-center {
+    position: relative;
+    width: 400px;
+}
+
+.img-fluid {
+    width: 100%;
+    display: block;
+}
+
+.zoom-lens {
+    position: absolute;
+    border: 2px solid #999;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    cursor: none;
+    display: none;
+}
+
+    .zoom-lens img {
+        position: absolute;
+        width: 800%; /* увеличение 2x */
+    }

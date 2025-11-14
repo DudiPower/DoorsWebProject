@@ -9,8 +9,11 @@
     <div class="card shadow-lg border-0 p-4">
         <div class="row g-4">
             <!-- Снимка на вратата -->
-            <div class="col-md-6 text-center">
-                <img src="@Model.ImageUrl" alt="Door image" class="img-fluid rounded shadow-sm" style="max-height: 500px;" />
+            <div class="col-md-6 text-center" id="zoomContainer">
+                <img src="@Model.ImageUrl" alt="Door image" id ="doorImage" class="img-fluid rounded shadow-sm" style="max-height: 500px;" />
+                <div class="zoom-lens" id="zoomLens">
+                    <img src="@Model.ImageUrl" alt="Zoomed Door" id="zoomedImage">
+                </div>
             </div>
 
             <!-- Информация за вратата -->
@@ -28,9 +31,6 @@
                 </ul>
 
                 <div class="mt-4 d-flex gap-2">
-                    <a asp-action="Index" asp-controller="Doors" class="btn btn-outline-secondary">
-                        ← Назад към всички врати
-                    </a>
 
                     @if(this.User.Identity?.IsAuthenticated ?? false)
                     {
@@ -45,6 +45,14 @@
                         <a asp-controller="Basket" asp-action="Add" asp-route-id="@Model.Id" class="btn btn-primary">
                             Кошница
                         </a>
+
+                        <div class="quantity-container">
+                            <button class="quantity-btn" onclick="decrease()">−</button>
+                            <input id="quantity" class="quantity-input" type="text" value="1" readonly>
+                            <button class="quantity-btn" onclick="increase()">+</button>
+                        </div>
+
+
                     }
                 </div>
             </div>

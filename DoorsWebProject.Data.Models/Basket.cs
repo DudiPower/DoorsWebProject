@@ -9,8 +9,8 @@
 	{
 		public Guid BasketId { get; set; } = Guid.NewGuid();
 
-		public string UserId { get; set; } = null!;
-		public IdentityUser User { get; set; } = null!;
+		public string ApplicationUserId { get; set; } = null!;
+		public ApplicationUser User { get; set; } = null!;
 
 		public bool IsDeleted { get; set; }
 

@@ -23,7 +23,7 @@
 			return this
 				.GetAllAttached()
 				.SingleOrDefault(aud => aud.DoorId.ToString().ToLower() == doorId.ToLower() &&
-								 aud.ApplicationUserId.ToLower() == userId.ToLower());
+								 aud.ApplicationUserId.ToString().ToLower() == userId.ToLower());
 		}
 
 		public Task<ApplicationUserDoor?> GetByCompositeKeyAsync(string userId, string doorId)

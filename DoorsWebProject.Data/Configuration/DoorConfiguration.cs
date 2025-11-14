@@ -67,6 +67,10 @@ namespace DoorsWebProject.Data.Configuration
 				.IsRequired()
 				.HasDefaultValue(false);
 
+			builder
+				.HasOne(d => d.User)
+				.WithMany(au => au.Doors)
+				.HasForeignKey(d => d.ApplicationUserId);
 
 			builder
 				.HasQueryFilter(d => d.IsDeleted == false);

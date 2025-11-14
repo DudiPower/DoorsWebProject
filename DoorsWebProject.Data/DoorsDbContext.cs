@@ -1,15 +1,14 @@
 ﻿namespace DoorsWebProject.Data
 {
 	using DoorsWebProject.Data.Models;
+	using Microsoft.AspNetCore.Identity;
 	using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
+	using Microsoft.Extensions.Configuration;
 	using System.Reflection;
 
-	public class DoorsDbContext : IdentityDbContext
+	public class DoorsDbContext : IdentityDbContext<ApplicationUser>
     {
-		public DoorsDbContext()
-		{
-		}
 
 		public DoorsDbContext(DbContextOptions<DoorsDbContext> options)
             : base(options)
@@ -25,7 +24,7 @@
 
 		public virtual DbSet<Door> Doors { get; set; } = null!;
 
-		public virtual DbSet<Wishlist> Wishlists { get; set; } = null!;
+		public virtual DbSet<ApplicationUser> Wishlists { get; set; } = null!;
 
 		public virtual DbSet<ApplicationUserDoor> ApplicationUserDoors { get; set; } = null!;
 

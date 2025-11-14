@@ -314,9 +314,6 @@
   display: table-cell !important;
 }
 
-.d-flex {
-  display: flex !important;
-}
 
 .d-inline-flex {
   display: inline-flex !important;

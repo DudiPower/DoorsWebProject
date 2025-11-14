@@ -32,7 +32,7 @@
 
 			builder
 				.HasOne(aud => aud.ApplicationUser)
-				.WithMany()
+				.WithMany(au => au.WishlistDoors)
 				.HasForeignKey(aud => aud.ApplicationUserId)
 				.OnDelete(DeleteBehavior.Restrict);
 

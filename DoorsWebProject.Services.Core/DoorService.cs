@@ -228,6 +228,14 @@
 			return searchDoors;
 		}
 
-		
+		public async Task<bool> BuyDoor(string? id)
+		{
+			bool IdCanBeGuid = Guid.TryParse(id, out Guid guidId);
+
+			var door = await this.doorRepository
+				.GetByIdAsync(guidId);
+
+			return true;
+		}
 	}
 }

@@ -1,6 +1,7 @@
 namespace DoorsWebProject.WebApi
 {
 	using DoorsWebProject.Data;
+	using DoorsWebProject.Data.Models;
 	using Microsoft.AspNetCore.Identity;
 	using Microsoft.EntityFrameworkCore;
 
@@ -21,12 +22,13 @@ namespace DoorsWebProject.WebApi
 					options.UseSqlServer(connectionString);
 				});
 
-			builder.Services.AddControllers();
-
 			builder.Services.AddAuthorization();
 
-			builder.Services.AddIdentityApiEndpoints<IdentityUser>()
-				            .AddEntityFrameworkStores<DoorsDbContext>();
+			builder.Services.AddIdentityApiEndpoints<ApplicationUser>()
+							.AddRoles<IdentityRole>()
+							.AddEntityFrameworkStores<DoorsDbContext>();
+
+			builder.Services.AddControllers();
 		
 			// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 			builder.Services.AddEndpointsApiExplorer();

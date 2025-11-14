@@ -12,20 +12,27 @@
 
 	public class BasketController : BaseController
 	{
-		private readonly DoorsDbContext doorsDbContext;
-		
+		private readonly IDoorService doorService;
 
-		public BasketController(DoorsDbContext doorsDbContext)
+		public BasketController(IDoorService doorService)
 		{
-			this.doorsDbContext = doorsDbContext;
+			this.doorService = doorService;
 		}
 		public IActionResult Index()
 		{
 			return View();
 		}
 
+		public IActionResult Add()
+		{
 
-		
+
+
+			return View();
+		}
+
+
+
 
 	}
 }

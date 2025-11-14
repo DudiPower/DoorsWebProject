@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using DoorsWebProject.Data;
 namespace DoorsWebProject.Web
 {
 	using DoorsWebProject.Services.Core;
@@ -8,6 +11,7 @@ namespace DoorsWebProject.Web
     using Microsoft.EntityFrameworkCore;
 	using DoorsWebProject.Data.Repository.Interfaces;
 	using DoorsWebProject.Data.Repository;
+	using DoorsWebProject.Data.Models;
 
 	public class Program
     {
@@ -31,7 +35,7 @@ namespace DoorsWebProject.Web
                 });
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
             builder.Services
-                .AddDefaultIdentity<IdentityUser>(options =>
+                .AddDefaultIdentity<ApplicationUser>(options =>
                 {
                     options.SignIn.RequireConfirmedAccount = false;
                     options.SignIn.RequireConfirmedEmail = false;
@@ -44,7 +48,8 @@ namespace DoorsWebProject.Web
                     options.Password.RequireUppercase = false;
                     options.Password.RequiredUniqueChars = 0;
                 })
-                .AddEntityFrameworkStores<DoorsDbContext>();
+				.AddRoles<IdentityRole>()
+				.AddEntityFrameworkStores<DoorsDbContext>();
 
             builder.Services.AddScoped<IDoorRepository, DoorRepository>();
 			builder.Services.AddScoped<IBasketRepository, BasketRepository>();

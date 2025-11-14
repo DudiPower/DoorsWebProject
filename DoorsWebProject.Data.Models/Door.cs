@@ -22,6 +22,9 @@
 		public decimal Thickness { get; set; }
 		public bool IsDeleted { get; set; }
 
+		public string ApplicationUserId { get; set; } = null!;
+
+		public virtual ApplicationUser User { get; set; } = null!;
 		public ICollection<ApplicationUserDoor> UserWishlists { get; set; } = 
 			new HashSet<ApplicationUserDoor>();
 		public ICollection<DoorColor> DoorColors { get; set; } = 
@@ -29,8 +32,5 @@
 		public ICollection<DoorCategory> DoorCategories { get; set; } =
 			 new HashSet<DoorCategory>();
 
-
-		public ICollection<DoorWishlist> DoorWishlists { get; set; } =
-			 new HashSet<DoorWishlist>();
 	}
 }

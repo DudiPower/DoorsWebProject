@@ -27,7 +27,7 @@
 			IEnumerable<WishlistViewModel> userWishlist = await this.wishlistRepository
 				.GetAllAttached()
 				.AsNoTracking()
-				.Where(aud => aud.ApplicationUserId.ToLower() == userId.ToLower())
+				.Where(aud => aud.ApplicationUserId.ToString().ToLower() == userId.ToLower())
 				.Select(aud => new WishlistViewModel
 				{
 					Id = aud.DoorId.ToString(),
@@ -53,7 +53,7 @@
 					ApplicationUserDoor? userDoorEntity = await this.wishlistRepository
 						.GetAllAttached()
 						.IgnoreQueryFilters()
-						.SingleOrDefaultAsync(aud => aud.ApplicationUserId.ToLower() == userId
+						.SingleOrDefaultAsync(aud => aud.ApplicationUserId.ToString().ToLower() == userId
 						&& aud.DoorId.ToString() == doorGuid.ToString());
 
 					if (userDoorEntity != null)
@@ -90,7 +90,7 @@
 				if (isValidDoorId)
 				{
 					ApplicationUserDoor? userDoorEntity = await this.wishlistRepository
-						.SingleOrDefaultAsync(aud => aud.ApplicationUserId == userId
+						.SingleOrDefaultAsync(aud => aud.ApplicationUserId.ToString() == userId
 						&& aud.DoorId == doorGuid);
 
 					if (userDoorEntity != null)

@@ -1,5 +1,5 @@
 ﻿.door-container {
-    display: flex;
+    display: block;
 }
 
 .door-card{

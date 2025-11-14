@@ -1,8 +1,9 @@
-﻿@using DoorsWebProject.Web
+﻿@using DoorsWebProject.Data.Models
+@using DoorsWebProject.Web
 @using DoorsWebProject.Web.ViewModels
 @using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))

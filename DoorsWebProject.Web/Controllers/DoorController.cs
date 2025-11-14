@@ -13,7 +13,7 @@
 		private readonly IDoorService doorService;
 		private readonly DoorsDbContext dbContext;
 
-		public DoorController(IDoorService doorService , DoorsDbContext dbContext)
+		public DoorController(IDoorService doorService, DoorsDbContext dbContext)
 		{
 			this.doorService = doorService;
 			this.dbContext = dbContext;
@@ -24,7 +24,7 @@
 		{
 			IEnumerable<AllDoorsIndexViewModel> allDoors = await this.doorService
 				.GetAllDoorsAsync() ?? Enumerable.Empty<AllDoorsIndexViewModel>(); ;
-			
+
 			return View(allDoors);
 		}
 
@@ -50,11 +50,11 @@
 
 				return this.RedirectToAction(nameof(Index));
 			}
-			catch(Exception e)
+			catch (Exception e)
 			{
 				Console.WriteLine(e.Message);
 
-				this.ModelState.AddModelError(string.Empty,ServiceCreateError);
+				this.ModelState.AddModelError(string.Empty, ServiceCreateError);
 				return this.View(inputModel);
 			}
 		}
@@ -74,13 +74,13 @@
 
 				return this.View(doorToBeDelated);
 			}
-			catch (Exception e) 
+			catch (Exception e)
 			{
 				Console.WriteLine(e.Message);
 
 				return this.RedirectToAction(nameof(Index));
 			}
-			
+
 		}
 
 
@@ -99,11 +99,11 @@
 
 				return this.RedirectToAction(nameof(Index));
 			}
-			catch (Exception e) 
+			catch (Exception e)
 			{
 				Console.WriteLine(e.Message);
 
-				return this.RedirectToAction(nameof(Index) , "Home");
+				return this.RedirectToAction(nameof(Index), "Home");
 			}
 		}
 
@@ -124,7 +124,7 @@
 				return this.View(door);
 			}
 			catch (Exception e)
-			{ 
+			{
 				Console.WriteLine(e.Message);
 
 				return this.RedirectToAction(nameof(Index));
@@ -164,7 +164,7 @@
 
 				return this.View(editableMovie);
 			}
-			catch (Exception e) 
+			catch (Exception e)
 			{
 				Console.WriteLine(e.Message);
 
@@ -185,14 +185,14 @@
 			{
 				bool editSuccess = await this.doorService.EditDoorAsync(doorInputModel);
 
-				if (!editSuccess) 
+				if (!editSuccess)
 				{
 					return this.RedirectToAction(nameof(Index));
 				}
 
-				return this.RedirectToAction(nameof(Details) , new { id = doorInputModel.Id });
+				return this.RedirectToAction(nameof(Details), new { id = doorInputModel.Id });
 			}
-			catch (Exception e) 
+			catch (Exception e)
 			{
 				Console.WriteLine(e.Message);
 
@@ -208,36 +208,36 @@
 			return View(allSearchingDoors);
 		}
 
-		[HttpGet]
-		public async Task<IActionResult> Filter(int? categoryId, string? color, decimal? minPrice, decimal? maxPrice)
-		{
-			var query = dbContext.Doors.AsQueryable();
+		//[HttpGet]
+		//public async Task<IActionResult> Filter(int? categoryId, string? color, decimal? minPrice, decimal? maxPrice)
+		//{
+		//	var query = dbContext.Doors.AsQueryable();
 
-			if (categoryId.HasValue)
-				query = query.Where(d => d.DoorCategories.Any(dc => dc.CategoryId.ToString() == categoryId.Value.ToString()));
+		//	if (categoryId.HasValue)
+		//		query = query.Where(d => d.DoorCategories.Any(dc => dc.CategoryId.ToString() == categoryId.Value.ToString()));
 
-			//if (!string.IsNullOrEmpty(color))
-			//	query = query.Where(d => d.Color == color);
+		//	//if (!string.IsNullOrEmpty(color))
+		//	//	query = query.Where(d => d.Color == color);
 
-			if (minPrice.HasValue)
-				query = query.Where(d => d.Price >= minPrice.Value);
+		//	if (minPrice.HasValue)
+		//		query = query.Where(d => d.Price >= minPrice.Value);
 
-			if (maxPrice.HasValue)
-				query = query.Where(d => d.Price <= maxPrice.Value);
+		//	if (maxPrice.HasValue)
+		//		query = query.Where(d => d.Price <= maxPrice.Value);
 
-		var doors = await query
-		.Select(d => new AllDoorsIndexViewModel
-		{
-			Id = d.DoorId.ToString(),
-			ImageUrl = d.ImageUrl,
-			Model = d.Model,
-			Price = d.Price.ToString("F2") // формат 2 знака след дес. запетая
-		})
-		.ToListAsync();
+		//var doors = await query
+		//.Select(d => new AllDoorsIndexViewModel
+		//{
+		//	Id = d.DoorId.ToString(),
+		//	ImageUrl = d.ImageUrl,
+		//	Model = d.Model,
+		//	Price = d.Price.ToString("F2") // формат 2 знака след дес. запетая
+		//})
+		//.ToListAsync();
 
 
-			return PartialView("PartialDoorView", doors);
-		}
+		//	return PartialView("PartialDoorView", doors);
+		//}
 
 
 	}

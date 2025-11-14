@@ -26,5 +26,7 @@
 
 		Task<IEnumerable<AllDoorsIndexViewModel>> SearchingDoorsAsync(string? searchDoors);
 
+		Task<bool> BuyDoor(string? id);
+
 	}
 }

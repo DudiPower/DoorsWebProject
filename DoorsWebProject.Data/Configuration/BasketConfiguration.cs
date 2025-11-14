@@ -24,7 +24,7 @@
 			builder
 				.HasOne(b => b.User)
 				.WithMany()
-				.HasForeignKey(b => b.UserId);
+				.HasForeignKey(b => b.ApplicationUserId);
 
 
 			//builder
