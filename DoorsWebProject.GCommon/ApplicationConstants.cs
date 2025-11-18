@@ -8,6 +8,9 @@
 
 	public static class ApplicationConstants
 	{
-		public const string IsDeletedPropertyName = "IsDeleted"; 
+		public const string IsDeletedPropertyName = "IsDeleted";
+
+		public const string UserRoleName = "User";
+		public const string AdminRoleName = "Admin";
 	}
 }

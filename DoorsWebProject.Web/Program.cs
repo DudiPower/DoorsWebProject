@@ -1,17 +1,19 @@
+using DoorsWebProject.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using DoorsWebProject.Data;
 namespace DoorsWebProject.Web
 {
+	using Data;
+	using DoorsWebProject.Data.Models;
+	using DoorsWebProject.Data.Repository;
+	using DoorsWebProject.Data.Repository.Interfaces;
+	using DoorsWebProject.Data.Seeding;
+	using DoorsWebProject.Data.Seeding.Interfaces;
 	using DoorsWebProject.Services.Core;
 	using DoorsWebProject.Services.Core.Interfaces;
-	using Data;
-
+    using DoorsWebProject.Web.Infrastructure.Extensions;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
-	using DoorsWebProject.Data.Repository.Interfaces;
-	using DoorsWebProject.Data.Repository;
-	using DoorsWebProject.Data.Models;
 
 	public class Program
     {
@@ -37,17 +39,9 @@ namespace DoorsWebProject.Web
             builder.Services
                 .AddDefaultIdentity<ApplicationUser>(options =>
                 {
-                    options.SignIn.RequireConfirmedAccount = false;
-                    options.SignIn.RequireConfirmedEmail = false;
-                    options.SignIn.RequireConfirmedPhoneNumber = false;
+                    ConfigureIdentity(builder.Configuration, options);
 
-                    options.Password.RequiredLength= 3;
-                    options.Password.RequireNonAlphanumeric = false;
-                    options.Password.RequireDigit = false;
-                    options.Password.RequireLowercase = false;
-                    options.Password.RequireUppercase = false;
-                    options.Password.RequiredUniqueChars = 0;
-                })
+				})
 				.AddRoles<IdentityRole>()
 				.AddEntityFrameworkStores<DoorsDbContext>();
 
@@ -59,6 +53,8 @@ namespace DoorsWebProject.Web
 			builder.Services.AddScoped<IDoorService, DoorService>();
 			builder.Services.AddScoped<IWishlistService, WishlistService>();
             builder.Services.AddScoped<IBasketService, BasketService>();
+
+			builder.Services.AddTransient<IIdentitySeeder, IdentitySeeder>();
 
 			builder.Services.AddControllersWithViews();
 
@@ -81,7 +77,9 @@ namespace DoorsWebProject.Web
 
             app.UseRouting();
 
-            app.UseAuthentication();
+			app.SeedDefaultIdentity();
+
+			app.UseAuthentication();
             app.UseAuthorization();
 
 			app.UseSession();
@@ -93,5 +91,33 @@ namespace DoorsWebProject.Web
 
             app.Run();
         }
+
+        private static void ConfigureIdentity(IConfigurationManager configurationManager , IdentityOptions identityOptions)
+        {
+
+			identityOptions.SignIn.RequireConfirmedAccount = 
+                configurationManager.GetValue<bool>($"IdentityConfig:SignIn:RequireConfirmedAccount");
+
+			identityOptions.SignIn.RequireConfirmedEmail =
+				configurationManager.GetValue<bool>($"IdentityConfig:SignIn:RequireConfirmedEmail"); 
+
+			identityOptions.SignIn.RequireConfirmedPhoneNumber =
+				configurationManager.GetValue<bool>($"IdentityConfig:SignIn:RequireConfirmedPhoneNumber");
+
+
+
+			identityOptions.Password.RequiredLength =
+				configurationManager.GetValue<int>($"IdentityConfig:Password:RequiredLength"); 
+			identityOptions.Password.RequireNonAlphanumeric =
+				configurationManager.GetValue<bool>($"IdentityConfig:Password:RequireNonAlphanumeric"); 
+			identityOptions.Password.RequireDigit =
+				configurationManager.GetValue<bool>($"IdentityConfig:Password:RequireDigit"); 
+			identityOptions.Password.RequireLowercase =
+				configurationManager.GetValue<bool>($"IdentityConfig:Password:RequireLowercase"); 
+			identityOptions.Password.RequireUppercase =
+				configurationManager.GetValue<bool>($"IdentityConfig:Password:RequireUppercase"); 
+			identityOptions.Password.RequiredUniqueChars =
+				configurationManager.GetValue<int>($"IdentityConfig:Password:RequiredUniqueChars"); 
+		}
     }
 }
