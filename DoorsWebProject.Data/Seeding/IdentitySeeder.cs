@@ -22,8 +22,8 @@
 		private readonly IUserEmailStore<ApplicationUser> userEmailStore;
 		private readonly IConfiguration configuration;
 		public IdentitySeeder(RoleManager<IdentityRole> roleManager , UserManager<ApplicationUser> userManager
-			, IUserStore<ApplicationUser> userStore , IUserEmailStore<ApplicationUser> userEmailStore
-			, IConfiguration configuration)
+			, IUserStore<ApplicationUser> userStore , IConfiguration configuration )
+			
 		{
 			this.roleManager = roleManager;
 			this.userManager = userManager;
@@ -62,8 +62,8 @@
 		{
 			string? testUserEmail = this.configuration["UserSeed:TestUser:Email"];
 			string? testUserPassword = this.configuration["UserSeed:TestUser:Password"];
-			string? adminUserEmail = this.configuration["UserSeed:TestAdmin:Email"];
-			string? adminUserPassword = this.configuration["UserSeed:TestAdmin:Password"];
+			string? adminUserEmail = this.configuration["UserSeed:AdminUser:Email"];
+			string? adminUserPassword = this.configuration["UserSeed:AdminUser:Password"];
 
 			if (testUserEmail == null || testUserPassword == null ||
 				adminUserEmail == null || adminUserPassword == null)
