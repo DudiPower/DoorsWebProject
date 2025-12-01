@@ -7,7 +7,7 @@
 	using static DoorsWebProject.GCommon.ApplicationConstants;
 
 	[Area(AdminRoleName)]
-	[Authorize(Roles = AdminRoleName)]
+	[Authorize]
 	public abstract class BaseAdminController : Controller
 	{
 		private bool IsUserAuthenticated()

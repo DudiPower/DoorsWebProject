@@ -80,7 +80,7 @@ footer {
 
 .product-grid {
     display: flex;
-    flex-wrap: wrap; /* Позволява пренасяне на нов ред при нужда */
+    flex-wrap: wrap;  Позволява пренасяне на нов ред при нужда 
     justify-content: center;
     gap: 30px;
 }

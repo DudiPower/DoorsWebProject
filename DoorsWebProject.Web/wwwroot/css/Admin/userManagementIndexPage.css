@@ -1,0 +1,44 @@
+﻿.user-card {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+    .user-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+    }
+
+    .user-card p {
+        margin: 0;
+        font-size: 15px;
+        color: #444;
+    }
+
+    .user-card strong {
+        color: #222;
+    }
+
+    .user-card h4 {
+        margin-top: 15px;
+        margin-bottom: 8px;
+        font-size: 18px;
+        color: #333;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 5px;
+    }
+
+    .user-card ul {
+        list-style: disc inside;
+        padding-left: 0;
+        margin-top: 5px;
+    }
+
+    .user-card li {
+        font-size: 14px;
+        color: #555;
+    }

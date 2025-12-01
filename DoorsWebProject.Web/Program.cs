@@ -10,6 +10,8 @@ namespace DoorsWebProject.Web
 	using DoorsWebProject.Data.Seeding;
 	using DoorsWebProject.Data.Seeding.Interfaces;
 	using DoorsWebProject.Services.Core;
+	using DoorsWebProject.Services.Core.Admin;
+	using DoorsWebProject.Services.Core.Admin.Interfaces;
 	using DoorsWebProject.Services.Core.Interfaces;
     using DoorsWebProject.Web.Infrastructure.Extensions;
     using Microsoft.AspNetCore.Identity;
@@ -55,6 +57,8 @@ namespace DoorsWebProject.Web
             builder.Services.AddScoped<IBasketService, BasketService>();
 
 			builder.Services.AddTransient<IIdentitySeeder, IdentitySeeder>();
+
+			builder.Services.AddTransient<IUserService, UserService>();
 
 			builder.Services.AddControllersWithViews();
 

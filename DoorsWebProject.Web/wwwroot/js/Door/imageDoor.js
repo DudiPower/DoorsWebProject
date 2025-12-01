@@ -1,34 +1,29 @@
-﻿const container = document.getElementById('zoomContainer');
-const lens = document.getElementById('zoomLens');
-const zoomedImg = document.getElementById('zoomedImage');
-const baseImg = document.getElementById('doorImage');
+﻿document.addEventListener("DOMContentLoaded", () => {
 
-container.addEventListener('mousemove', moveLens);
-container.addEventListener('mouseenter', () => (lens.style.display = 'block'));
-container.addEventListener('mouseleave', () => (lens.style.display = 'none'));
+    // Променяш селектора към твоя елемент!
+    // Например: const imgInput = document.querySelector("#doorImage");
+    const imgInput = document.querySelector("#doorImage");
 
-function moveLens(e) {
-    const rect = container.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    if (!imgInput) {
+        console.warn("imageDoor.js: #doorImage не е намерен в DOM");
+        return; // спираме, без да хвърля грешка
+    }
 
-    const lensSize = lens.offsetWidth / 2;
+    imgInput.addEventListener("change", function () {
+        const file = this.files?.[0];
+        if (!file) return;
 
-    let lensX = x - lensSize;
-    let lensY = y - lensSize;
+        const reader = new FileReader();
 
-    // Ограничаваме движението в рамките на снимката
-    if (lensX < 0) lensX = 0;
-    if (lensY < 0) lensY = 0;
-    if (lensX > rect.width - lens.offsetWidth)
-        lensX = rect.width - lens.offsetWidth;
-    if (lensY > rect.height - lens.offsetHeight)
-        lensY = rect.height - lens.offsetHeight;
+        reader.onload = function (e) {
+            const preview = document.querySelector("#doorImagePreview");
+            if (!preview) {
+                console.warn("imageDoor.js: #doorImagePreview липсва");
+                return;
+            }
+            preview.src = e.target.result;
+        };
 
-    lens.style.left = lensX + 'px';
-    lens.style.top = lensY + 'px';
-
-    // Позиционираме вътрешната увеличена снимка
-    zoomedImg.style.left = -(x * 2 - lensSize) + 'px';
-    zoomedImg.style.top = -(y * 2 - lensSize) + 'px';
-}
+        reader.readAsDataURL(file);
+    });
+});

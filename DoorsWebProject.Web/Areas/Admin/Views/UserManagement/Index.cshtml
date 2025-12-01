@@ -1,0 +1,32 @@
+﻿@using DoorsWebProject.Web.ViewModels.Admin.UserManagement
+@model IEnumerable<UserManagementIndexViewModel>
+
+@{
+    ViewData["Title"] = "Users";
+}
+
+<h2>Users</h2>
+
+@foreach (var user in Model)
+{
+    <div class="user-card">
+        <p><strong>Id:</strong> @user.Id</p>
+        <p><strong>Email:</strong> @user.Email</p>
+
+        <h4>Roles</h4>
+
+        @if (user.Roles != null && user.Roles.Any())
+        {
+            <ul>
+                @foreach (var role in user.Roles)
+                {
+                    <li>@role</li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>No roles assigned.</p>
+        }
+    </div>
+}

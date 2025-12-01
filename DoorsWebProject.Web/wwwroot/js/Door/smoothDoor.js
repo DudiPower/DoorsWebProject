@@ -1,18 +1,23 @@
-﻿document.getElementById("filterBtn").addEventListener("click", function () {
-    const categoryId = document.getElementById("categoryId").value;
-    //const color = document.getElementById("color").value;
-    const minPrice = document.getElementById("minPrice").value;
-    const maxPrice = document.getElementById("maxPrice").value;
+﻿document.addEventListener("DOMContentLoaded", () => {
+    // Избираме всички елементи, към които искаме да добавим анимация или клик
+    const doorButtons = document.querySelectorAll(".smooth-door-btn");
 
-    const params = new URLSearchParams({
-        categoryId,
-        minPrice,
-        maxPrice
-    });
+    // Ако няма такива елементи, скриптът просто няма да прави нищо
+    if (doorButtons.length === 0) return;
 
-    fetch("/Door/Filter?" + params.toString())
-        .then(res => res.text())
-         .then(html => {
-                document.getElementById("doorsContainer").innerHTML = html;
-    })
+    doorButtons.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            //e.preventDefault(); // Ако искаш да предотвратиш стандартния линк временно
+            const href = btn.getAttribute("href");
+            if (!href) return; // Ако няма href, нищо не правим
+
+            // Пример: малка анимация преди пренасочване
+            document.body.style.transition = "opacity 0.3s";
+            document.body.style.opacity = "0";
+
+            setTimeout(() => {
+                window.location.href = href; // Пренасочване към линка
+            }, 300);
         });
+    });
+});

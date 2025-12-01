@@ -1,29 +1,31 @@
-﻿const rangeMin = document.getElementById('rangeMin');
-const rangeMax = document.getElementById('rangeMax');
-const minValue = document.getElementById('minValue');
-const maxValue = document.getElementById('maxValue');
-const progress = document.querySelector('.progress');
+﻿document.addEventListener("DOMContentLoaded", () => {
+    // Промени селектора към твоя (пример: ".range-slider" или "#priceRange")
+    const sliders = document.querySelectorAll(".range-slider");
 
+    if (!sliders || sliders.length === 0) return; // няма такива елементи — безопасно излизане
 
+    sliders.forEach(slider => {
+        // намираме input[type=range] вътре (примерна структура)
+        const input = slider.querySelector("input[type='range']");
+        const output = slider.querySelector(".range-value");
 
-function updateSlider() {
-    let min = parseInt(rangeMin.value);
-    let max = parseInt(rangeMax.value);
+        if (!input) return; // няма range input вътре — прескачаме
+        // ако output липсва, можем да създадем или да пропуснем
+        if (!output) {
+            // опция: създаваме .range-value елемент
+            // const span = document.createElement("span");
+            // span.className = "range-value";
+            // slider.appendChild(span);
+            // output = span;
+            return;
+        }
 
-    // Позволяваме курсорите да се "разменят"
-    if (min > max) {
-        [min, max] = [max, min];
-    }
+        // инициализация на стойността
+        output.textContent = input.value;
 
-    minValue.textContent = min + " лв";
-    maxValue.textContent = max + " лв";
-
-    // Визуализираме правилно синята лента между двете стойности
-    progress.style.left = (min / rangeMin.max) * 100 + "%";
-    progress.style.right = 100 - (max / rangeMax.max) * 100 + "%";
-}
-
-rangeMin.addEventListener("input", updateSlider);
-rangeMax.addEventListener("input", updateSlider);
-
-updateSlider();
+        input.addEventListener("input", (e) => {
+            output.textContent = e.target.value;
+            // тук може да сложиш и допълнителна логика (например AJAX филтриране)
+        });
+    });
+});
