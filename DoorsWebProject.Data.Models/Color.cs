@@ -10,6 +10,8 @@
 
 		public string HexCode { get; set; } = null!;
 
+		public string TextureUrl { get; set; } = null!;
+
 		public bool IsDeleted { get; set; }
 
 		public ICollection<DoorColor> ColorDoors { get; set; } = 

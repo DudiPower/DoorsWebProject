@@ -75,282 +75,338 @@ namespace DoorsWebProject.Data.Configuration
 			builder
 				.HasQueryFilter(d => d.IsDeleted == false);
 
-
+			//builder
+			//	.HasData(SeedDoors());
+				
 		}
+
+		public List<Door> SeedDoors()
+		{
+			List<Door> list = new List<Door>()
+			{
+				new Door
+				{
+					DoorId = Guid.Parse("40b2ed36-b35c-4016-b998-863038968490"),
+					Model = "А-101 Африка",
+					ImageUrl = "https://galiardi.biz/wp-content/uploads/2019/01/t-100-africa-01-940834835-450x450.png",
+					Type = "Armored",
+					Price = 890.00m,
+					Height = 200m,
+					Width = 90m,
+					Thickness = 35m,
+					ApplicationUserId = "b12cdb67-7ae7-4ae7-a7d0-22815749c41f"
+				},
+				new Door
+				{
+					DoorId = Guid.Parse("06ebf95c-7758-4ce2-afb3-191d3c57fe13"),
+					Model = "А-102-Антик",
+					ImageUrl = "https://galiardi.biz/wp-content/uploads/2019/01/t-100-antik-01-552213818-450x450.png",
+					Type = "Armored",
+					Price = 835.00m,
+					Height = 200m,
+					Width = 90m,
+					Thickness = 35m,
+					ApplicationUserId = "b12cdb67-7ae7-4ae7-a7d0-22815749c41f"
+				},
+				new Door
+				{
+					DoorId = Guid.Parse("55e5d4dc-a4fc-4fcd-aed1-4e688e63a547"),
+					Model = "А-103-Орех",
+					ImageUrl = "https://galiardi.biz/wp-content/uploads/2019/01/t-108-1228496364-450x450-300x300.png",
+					Type = "Armored",
+					Price = 800.00m,
+					Height = 200m,
+					Width = 90m,
+					Thickness = 35m,
+					ApplicationUserId = "bee1ccb1-7179-4d28-a154-2dbb5f88c189"
+				},
+				new Door
+				{
+					DoorId = Guid.Parse("eddf2e0d-ed9d-431b-90d1-8af284e5289b"),
+					Model = "А-104-Спарта",
+					ImageUrl = "https://galiardi.biz/wp-content/uploads/2019/01/t-110-sparta-01-450x450.png",
+					Type = "Armored",
+					Price = 870.00m,
+					Height = 200m,
+					Width = 90m,
+					Thickness = 35m,
+					ApplicationUserId = "bee1ccb1-7179-4d28-a154-2dbb5f88c189"
+				},
+				new Door
+				{
+					DoorId = Guid.Parse("e37f55fd-1f7b-40f2-9374-e881b95c4506"),
+					Model = "А-105-Зебра",
+					ImageUrl = "https://galiardi.biz/wp-content/uploads/2019/01/t-587-zebra-01-71555585-450x450.png",
+					Type = "Armored",
+					Price = 900.00m,
+					Height = 200m,
+					Width = 90m,
+					Thickness = 35m,
+					ApplicationUserId = "eef7fb7b-a155-419a-a7f7-6b6fc865ae03"
+				},
+				new Door
+				{
+					DoorId = Guid.Parse("ccc7397a-f7c6-46cd-9510-5dedb05a30f2"),
+					Model = "W-239-Синитово",
+					ImageUrl = "https://www.idialvrati.com/cache/images/4509.jpg",
+					Type = "Wooden",
+					Price = 2500.00m,
+					Height = 200m,
+					Width = 90m,
+					Thickness = 35m,
+					ApplicationUserId = "8b116c3a-c340-40e8-b6a3-a6b512e9fb2f"
+				},
+				new Door
+				{
+					DoorId = Guid.Parse("c09bac80-7531-49b3-b147-b8e0377ad093"),
+					Model = "W-238-Яна",
+					ImageUrl = "https://www.idialvrati.com/cache/images/4559.jpg",
+					Type = "Wooden",
+					Price = 1200.00m,
+					Height = 200m,
+					Width = 90m,
+					Thickness = 35m,
+					ApplicationUserId = "eef7fb7b-a155-419a-a7f7-6b6fc865ae03"
+				},
+
+				new Door
+				{
+					DoorId = Guid.Parse("648047b3-6e61-4932-9f22-48792f58b911"),
+					Model = "W-237-Лидия",
+					ImageUrl = "https://www.idialvrati.com/cache/images/4556.jpg",
+					Type = "Wooden",
+					Price = 1300.00m,
+					Height = 200m,
+					Width = 90m,
+					Thickness = 35m,
+					ApplicationUserId = "eef7fb7b-a155-419a-a7f7-6b6fc865ae03"
+				},
+				new Door
+				{
+					DoorId = Guid.Parse("63ab936a-7fa3-4578-99f6-dcd8608baad1"),
+					Model = "W-236-Боряна",
+					ImageUrl = "https://www.idialvrati.com/cache/images/4561.jpg",
+					Type = "Wooden",
+					Price = 1250.00m,
+					Height = 200m,
+					Width = 90m,
+					Thickness = 35m,
+					ApplicationUserId = "8b116c3a-c340-40e8-b6a3-a6b512e9fb2f"
+				},
+				new Door
+				{
+					DoorId = Guid.Parse("ef13a19f-4149-4b92-92f9-bbd3d2ce5e53"),
+					Model = "W-235-Алина",
+					ImageUrl = "https://www.idialvrati.com/cache/images/4563.jpg",
+					Type = "Wooden",
+					Price = 1280.00m,
+					Height = 200m,
+					Width = 90m,
+					Thickness = 35m,
+					ApplicationUserId = "8b116c3a-c340-40e8-b6a3-a6b512e9fb2f"
+				},
+
+				new Door
+				{
+					DoorId = Guid.Parse("988fbb66-32b9-4dd0-8458-e0202b5c4816"),
+					Model = "S-131",
+					ImageUrl = "https://karabulev.eu/wp-content/uploads/2017/03/%D0%9B%D0%90%D0%9C%D0%98%D0%9D%D0%90%D0%A2_%D0%9E%D0%A0%D0%95%D0%A5-%D0%9A%D0%9E%D0%A0%D0%A1%D0%98%D0%9A%D0%90.png",
+					Type = "Smooth",
+					Price = 635.00m,
+					Height = 200m,
+					Width = 90m,
+					Thickness = 35m,
+					ApplicationUserId = "8b116c3a-c340-40e8-b6a3-a6b512e9fb2f"
+				},
+
+				new Door
+				{
+					DoorId = Guid.Parse("5fd5662d-99b7-4bee-b0dd-1c4f6837e387"),
+					Model = "S-132",
+					ImageUrl = "https://karabulev.eu/wp-content/uploads/2018/04/tech-dab-01-300-670.jpg",
+					Type = "Smooth",
+					Price = 835.00m,
+					Height = 200m,
+					Width = 90m,
+					Thickness = 35m,
+					ApplicationUserId = "8b116c3a-c340-40e8-b6a3-a6b512e9fb2f"
+				},
+
+				new Door
+				{
+					DoorId = Guid.Parse("ec7dce3e-9fb9-4857-9148-4ea9b776ba24"),
+					Model = "S-133",
+					ImageUrl = "https://karabulev.eu/wp-content/uploads/2017/03/INTARZIA-1.png",
+					Type = "Smooth",
+					Price = 915.00m,
+					Height = 200m,
+					Width = 90m,
+					Thickness = 35m,
+					ApplicationUserId = "b12cdb67-7ae7-4ae7-a7d0-22815749c41f"
+				},
+				new Door
+				{
+					DoorId = Guid.Parse("8b59a026-9c22-4e66-a5e5-f2eb2fe22663"),
+					Model = "S-134",
+					ImageUrl = "https://karabulev.eu/wp-content/uploads/2017/03/0007color.jpg",
+					Type = "Smooth",
+					Price = 805.00m,
+					Height = 200m,
+					Width = 90m,
+					Thickness = 35m,
+					ApplicationUserId = "b12cdb67-7ae7-4ae7-a7d0-22815749c41f"
+				},
+
+				new Door
+				{
+					DoorId = Guid.Parse("8e8904a5-de04-4f1e-a78b-6d24bd7ea78a"),
+					Model = "S-135",
+					ImageUrl = "https://karabulev.eu/wp-content/uploads/2017/04/0000prestige.jpg",
+					Type = "Smooth",
+					Price = 1280.00m,
+					Height = 200m,
+					Width = 90m,
+					Thickness = 35m,
+					ApplicationUserId = "b12cdb67-7ae7-4ae7-a7d0-22815749c41f"
+				},
+
+				new Door
+				{
+					DoorId = Guid.Parse("70552a44-2166-4aa2-a114-a40f7b31bdb9"),
+					Model = "P-651",
+					ImageUrl = "https://karabulev.eu/wp-content/uploads/2017/04/%D0%A7%D0%95%D0%A0%D0%95%D0%A8%D0%90-%D0%A0%D0%98%D0%9C.png",
+					Type = "Profiled",
+					Price = 915.00m,
+					Height = 200m,
+					Width = 90m,
+					Thickness = 35m,
+					ApplicationUserId = "8b116c3a-c340-40e8-b6a3-a6b512e9fb2f"
+				},
+
+				new Door
+				{
+					DoorId = Guid.Parse("3ba1296e-029f-42c0-8f43-414a6a3650bc"),
+					Model = "P-652",
+					ImageUrl = "https://karabulev.eu/wp-content/uploads/2017/04/0008europe.jpg",
+					Type = "Profiled",
+					Price = 915.00m,
+					Height = 200m,
+					Width = 90m,
+					Thickness = 35m,
+					ApplicationUserId = "8b116c3a-c340-40e8-b6a3-a6b512e9fb2f"
+				},
+
+				new Door
+				{
+					DoorId = Guid.Parse("c8f0a9bc-920c-4435-bf39-e2f462640b4b"),
+					Model = "P-653",
+					ImageUrl = "https://karabulev.eu/wp-content/uploads/2017/04/%D0%92%D0%95%D0%9D%D0%95%D0%A6%D0%98%D0%AF-300-670.png",
+					Type = "Profiled",
+					Price = 975.00m,
+					Height = 200m,
+					Width = 90m,
+					Thickness = 35m,
+					ApplicationUserId = "eef7fb7b-a155-419a-a7f7-6b6fc865ae03"
+				},
+
+				new Door
+				{
+					DoorId = Guid.Parse("1d6842c1-474f-4688-bdff-dc3abb83a3d2"),
+					Model = "P-654",
+					ImageUrl = "https://karabulev.eu/wp-content/uploads/2017/04/%D0%96%D0%95%D0%9D%D0%95%D0%92%D0%90-%D0%AF%D0%A1%D0%95%D0%9D-1013-300-680.png",
+					Type = "Profiled",
+					Price = 915.00m,
+					Height = 200m,
+					Width = 90m,
+					Thickness = 35m,
+					ApplicationUserId = "eef7fb7b-a155-419a-a7f7-6b6fc865ae03"
+				},
+
+				new Door
+				{
+					DoorId = Guid.Parse("2bc078ce-7786-4362-b936-1a0c21140201"),
+					Model = "P-655",
+					ImageUrl = "https://karabulev.eu/wp-content/uploads/2017/04/LONDON-48-SINEMORETC-300-670.png",
+					Type = "Profiled",
+					Price = 930.00m,
+					Height = 200m,
+					Width = 90m,
+					Thickness = 35m,
+					ApplicationUserId = "eef7fb7b-a155-419a-a7f7-6b6fc865ae03"
+				},
+
+				new Door
+				{
+					DoorId = Guid.Parse("c829575d-b139-4137-a8c9-4e1d22d35a53"),
+					Model = "G-951",
+					ImageUrl = "https://karabulev.eu/wp-content/uploads/2017/04/0002tetris.jpg",
+					Type = "Glazed",
+					Price = 1300.00m,
+					Height = 200m,
+					Width = 90m,
+					Thickness = 35m,
+					ApplicationUserId = "8b116c3a-c340-40e8-b6a3-a6b512e9fb2f"
+				},
+
+				new Door
+				{
+					DoorId = Guid.Parse("fb98b190-80d7-42fd-a0a4-d1421ea03970"),
+					Model = "G-952",
+					ImageUrl = "https://karabulev.eu/wp-content/uploads/2017/04/%D0%AF%D0%A1%D0%95%D0%9D-1013-storgozia14.png",
+					Type = "Glazed",
+					Price = 1200.00m,
+					Height = 200m,
+					Width = 90m,
+					Thickness = 35m,
+					ApplicationUserId = "bee1ccb1-7179-4d28-a154-2dbb5f88c189"
+				},
+
+				new Door
+				{
+					DoorId = Guid.Parse("d8738414-dbbe-465f-945b-492214473c3d"),
+					Model = "G-953",
+					ImageUrl = "https://karabulev.eu/wp-content/uploads/2017/04/%D0%A1%D0%98%D0%9B%D0%A3%D0%95%D0%A2-%D0%9E%D0%A0%D0%95%D0%A5-%D0%9B%D0%90%D0%93%D0%A3%D0%9D%D0%901.png",
+					Type = "Glazed",
+					Price = 1080.00m,
+					Height = 200m,
+					Width = 90m,
+					Thickness = 35m,
+					ApplicationUserId = "bee1ccb1-7179-4d28-a154-2dbb5f88c189"
+				},
+
+				new Door
+				{
+					DoorId = Guid.Parse("7099f6ff-e9a5-4204-bc0a-5abadc7e57d0"),
+					Model = "G-954",
+					ImageUrl = "https://karabulev.eu/wp-content/uploads/2017/04/%D0%9C%D0%9B%D0%90%D0%94%D0%9E%D0%A1%D0%A2-05%D0%90.png",
+					Type = "Glazed",
+					Price = 1180.00m,
+					Height = 200m,
+					Width = 90m,
+					Thickness = 35m,
+					ApplicationUserId = "bee1ccb1-7179-4d28-a154-2dbb5f88c189"
+				},
+
+				new Door
+				{
+					DoorId = Guid.Parse("20c499b1-ed63-4576-acba-1b9c61a66e2b"),
+					Model = "G-955",
+					ImageUrl = "https://karabulev.eu/wp-content/uploads/2017/04/%D0%9B%D0%95%D0%99%D0%94%D0%98-%D0%93%D0%9B%D0%90%D0%A1-300%D1%85600.png",
+					Type = "Glazed",
+					Price = 1215.00m,
+					Height = 200m,
+					Width = 90m,
+					Thickness = 35m,
+					ApplicationUserId = "bee1ccb1-7179-4d28-a154-2dbb5f88c189"
+				},
+
+			};
+
+			return list;
+		}
+
 	}
-};
+}
 
 
 
-//		public List<Door> SeedDoors()
-//		{
-//			List<Door> list = new List<Door>()
-//			{
-//				new Door
-//				{
-//					DoorId = Guid.Parse("11111111-aaaa-4bbb-cccc-000000000002"),
-//					Model = "S200",
-//					Material = "Steel",
-//					ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-smooth-steel-door.webp",
-//					Type = "Smooth",
-//					Description = "Smooth steel door with minimalist style.",
-//					Price = 529.99m,
-//					Height = 210.0m,
-//					Width = 95.0m,
-//					Thickness = 4.0m
-//				},
-//				new Door
-//				{
-//					DoorId = Guid.Parse("22222222-bbbb-4ccc-dddd-000000000003"),
-//					Model = "S250",
-//					Material = "Steel",
-//					ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-smooth-2.webp",
-//					Type = "Smooth",
-//					Description = "Smooth steel door, ideal for modern apartments.",
-//					Price = 489.99m,
-//					Height = 205.0m,
-//					Width = 92.0m,
-//					Thickness = 4.2m
-//				},
-//				new Door
-//				{
-//					DoorId = Guid.Parse("33333333-cccc-4ddd-eeee-000000000004"),
-//					Model = "S300",
-//					Material = "Aluminium",
-//					ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-smooth-aluminium.webp",
-//					Type = "Smooth",
-//					Description = "Smooth aluminium door with matte finish.",
-//					Price = 549.99m,
-//					Height = 200.0m,
-//					Width = 88.0m,
-//					Thickness = 3.8m
-//				},
-//				new Door
-//				{
-//					DoorId = Guid.Parse("44444444-dddd-4eee-ffff-000000000005"),
-//					Model = "P100",
-//					Material = "Steel",
-//					ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-profiled-steel-door.webp",
-//					Type = "Profiled",
-//					Description = "Profiled steel door with decorative panels.",
-//					Price = 599.99m,
-//					Height = 215.0m,
-//					Width = 96.0m,
-//					Thickness = 4.5m
-//				},
-//				new Door
-//				{
-//					DoorId = Guid.Parse("55555555-eeee-4fff-aaaa-000000000006"),
-//					Model = "P150",
-//					Material = "Steel",
-//					ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-profiled-2.webp",
-//					Type = "Profiled",
-//					Description = "Profiled steel door with elegant frame.",
-//					Price = 569.99m,
-//					Height = 210.0m,
-//					Width = 94.0m,
-//					Thickness = 4.3m
-//				},
-//				new Door
-//				{
-//					DoorId = Guid.Parse("66666666-ffff-4aaa-bbbb-000000000007"),
-//					Model = "P200",
-//					Material = "Wood",
-//					ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-profiled-wood.webp",
-//					Type = "Profiled",
-//					Description = "Profiled wooden door with traditional design.",
-//					Price = 649.99m,
-//					Height = 205.0m,
-//					Width = 90.0m,
-//					Thickness = 4.0m
-//				},
-//				new Door
-//				{
-//					DoorId = Guid.Parse("77777777-aaaa-4bbb-cccc-000000000008"),
-//					Model = "P250",
-//					Material = "Aluminium",
-//					ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-profiled-aluminium.webp",
-//					Type = "Profiled",
-//					Description = "Profiled aluminium door with brushed surface.",
-//					Price = 589.99m,
-//					Height = 200.0m,
-//					Width = 88.0m,
-//					Thickness = 3.7m
-//				},
-//				new Door
-//				{
-//					DoorId = Guid.Parse("88888888-bbbb-4ccc-dddd-000000000009"),
-//					Model = "G100",
-//					Material = "Steel + Glass",
-//					ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-glazed-steel-door.webp",
-//					Type = "Glazed",
-//					Description = "Glazed steel door with tempered glass panel.",
-//					Price = 699.99m,
-//					Height = 215.0m,
-//					Width = 98.0m,
-//					Thickness = 4.8m
-//				},
-//				new Door
-//				{
-//					DoorId = Guid.Parse("99999999-cccc-4ddd-eeee-000000000010"),
-//					Model = "G150",
-//					Material = "Steel + Glass",
-//					ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-glazed-2.webp",
-//					Type = "Glazed",
-//					Description = "Glazed steel door with frosted glass insert.",
-//					Price = 729.99m,
-//					Height = 210.0m,
-//					Width = 94.0m,
-//					Thickness = 4.5m
-//				},
-//				new Door
-//				{
-//					DoorId = Guid.Parse("aaaaaaaa-dddd-4eee-ffff-000000000011"),
-//					Model = "G200",
-//					Material = "Wood + Glass",
-//					ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-glazed-wood.webp",
-//					Type = "Glazed",
-//					Description = "Glazed wooden door with decorative glass.",
-//					Price = 759.99m,
-//					Height = 205.0m,
-//					Width = 92.0m,
-//					Thickness = 4.2m
-//				},
-//				new Door
-//				{
-//					DoorId = Guid.Parse("bbbbbbbb-eeee-4fff-aaaa-000000000012"),
-//					Model = "S350",
-//					Material = "Steel",
-//					ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-smooth-lux.webp",
-//					Type = "Smooth",
-//					Description = "Smooth luxury steel door with premium coating.",
-//					Price = 599.99m,
-//					Height = 220.0m,
-//					Width = 100.0m,
-//					Thickness = 4.7m
-//				},
-//				new Door
-//				{
-//					DoorId = Guid.Parse("cccccccc-ffff-4aaa-bbbb-000000000013"),
-//					Model = "P300",
-//					Material = "Steel",
-//					ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-profiled-lux.webp",
-//					Type = "Profiled",
-//					Description = "Profiled steel door with ornate panel design.",
-//					Price = 639.99m,
-//					Height = 210.0m,
-//					Width = 95.0m,
-//					Thickness = 4.5m
-//				},
-//				new Door
-//				{
-//					DoorId = Guid.Parse("dddddddd-aaaa-4bbb-cccc-000000000014"),
-//					Model = "G250",
-//					Material = "Steel + Glass",
-//					ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-glazed-modern.webp",
-//					Type = "Glazed",
-//					Description = "Modern glazed door with clear glass panel.",
-//					Price = 749.99m,
-//					Height = 215.0m,
-//					Width = 96.0m,
-//					Thickness = 4.6m
-//				},
-//				new Door
-//				{
-//					DoorId = Guid.Parse("eeeeeeee-bbbb-4ccc-dddd-000000000015"),
-//					Model = "S400",
-//					Material = "Aluminium",
-//					ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-smooth-ultra.webp",
-//					Type = "Smooth",
-//					Description = "Ultra-smooth aluminium door for contemporary homes.",
-//					Price = 559.99m,
-//					Height = 205.0m,
-//					Width = 93.0m,
-//					Thickness = 4.0m
-//				},
-//				new Door
-//				{
-//					DoorId = Guid.Parse("ffffffff-cccc-4ddd-eeee-000000000016"),
-//					Model = "P350",
-//					Material = "Wood",
-//					ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-profiled-classic.webp",
-//					Type = "Profiled",
-//					Description = "Classic profiled wooden door with deep carvings.",
-//					Price = 689.99m,
-//					Height = 215.0m,
-//					Width = 98.0m,
-//					Thickness = 4.4m
-//				},
-//				new Door
-//				{
-//					DoorId = Guid.Parse("12345678-dddd-4eee-ffff-000000000017"),
-//					Model = "G300",
-//					Material = "Aluminium + Glass",
-//					ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-glazed-lux.webp",
-//					Type = "Glazed",
-//					Description = "Luxury glazed aluminium door with tinted glass.",
-//					Price = 799.99m,
-//					Height = 220.0m,
-//					Width = 100.0m,
-//					Thickness = 4.9m
-//				},
-//				new Door
-//				{
-//					DoorId = Guid.Parse("23456789-eeee-4fff-aaaa-000000000018"),
-//					Model = "S450",
-//					Material = "Steel",
-//					ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-smooth-secure.webp",
-//					Type = "Smooth",
-//					Description = "Smooth steel door with advanced security locks.",
-//					Price = 629.99m,
-//					Height = 210.0m,
-//					Width = 95.0m,
-//					Thickness = 4.6m
-//				},
-//				new Door
-//				{
-//					DoorId = Guid.Parse("34567890-ffff-4aaa-bbbb-000000000019"),
-//					Model = "P400",
-//					Material = "Steel",
-//					ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-profiled-secure.webp",
-//					Type = "Profiled",
-//					Description = "Profiled steel door reinforced for extra security.",
-//					Price = 669.99m,
-//					Height = 210.0m,
-//					Width = 94.0m,
-//					Thickness = 4.5m
-//				},
-//				new Door
-//				{
-//					DoorId = Guid.Parse("45678901-aaaa-4bbb-cccc-000000000020"),
-//					Model = "G350",
-//					Material = "Steel + Glass",
-//					ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-glazed-secure.webp",
-//					Type = "Glazed",
-//					Description = "Secure glazed steel door with impact-resistant glass.",
-//					Price = 789.99m,
-//					Height = 215.0m,
-//					Width = 97.0m,
-//					Thickness = 4.8m
-//				},
-//				new Door
-//				{
-//					DoorId = Guid.Parse("56789012-bbbb-4ccc-dddd-000000000021"),
-//					Model = "S500",
-//					Material = "Aluminium",
-//					ImageUrl = "https://starkdoor.com/external/public_html/images/categories/stark-smooth-eco.webp",
-//					Type = "Smooth",
-//					Description = "Eco-friendly smooth aluminium door with insulation.",
-//					Price = 579.99m,
-//					Height = 205.0m,
-//					Width = 92.0m,
-//					Thickness = 4.1m
-//				}
-//			};
-
-
-//			return list;
-//		}
-
-//	}
-//}

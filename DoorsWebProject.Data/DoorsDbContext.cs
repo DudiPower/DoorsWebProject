@@ -9,6 +9,9 @@
 
 	public class DoorsDbContext : IdentityDbContext<ApplicationUser>
     {
+		public DoorsDbContext()
+		{
+		}
 
 		public DoorsDbContext(DbContextOptions<DoorsDbContext> options)
             : base(options)
@@ -18,6 +21,13 @@
 
 		public virtual DbSet<Basket> Baskets { get; set; } = null!;
 
+		public virtual DbSet<BasketDetail> BasketDetails { get; set; } = null!;
+
+		public virtual DbSet<Order> Orders { get; set; } = null!;
+
+		public virtual DbSet<OrderDetail> OrderDetails { get; set; } = null!;
+
+		public virtual DbSet<OrderStatus> OrderStatuses { get; set; } = null!;
 		public virtual DbSet<Category> Categories { get; set; } = null!;
 
 		public virtual DbSet<Color> Colors { get; set; } = null!;

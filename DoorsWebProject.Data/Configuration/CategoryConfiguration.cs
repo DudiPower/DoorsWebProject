@@ -31,38 +31,43 @@
 			//	.HasData(this.SeedCategories());
 		}
 
-		//public List<Category> SeedCategories()
-		//{
-		//	List<Category> allCategoriesForSeed = new List<Category>()
-		//	{
-		//		new Category
-		//	{
-		//		CategoryId = Guid.Parse("a3b9d5e1-8e5f-4f7b-9c88-bc6fbc761211"),
-		//		Name = "Security Doors"
-		//	},
-		//	new Category
-		//	{
-		//		CategoryId = Guid.Parse("b6e2f5c7-33dc-4c0e-920f-1a3fa7c6e9d2"),
-		//		Name = "Interior Doors"
-		//	},
-		//	new Category
-		//	{
-		//		CategoryId = Guid.Parse("c9f0a6d5-2344-45c2-bbe2-50d207b8573d"),
-		//		Name = "Exterior Doors"
-		//	},
-		//	new Category
-		//	{
-		//		CategoryId = Guid.Parse("d1a8e6c9-baf4-4e47-93d2-1cc9bcd69fe0"),
-		//		Name = "Fireproof Doors"
-		//	},
-		//	new Category
-		//	{
-		//		CategoryId = Guid.Parse("e3f7c1a4-39c3-43d3-8369-c1d267bb4371"),
-		//		Name = "Sliding Doors"
-		//	}
-		//	};
+		public List<Category> SeedCategories()
+		{
+			List<Category> allCategoriesForSeed = new List<Category>()
+			{
+				new Category
+			{
+				CategoryId = Guid.Parse("9ff68438-ff2c-4ac5-946c-6bdce11e0d38"),
+				Name = "Гладки врати"
+			},
+			new Category
+			{
+				CategoryId = Guid.Parse("618ada51-5300-4649-97c3-e0f92dffe2c6"),
+				Name = "Профилирани врати"
+			},
+			new Category
+			{
+				CategoryId = Guid.Parse("0441044a-5d32-4669-a64c-89d3d8f53cc7"),
+				Name = "Остъклени врати"
+			},
+			new Category
+			{
+				CategoryId = Guid.Parse("76c39eeb-cabe-4f48-b4ca-1372de32333e"),
+				Name = "Блиндирани врати"
+			},
+			new Category
+			{
+				CategoryId = Guid.Parse("3a5e16ff-5c63-48c9-9480-5d139fc359ac"),
+				Name = "Дървени врати"
+			},
+			new Category
+			{
+				CategoryId = Guid.Parse("45e6bc98-863c-4bb6-9741-549e9c2971a0"),
+				Name = "Плътни врати"
+			},
+			};
 
-		//	return allCategoriesForSeed;
-		//}
+			return allCategoriesForSeed;
+		}
 	}
 }
