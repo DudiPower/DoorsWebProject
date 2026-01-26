@@ -11,6 +11,7 @@ using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
 using DoorsWebProject.Data.Models;
+using static DoorsWebProject.GCommon.ApplicationConstants;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -26,19 +27,23 @@ namespace DoorsWebProject.Web.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly RoleManager<IdentityRole> roleManager;
         private readonly IUserStore<ApplicationUser> userStore;
         private readonly IUserEmailStore<ApplicationUser> emailStore;
         private readonly ILogger<RegisterModel> logger;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
+            RoleManager<IdentityRole> roleManager,
             IUserStore<ApplicationUser> userStore,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger
             )
         {
             this.userManager = userManager;
-            this.userStore = userStore;
+            this.userStore = userStore; 
+            this.roleManager = roleManager;
+
             this.emailStore = GetEmailStore();
             this.signInManager = signInManager;
             this.logger = logger;
@@ -112,8 +117,22 @@ namespace DoorsWebProject.Web.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     logger.LogInformation("User created a new account with password.");
-                    
-                    await signInManager.SignInAsync(user, isPersistent: false);
+
+					bool userRoleExists = await this.roleManager
+						.RoleExistsAsync(UserRoleName);
+					if (userRoleExists)
+					{
+						// This should be always the case
+						result = await userManager
+							.AddToRoleAsync(user, UserRoleName);
+						if (!result.Succeeded)
+						{
+							throw new Exception(
+								$"User can't be registered, because {UserRoleName} role can't be found!");
+						}
+					}
+
+					await signInManager.SignInAsync(user, isPersistent: false);
                     return LocalRedirect(returnUrl);
                 }
                 foreach (var error in result.Errors)

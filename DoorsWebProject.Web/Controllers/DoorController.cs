@@ -141,10 +141,19 @@
 		}
 
 		[AllowAnonymous]
+		public async Task<IActionResult> Profiled()
+		{
+			IEnumerable<AllDoorsIndexViewModel> allDoors = await this.doorService
+				.GetAllFilteredDoorsAsync("Profiled") ?? Enumerable.Empty<AllDoorsIndexViewModel>(); ;
+
+			return View(allDoors);
+		}
+
+		[AllowAnonymous]
 		public async Task<IActionResult> Glazed()
 		{
 			IEnumerable<AllDoorsIndexViewModel> allDoors = await this.doorService
-				.GetAllFilteredDoorsAsync("Solid") ?? Enumerable.Empty<AllDoorsIndexViewModel>(); ;
+				.GetAllFilteredDoorsAsync("Glazed") ?? Enumerable.Empty<AllDoorsIndexViewModel>(); ;
 
 			return View(allDoors);
 		}
@@ -200,6 +209,7 @@
 			}
 		}
 
+		[AllowAnonymous]
 		public async Task<IActionResult> Search(string searchTerm)
 		{
 			IEnumerable<AllDoorsIndexViewModel> allSearchingDoors = await this.doorService

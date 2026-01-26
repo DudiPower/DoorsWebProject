@@ -1,5 +1,6 @@
 ﻿namespace DoorsWebProject.Services.Core.Interfaces
 {
+	using DoorsWebProject.Web.ViewModels.Basket;
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
@@ -8,5 +9,7 @@
 
 	public interface IBasketService
 	{
+
+
 	}
 }

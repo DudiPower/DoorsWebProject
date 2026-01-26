@@ -46,6 +46,8 @@ namespace DoorsWebProject.Web.Controllers
                     return View("Unauthorized");
                 case "404":
                     return View("NotFound");
+                case "500":
+                    return View("BadRequest");
             }
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }

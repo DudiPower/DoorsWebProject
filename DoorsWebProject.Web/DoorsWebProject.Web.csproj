@@ -13,7 +13,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.15" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.15" />
-    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.3.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.15">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -32,6 +32,10 @@
     <ProjectReference Include="..\DoorsWebProject.Services.Core\DoorsWebProject.Services.Core.csproj" />
     <ProjectReference Include="..\DoorsWebProject.Web.Infrastructure\DoorsWebProject.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\DoorsWebProject.Web.ViewModels\DoorsWebProject.Web.ViewModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\textures\" />
   </ItemGroup>
 
 </Project>

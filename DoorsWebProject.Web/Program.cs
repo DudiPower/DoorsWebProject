@@ -59,6 +59,7 @@ namespace DoorsWebProject.Web
 			builder.Services.AddTransient<IIdentitySeeder, IdentitySeeder>();
 
 			builder.Services.AddTransient<IUserService, UserService>();
+			builder.Services.AddScoped<IAdminDoorService, AdminDoorService>();
 
 			builder.Services.AddControllersWithViews();
 
@@ -87,6 +88,8 @@ namespace DoorsWebProject.Web
             app.UseAuthorization();
 
 			app.UseSession();
+
+            app.UserAdminRedirection();
 
             app.MapControllerRoute(
                 name: "areas",
