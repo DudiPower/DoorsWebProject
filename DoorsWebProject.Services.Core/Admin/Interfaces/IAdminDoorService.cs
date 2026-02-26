@@ -1,6 +1,7 @@
 ﻿namespace DoorsWebProject.Services.Core.Admin.Interfaces
 {
 	using DoorsWebProject.Web.ViewModels.Admin.Door;
+	using DoorsWebProject.Web.ViewModels.Door;
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
@@ -9,6 +10,14 @@
 
 	public interface IAdminDoorService
 	{
-		Task<IEnumerable<DoorAdminViewModel>> ReturnDoorAdminInTableView(string userId);
+		Task<IEnumerable<DoorAdminViewModel>> ReturnDoorAdminInTableView();
+
+		Task<DoorDeleteViewModel?> GetDoorDeleteDetailsById(string id);
+
+		Task<FindedDoorViewModel?> FindDoorByStringId(string doorId);
+
+		Task<bool> SoftDeleteDoorAsync(string? id);
+
+		Task<bool> EditDoorAsync(FindedDoorViewModel doorInputModel);
 	}
 }

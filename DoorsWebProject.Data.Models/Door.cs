@@ -7,8 +7,6 @@
 	{
 		public Guid DoorId { get; set; } = Guid.NewGuid();
 		public string Model { get; set; } = null!;
-
-		public string? Material { get; set; } 
 		public string? ImageUrl { get; set; }
 
 		public string Type { get; set; } = null!;

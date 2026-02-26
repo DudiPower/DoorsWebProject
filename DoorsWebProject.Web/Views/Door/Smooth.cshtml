@@ -14,10 +14,10 @@
 
     <label>Категория</label>
     <select id="categoryId">
-        <option value="">Всички</option>
-        <option value="1">Входни</option>
-        <option value="2">Вътрешни</option>
-        <option value="3">Плъзгащи</option>
+            <option value="">Избери тип</option>
+            <option value="/Door/Smooth">Гладки врати</option>
+            <option value="/doors/vhodni">Входни врати</option>
+            <option value="/doors/vutreshni">Вътрешни врати</option>
     </select>
 
     <label>Цвят</label>
@@ -50,13 +50,30 @@
                 <input type="range" id="rangeMax" min="0" max="2000" value="1500">
             </div>
         </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const select = document.getElementById('doorSelect');
+
+                select.addEventListener('change', function () {
+                    if (this.value !== "") {
+                        window.location.href = this.value;
+                    }
+                });
+            });
+        </script>
 </aside>
     <main class="content" id="doorsContainer">
-        @await Html.PartialAsync("PartialDoorView" , Model);
+        <ul class="doorsList">
+            @await Html.PartialAsync("PartialDoorView", Model);
+
+        </ul>
     </main>
 
 
 </div>
+
+
 
 
 

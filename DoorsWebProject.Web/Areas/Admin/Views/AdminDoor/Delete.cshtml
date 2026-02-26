@@ -29,7 +29,11 @@
         <!-- Добави още свойства според нуждите -->
     </dl>
 
-    <form asp-action="Delete" method="post">
+    <form 
+        asp-area="Admin"
+        asp-controller="AdminDoor"
+        asp-action="Delete" 
+        method="post">
         <input type="hidden" asp-for="Id" />
         @Html.AntiForgeryToken()
         <input type="submit" value="Delete" class="btn btn-danger" /> |

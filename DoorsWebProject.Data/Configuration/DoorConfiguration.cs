@@ -21,11 +21,6 @@ namespace DoorsWebProject.Data.Configuration
 				.IsRequired()
 				.HasMaxLength(DoorModelMaxLength);
 
-			builder
-				.Property(d => d.Material)
-				.IsRequired()
-				.HasMaxLength(DoorMaterialMaxLength);
-
 
 			builder
 				.Property(d => d.ImageUrl)
@@ -39,7 +34,6 @@ namespace DoorsWebProject.Data.Configuration
 
 			builder
 				.Property(d => d.Description)
-				.IsRequired()
 				.HasMaxLength(DoorDescriptionMaxLength);
 
 			builder
@@ -75,9 +69,9 @@ namespace DoorsWebProject.Data.Configuration
 			builder
 				.HasQueryFilter(d => d.IsDeleted == false);
 
-			//builder
-			//	.HasData(SeedDoors());
-				
+			builder
+				.HasData(SeedDoors());
+
 		}
 
 		public List<Door> SeedDoors()

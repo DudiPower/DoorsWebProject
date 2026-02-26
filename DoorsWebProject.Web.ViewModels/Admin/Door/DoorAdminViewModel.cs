@@ -8,7 +8,7 @@
 
 	public class DoorAdminViewModel
 	{
-		public Guid Id { get; set; }
+		public string Id { get; set; }
 		public string ImageUrl { get; set; }
 		public string Model { get; set; }
 		public string Category { get; set; }

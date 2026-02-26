@@ -24,6 +24,7 @@
 			IEnumerable<AllDoorsIndexViewModel> allDoors =
 				await this.doorRepository
 				.GetAllAttached()
+				.Take(4)
 				.Select(d => new AllDoorsIndexViewModel()
 				{
 					Id = d.DoorId.ToString(),
@@ -41,7 +42,6 @@
 			Door newDoor = new Door
 			{
 				Model = doorFormInputModel.Model,
-				Material = doorFormInputModel.Material,
 				Description = doorFormInputModel.Description,
 				ImageUrl = doorFormInputModel.ImageUrl,
 				Price = doorFormInputModel.Price,
@@ -134,7 +134,6 @@
 				ImageUrl = door.ImageUrl!,
 				Model = door.Model,
 				Description = door.Description,
-				Material = door.Material,
 				Height = door.Height.ToString(),
 				Width = door.Width.ToString(),
 				Thickness = door.Thickness.ToString()
@@ -177,7 +176,6 @@
 				ImageUrl = door.ImageUrl,
 				Model = door.Model,
 				Description = door.Description,
-				Material = door.Material,
 				Height = door.Height,
 				Width = door.Width,
 				Thickness = door.Thickness
@@ -196,7 +194,6 @@
 			}
 
 			editableDoor.Model = doorInputModel.Model;
-			editableDoor.Material = doorInputModel.Material;
 			editableDoor.ImageUrl = doorInputModel.ImageUrl;
 			editableDoor.Description = doorInputModel.Description;
 			editableDoor.Price = doorInputModel.Price;

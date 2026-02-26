@@ -38,8 +38,8 @@
                 </td>
 
                 <td class="actions">
-                    <a asp-page="Edit" asp-route-id="@door.Id" title="Редакция">✏️</a>
-                    <a asp-page="Delete" asp-route-id="@door.Id" title="Изтриване">🗑</a>
+                    <a href="/Admin/AdminDoor/Edit/@door.Id" title="Редакция">✏️</a>
+                    <a href="/Admin/AdminDoor/Delete/@door.Id" title="Изтриване">🗑</a>
                     <a asp-page="/Doors/Details" asp-route-id="@door.Id" title="Преглед">👁</a>
                 </td>
             </tr>

@@ -4,7 +4,7 @@
 
 @foreach (var door in Model)
 {
-    <div class="door-card">
+    <li class="door-card">
         <h2 class="door-model">
             <a asp-action="Details" asp-route-id="@door.Id" class="text-decoration-none text-dark">
                 Модел: @door.Model
@@ -12,7 +12,7 @@
         </h2>
 
         <div class="door-image">
-            <img src="@door.ImageUrl" alt="Снимка на @door.Model" style="max-width: 300px; height: auto;" />
+            <img class="image-ofDoor" src="@door.ImageUrl" alt="Снимка на @door.Model"  />
         </div>
 
         <p class="door-price">Цена: @door.Price лв.</p>
@@ -42,5 +42,5 @@
 
 
         </div>
-    </div>
+    </li>
 }

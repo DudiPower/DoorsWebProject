@@ -6,6 +6,7 @@
 	using Microsoft.AspNetCore.Authorization;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.EntityFrameworkCore;
+	using System.Linq;
 	using static DoorsWebProject.Web.ViewModels.ValidationMessages;
 	public class DoorController : BaseController
 	{
@@ -154,6 +155,24 @@
 		{
 			IEnumerable<AllDoorsIndexViewModel> allDoors = await this.doorService
 				.GetAllFilteredDoorsAsync("Glazed") ?? Enumerable.Empty<AllDoorsIndexViewModel>(); ;
+
+			return View(allDoors);
+		}
+
+		[AllowAnonymous]
+		public async Task<IActionResult> Armored()
+		{
+			IEnumerable<AllDoorsIndexViewModel> allDoors = await this.doorService
+				.GetAllFilteredDoorsAsync("Armored") ?? Enumerable.Empty<AllDoorsIndexViewModel>(); ;
+
+			return View(allDoors);
+		}
+
+		[AllowAnonymous]
+		public async Task<IActionResult> Wooden()
+		{
+			IEnumerable<AllDoorsIndexViewModel> allDoors = await this.doorService
+				.GetAllFilteredDoorsAsync("Wooden") ?? Enumerable.Empty<AllDoorsIndexViewModel>(); ;
 
 			return View(allDoors);
 		}

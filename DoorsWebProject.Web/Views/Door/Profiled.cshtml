@@ -1,1 +1,76 @@
-﻿
+﻿@using DoorsWebProject.Web.ViewModels.Door
+@model IEnumerable<AllDoorsIndexViewModel>
+
+@{
+    ViewData["Title"] = "Профилирани врати";
+}
+
+
+
+<div class="door-container">
+</div>
+<div class="container">
+    <aside class="sidebar">
+        <h3>Филтрирай</h3>
+
+        <label>Категория</label>
+        <select id="categoryId">
+            <option value="">Избери тип</option>
+            <option value="/Door/Smooth">Гладки врати</option>
+            <option value="/doors/vhodni">Входни врати</option>
+            <option value="/doors/vutreshni">Вътрешни врати</option>
+        </select>
+
+        <label>Цвят</label>
+        <select id="color">
+            <option value="">Всички</option>
+            <option value="white">Бяло</option>
+            <option value="brown">Кафяво</option>
+            <option value="black">Черно</option>
+        </select>
+
+        <label>Цена</label>
+        <input type="number" id="minPrice" placeholder="Мин.">
+        <input type="number" id="maxPrice" placeholder="Макс.">
+
+        <button id="filterBtn">Филтрирай</button>
+
+        <div class="wrapper">
+            <h3>Филтър по цена</h3>
+            <div class="price-input">
+                <span id="minValue">400 лв</span>
+                <span id="maxValue">1500 лв</span>
+            </div>
+
+            <div class="slider">
+                <div class="progress"></div>
+            </div>
+
+            <div class="range-input">
+                <input type="range" id="rangeMin" min="0" max="2000" value="200">
+                <input type="range" id="rangeMax" min="0" max="2000" value="1500">
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const select = document.getElementById('doorSelect');
+
+                select.addEventListener('change', function () {
+                    if (this.value !== "") {
+                        window.location.href = this.value;
+                    }
+                });
+            });
+        </script>
+    </aside>
+    <main class="content" id="doorsContainer">
+        <ul class="doorsList">
+            @await Html.PartialAsync("PartialDoorView", Model);
+
+        </ul>
+    </main>
+
+
+</div>
+
