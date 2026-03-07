@@ -9,6 +9,13 @@ My project is web site for buy doors. You can browse doors, see details about th
 - [Contributing](#contributing)
 - [License](#license)
 
+## Technologies Used
+
+- Frontend: HTML,CSS,Razor syntax
+- Backend: C#
+- DataBase: SQL Server
+- Entity Framework Core
+
 ## Installation
 1. Clone the repository:
 
