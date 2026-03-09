@@ -20,9 +20,9 @@
 		public decimal Thickness { get; set; }
 		public bool IsDeleted { get; set; }
 
-		public string ApplicationUserId { get; set; } = null!;
+		public string? ApplicationUserId { get; set; } 
 
-		public virtual ApplicationUser User { get; set; } = null!;
+		public virtual ApplicationUser? User { get; set; } 
 
 		public List<OrderDetail> OrderDetail { get; set; }
 

@@ -1,4 +1,4 @@
-﻿@model DoorsWebProject.Web.ViewModels.Door.DoorFormInputModel;
+﻿@model DoorsWebProject.Web.ViewModels.Door.DoorFormInputModel
 
 @{
     ViewData["Title"] = "Създай нова врата";
@@ -8,15 +8,27 @@
 
 <form asp-action="Create" method="post" class="form-horizontal">
     <div class="form-group">
-        <label asp-for="Model" class="control-label">Име</label>
+        <label asp-for="Model" class="control-label">Модел</label>
         <input asp-for="Model" class="form-control" />
         <span asp-validation-for="Model" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="Material" class="control-label">Материал</label>
-        <input asp-for="Material" class="form-control" />
-        <span asp-validation-for="Material" class="text-danger"></span>
+        <label asp-for="ImageUrl" class="control-label">Image URL</label>
+        <input asp-for="ImageUrl" class="form-control" />
+        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description" class="control-label">Описание</label>
+        <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Price" class="control-label">Цена</label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
     </div>
 
     <div class="form-group">
@@ -32,27 +44,15 @@
     </div>
 
     <div class="form-group">
-        <label asp-for="Thickness" class="control-label">Дебелина (см)</label>
-        <input asp-for="Thickness" class="form-control" />
+        <label asp-for="Type" class="control-label">Тип</label>
+        <input asp-for="Type" class="form-control" />
         <span asp-validation-for="Thickness" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="Description" class="control-label">Описание</label>
-        <textarea asp-for="Description" class="form-control" rows="4"></textarea>
-        <span asp-validation-for="Description" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="ImageUrl" class="control-label">Image URL</label>
-        <input asp-for="ImageUrl" class="form-control" />
-        <span asp-validation-for="ImageUrl" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Price" class="control-label">Цена</label>
-        <input asp-for="Price" class="form-control" />
-        <span asp-validation-for="Price" class="text-danger"></span>
+        <label asp-for="Thickness" class="control-label">Дебелина (см)</label>
+        <input asp-for="Thickness" class="form-control" />
+        <span asp-validation-for="Thickness" class="text-danger"></span>
     </div>
 
     <div class="form-group mt-3">

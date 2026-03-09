@@ -4,8 +4,8 @@
 @{
     ViewData["Title"] = "Door";
 }
-
-<table class="doors-table">
+<div class="information-element">
+  <table class="doors-table">
     <thead>
         <tr>
             <th>Снимка</th>
@@ -17,7 +17,7 @@
             <th>Действия</th>
         </tr>
     </thead>
-    <tbody>
+     <tbody>
         @foreach (var door in Model)
         {
             <tr>
@@ -40,9 +40,15 @@
                 <td class="actions">
                     <a href="/Admin/AdminDoor/Edit/@door.Id" title="Редакция">✏️</a>
                     <a href="/Admin/AdminDoor/Delete/@door.Id" title="Изтриване">🗑</a>
-                    <a asp-page="/Doors/Details" asp-route-id="@door.Id" title="Преглед">👁</a>
+                    <a asp-controller="AdminDoor" asp-action="Details" asp-route-id="@door.Id" title="Преглед">👁</a>
                 </td>
             </tr>
         }
     </tbody>
-</table>
+  </table>
+  <div class="create-button" > 
+    
+    <a href="/Admin/AdminDoor/Create">Създай</a>
+
+   </div>
+</div>

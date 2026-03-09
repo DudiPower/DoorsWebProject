@@ -9,8 +9,6 @@
 	{
 		Task<IEnumerable<AllDoorsIndexViewModel>> GetAllDoorsAsync();
 
-		Task CreateDoorAsync(DoorFormInputModel doorFormInputModel);
-
 		Task <DoorDetailsViewModel?> GetDoorDetailsByIdAsync(string id);
 		Task<bool> HardDeleteDoorAsync(string? id);
 

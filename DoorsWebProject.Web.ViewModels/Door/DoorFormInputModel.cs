@@ -18,19 +18,13 @@
 		[MaxLength(DoorModelMaxLength, ErrorMessage = ModelMaxLengthMessage)]
 		public string Model { get; set; } = null!;
 
-		[Required(ErrorMessage = MaterialRequiredMessage)]
-		[MinLength(DoorMaterialMinLength, ErrorMessage = MaterialMinLengthMessage)]
-		[MaxLength(DoorMaterialMaxLength, ErrorMessage = MaterialMaxLengthMessage)]
-		public string Material { get; set; } = null!;
+		[MaxLength(DoorImageUrlMaxLength, ErrorMessage = ImageUrlMaxLengthMessage)]
+		public string? ImageUrl { get; set; }
 
 		[Required(ErrorMessage = DescriptionRequiredMessage)]
 		[MinLength(DoorDescriptionMinLength, ErrorMessage = DescriptionMinLengthMessage)]
 		[MaxLength(DoorDescriptionMaxLength, ErrorMessage = DescriptionMaxLengthMessage)]
-		public string Description { get; set; } = null!;
-
-		[MaxLength(DoorImageUrlMaxLength , ErrorMessage = ImageUrlMaxLengthMessage)]
-		public string? ImageUrl { get; set; } 
-
+		public string Description { get; set; } = null!; 
 
 		[Required(ErrorMessage = PriceRequiredMessage)]
 		[Range(typeof(decimal), DoorPriceMinLengthString, DoorPriceMaxLengthString, ErrorMessage = PriceRangeMessage)]
@@ -49,5 +43,8 @@
 		[Required(ErrorMessage = ThicknessRequiredMessage)]
 		[Range(typeof(decimal), DoorThicknessMinLengthString ,DoorThicknessMaxLengthString, ErrorMessage = ThicknessRangeMessage)]
 		public decimal Thickness { get; set; }
+
+		[Required(ErrorMessage = TypeRequiredMessage)]
+		public string Type { get; set; } = null!;
 	}
 }

@@ -64,7 +64,8 @@ namespace DoorsWebProject.Data.Configuration
 			builder
 				.HasOne(d => d.User)
 				.WithMany(au => au.Doors)
-				.HasForeignKey(d => d.ApplicationUserId);
+				.HasForeignKey(d => d.ApplicationUserId)
+				.IsRequired(false);
 
 			builder
 				.HasQueryFilter(d => d.IsDeleted == false);

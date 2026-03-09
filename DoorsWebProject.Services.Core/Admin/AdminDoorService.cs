@@ -70,28 +70,55 @@
 
 			if (!string.IsNullOrWhiteSpace(doorId))
 			{
-					doorDeleteModel = await doorRepository
-					.GetAllAttached()
-					//.Where(d => d.ApplicationUserId == doorId)
-					.Select( d => new FindedDoorViewModel 
-					{
-						DoorId = d.DoorId,
-						Model = d.Model ?? "",
-						ImageUrl = d.ImageUrl,
-						Type = d.Type ?? "",
-						Description = d.Description,
-						Price = d.Price,
-						Height = d.Height,
-						Width = d.Width,
-						Thickness = d.Thickness
-					})
-					.FirstOrDefaultAsync();
-				
+				doorDeleteModel = await doorRepository
+				.GetAllAttached()
+				.Where(d => d.DoorId.ToString() == doorId)
+				.Select(d => new FindedDoorViewModel
+				{
+					DoorId = d.DoorId,
+					Model = d.Model ?? "",
+					ImageUrl = d.ImageUrl,
+					Type = d.Type ?? "",
+					Description = d.Description,
+					Price = d.Price,
+					Height = d.Height,
+					Width = d.Width,
+					Thickness = d.Thickness
+				})
+				.FirstOrDefaultAsync();
+
 			}
 			 return doorDeleteModel;
 			
 		}
 
+		public async Task<DoorDetailsViewModel?> GetDoorDetailsByIdAsync(string id)
+		{
+			var door = await doorRepository
+				.GetAllAttached()
+				.AsNoTracking()
+				.FirstOrDefaultAsync(d => d.DoorId.ToString() == id && !d.IsDeleted);
+
+			if (door == null)
+			{
+				return null;
+			}
+
+			DoorDetailsViewModel doorDetailsViewModel = null;
+
+			doorDetailsViewModel = new DoorDetailsViewModel()
+			{
+				Id = door.DoorId.ToString(),
+				ImageUrl = door.ImageUrl!,
+				Model = door.Model,
+				Description = door.Description,
+				Height = door.Height.ToString(),
+				Width = door.Width.ToString(),
+				Thickness = door.Thickness.ToString()
+			};
+
+			return doorDetailsViewModel;
+		}
 		public async Task<bool> SoftDeleteDoorAsync(string? id)
 		{
 			var door = await FindDoorByStringId(id);
@@ -139,6 +166,23 @@
 			await this.doorRepository.UpdateAsync(editableDoor);
 
 			return true;
+		}
+
+		public async Task CreateDoorAsync(DoorFormInputModel doorFormInputModel)
+		{
+			Door newDoor = new Door
+			{
+				Model = doorFormInputModel.Model,
+				Description = doorFormInputModel.Description,
+				ImageUrl = doorFormInputModel.ImageUrl,
+				Price = doorFormInputModel.Price,
+				Height = doorFormInputModel.Height,
+				Width = doorFormInputModel.Width,
+				Thickness = doorFormInputModel.Thickness,
+				Type = doorFormInputModel.Type
+			};
+
+			await this.doorRepository.AddAsync(newDoor);
 		}
 	}
 }

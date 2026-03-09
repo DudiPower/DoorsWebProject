@@ -37,22 +37,6 @@
 			return allDoors;
 		}
 
-		public async Task CreateDoorAsync(DoorFormInputModel doorFormInputModel)
-		{
-			Door newDoor = new Door
-			{
-				Model = doorFormInputModel.Model,
-				Description = doorFormInputModel.Description,
-				ImageUrl = doorFormInputModel.ImageUrl,
-				Price = doorFormInputModel.Price,
-				Height = doorFormInputModel.Height,
-				Width = doorFormInputModel.Width,
-				Thickness = doorFormInputModel.Thickness
-			};
-
-			await this.doorRepository.AddAsync(newDoor);
-		}
-
 		public async Task<bool> HardDeleteDoorAsync(string? id)
 		{
 			var door = await FindDoorByStringId(id);
@@ -128,7 +112,9 @@
 				return null;
 			}
 
-			return new DoorDetailsViewModel()
+			DoorDetailsViewModel doorDetailsViewModel = null;
+
+			doorDetailsViewModel = new DoorDetailsViewModel()
 			{
 				Id = door.DoorId.ToString(),
 				ImageUrl = door.ImageUrl!,
@@ -137,8 +123,9 @@
 				Height = door.Height.ToString(),
 				Width = door.Width.ToString(),
 				Thickness = door.Thickness.ToString()
-
 			};
+
+			return doorDetailsViewModel;
 		}
 
 		public async Task<IEnumerable<AllDoorsIndexViewModel>> GetAllFilteredDoorsAsync(string filter)

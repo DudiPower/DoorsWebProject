@@ -21,9 +21,9 @@
             @if (this.User.Identity?.IsAuthenticated ?? false)
             {
                 <form asp-controller="Wishlist"
-                      asp-action="Add"
-                      method="post"
-                      style="display:inline;">
+                asp-action="Add"
+                method="post"
+                style="display:inline;">
                     <input type="hidden" name="id" value="@door.Id" />
                     <button type="submit" class="btn btn-outline-primary">
                         🤍 Добави в любими
@@ -31,14 +31,11 @@
                 </form>
 
                 <form asp-controller="Door"
-                      asp-action="BuyDoor" 
-                      
+                asp-action="BuyDoor" 
+
                 ></form>
 
             }
-            <a asp-action="Delete" asp-route-id="@door.Id" class="btn btn-danger">
-                Изтрий
-            </a>
 
 
         </div>

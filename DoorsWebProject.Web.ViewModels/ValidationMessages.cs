@@ -34,6 +34,8 @@
 		public const string ThicknessRequiredMessage = "Thickness is required";
 		public const string ThicknessRangeMessage = "Thickness is between 0.00 and 1000.00";
 
+		public const string TypeRequiredMessage = "Type is required";
+
 		public const string ServiceCreateError =
 			"Fatal error occurred while adding your door! Please try again later!";
 	}

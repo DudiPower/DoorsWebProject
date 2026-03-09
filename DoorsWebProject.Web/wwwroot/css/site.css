@@ -39,3 +39,9 @@ body {
     .dropdown-submenu:hover > .dropdown-menu {
         display: block;
     }
+
+
+.information-element {
+    display: flex;
+    gap: 800px;
+}

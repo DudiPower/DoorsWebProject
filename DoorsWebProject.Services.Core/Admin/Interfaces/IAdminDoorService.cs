@@ -16,8 +16,11 @@
 
 		Task<FindedDoorViewModel?> FindDoorByStringId(string doorId);
 
+		Task<DoorDetailsViewModel?> GetDoorDetailsByIdAsync(string id);
 		Task<bool> SoftDeleteDoorAsync(string? id);
 
 		Task<bool> EditDoorAsync(FindedDoorViewModel doorInputModel);
+
+		Task CreateDoorAsync(DoorFormInputModel doorFormInputModel);
 	}
 }

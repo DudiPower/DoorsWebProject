@@ -3,6 +3,7 @@
 	using DoorsWebProject.Services.Core.Admin.Interfaces;
 	using DoorsWebProject.Web.ViewModels.Admin.Door;
 	using DoorsWebProject.Web.ViewModels.Door;
+	using Microsoft.AspNetCore.Authorization;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
 
@@ -23,6 +24,29 @@
 
 
 			return View(doorAdmins);
+		}
+
+		[HttpGet]
+		public async Task<IActionResult> Details(string id)
+		{
+			try
+			{
+				DoorDetailsViewModel? door = await doorService
+					.GetDoorDetailsByIdAsync(id);
+
+				if (door == null)
+				{
+					return this.RedirectToAction(nameof(Index));
+				}
+
+				return this.View(door);
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine(e.Message);
+
+				return this.RedirectToAction(nameof(Index));
+			}
 		}
 
 		[HttpGet]
@@ -122,6 +146,25 @@
 
 				return this.RedirectToAction(nameof(Index));
 			}
+		}
+
+		[HttpGet]
+		public async Task<IActionResult> Create()
+		{
+			return this.View();
+		}
+
+		[HttpPost]
+
+		public async Task<IActionResult> Create(DoorFormInputModel inputModel)
+		{
+
+			Console.WriteLine(inputModel.Model);
+			Console.WriteLine(inputModel.Price);
+
+			await doorService.CreateDoorAsync(inputModel);
+
+			return this.RedirectToAction(nameof(Index));
 		}
 
 	}

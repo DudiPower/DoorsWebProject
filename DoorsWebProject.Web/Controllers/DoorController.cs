@@ -36,29 +36,29 @@
 		//	return  this.View();
 		//}
 
-		[HttpPost]
-		public async Task<IActionResult> Create(DoorFormInputModel inputModel)
-		{
+		//[HttpPost]
+		//public async Task<IActionResult> Create(DoorFormInputModel inputModel)
+		//{
 
-			if (!this.ModelState.IsValid)
-			{
-				return this.View(inputModel);
-			}
+		//	if (!this.ModelState.IsValid)
+		//	{
+		//		return this.View(inputModel);
+		//	}
 
-			try
-			{
-				await this.doorService.CreateDoorAsync(inputModel);
+		//	try
+		//	{
+		//		await this.doorService.CreateDoorAsync(inputModel);
 
-				return this.RedirectToAction(nameof(Index));
-			}
-			catch (Exception e)
-			{
-				Console.WriteLine(e.Message);
+		//		return this.RedirectToAction(nameof(Index));
+		//	}
+		//	catch (Exception e)
+		//	{
+		//		Console.WriteLine(e.Message);
 
-				this.ModelState.AddModelError(string.Empty, ServiceCreateError);
-				return this.View(inputModel);
-			}
-		}
+		//		this.ModelState.AddModelError(string.Empty, ServiceCreateError);
+		//		return this.View(inputModel);
+		//	}
+		//}
 
 		[HttpGet]
 		public async Task<IActionResult> Delete(string? id)
