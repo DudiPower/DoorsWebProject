@@ -24,3 +24,9 @@ https://github.com/DudiPower/DoorsWebProject.git
 2. Install dependencies:
 
 npm install
+
+## Description
+
+My project has an admin and user section. To see all the functionality you need to log in as admin and user.
+In folder Date => DoorsWebProject.Data => Seeding => class IdentitySeeder.
+There have method SeedUsersAsync() , in which i put default userProfile and adminProfile . You don't have to create profiles.
