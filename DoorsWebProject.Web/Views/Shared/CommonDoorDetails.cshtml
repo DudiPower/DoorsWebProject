@@ -23,37 +23,18 @@
 
                 <hr />
 
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><strong>Материал:</strong> @Model.Material</li>
+                <ul class="list-group list-group-flush">      
                     <li class="list-group-item"><strong>Височина:</strong> @Model.Height см</li>
                     <li class="list-group-item"><strong>Ширина:</strong> @Model.Width см</li>
                     <li class="list-group-item"><strong>Дебелина:</strong> @Model.Thickness см</li>
                 </ul>
 
                 <div class="mt-4 d-flex gap-2">
-
-                    @if(this.User.Identity?.IsAuthenticated ?? false)
-                    {
-                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">
-                            ✏️ Редактирай
-                        </a>
-
-                        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">
-                            🗑️ Изтрий
-                        </a>
-
-                        <a asp-controller="Basket" asp-action="Add" asp-route-id="@Model.Id" class="btn btn-primary">
-                            Кошница
-                        </a>
-
-                        <div class="quantity-container">
-                            <button class="quantity-btn" onclick="decrease()">−</button>
-                            <input id="quantity" class="quantity-input" type="text" value="1" readonly>
-                            <button class="quantity-btn" onclick="increase()">+</button>
-                        </div>
-
-
-                    }
+                   <div class="quantity-container">
+                       <button class="quantity-btn" onclick="decrease()">−</button>
+                       <input id="quantity" class="quantity-input" type="text" value="1" readonly>
+                       <button class="quantity-btn" onclick="increase()">+</button>
+                   </div>
                 </div>
             </div>
         </div>

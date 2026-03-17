@@ -30,6 +30,8 @@
 		public virtual DbSet<OrderStatus> OrderStatuses { get; set; } = null!;
 		public virtual DbSet<Category> Categories { get; set; } = null!;
 
+		public virtual DbSet<DoorCategory> DoorCategories { get; set; } = null!;
+
 		public virtual DbSet<Color> Colors { get; set; } = null!;
 
 		public virtual DbSet<Door> Doors { get; set; } = null!;

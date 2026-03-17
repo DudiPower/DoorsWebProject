@@ -23,8 +23,8 @@ namespace DoorsWebProject.Web.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
-			IEnumerable<AllDoorsIndexViewModel> allDoors = await this.doorService
-				.GetAllDoorsAsync() ?? Enumerable.Empty<AllDoorsIndexViewModel>(); ;
+			IEnumerable<DoorViewModel> allDoors = await this.doorService
+				.GetAllDoorsAsync() ?? Enumerable.Empty<DoorViewModel>(); ;
 
 			return View(allDoors);
 		}

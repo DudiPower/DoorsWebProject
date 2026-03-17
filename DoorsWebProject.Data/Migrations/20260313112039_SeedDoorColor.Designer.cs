@@ -4,6 +4,7 @@ using DoorsWebProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DoorsWebProject.Data.Migrations
 {
     [DbContext(typeof(DoorsDbContext))]
-    partial class DoorsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260313112039_SeedDoorColor")]
+    partial class SeedDoorColor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -181,44 +184,6 @@ namespace DoorsWebProject.Data.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
-
-                    b.HasData(
-                        new
-                        {
-                            CategoryId = new Guid("9ff68438-ff2c-4ac5-946c-6bdce11e0d38"),
-                            IsDeleted = false,
-                            Name = "Гладки врати"
-                        },
-                        new
-                        {
-                            CategoryId = new Guid("618ada51-5300-4649-97c3-e0f92dffe2c6"),
-                            IsDeleted = false,
-                            Name = "Профилирани врати"
-                        },
-                        new
-                        {
-                            CategoryId = new Guid("0441044a-5d32-4669-a64c-89d3d8f53cc7"),
-                            IsDeleted = false,
-                            Name = "Остъклени врати"
-                        },
-                        new
-                        {
-                            CategoryId = new Guid("76c39eeb-cabe-4f48-b4ca-1372de32333e"),
-                            IsDeleted = false,
-                            Name = "Блиндирани врати"
-                        },
-                        new
-                        {
-                            CategoryId = new Guid("3a5e16ff-5c63-48c9-9480-5d139fc359ac"),
-                            IsDeleted = false,
-                            Name = "Дървени врати"
-                        },
-                        new
-                        {
-                            CategoryId = new Guid("45e6bc98-863c-4bb6-9741-549e9c2971a0"),
-                            IsDeleted = false,
-                            Name = "Плътни врати"
-                        });
                 });
 
             modelBuilder.Entity("DoorsWebProject.Data.Models.Color", b =>
@@ -747,7 +712,7 @@ namespace DoorsWebProject.Data.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("DoorCategories");
+                    b.ToTable("DoorCategory");
                 });
 
             modelBuilder.Entity("DoorsWebProject.Data.Models.DoorColor", b =>

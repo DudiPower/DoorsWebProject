@@ -7,6 +7,7 @@
 	using DoorsWebProject.Data.Models;
 	using DoorsWebProject.Data.Repository.Interfaces;
 	using DoorsWebProject.Services.Core.Interfaces;
+	using DoorsWebProject.Web.ViewModels.Color;
 	using DoorsWebProject.Web.ViewModels.Door;
 	using Microsoft.EntityFrameworkCore;
 
@@ -19,13 +20,30 @@
 			this.doorRepository = doorRepository;
 		}
 
-		public async Task<IEnumerable<AllDoorsIndexViewModel>> GetAllDoorsAsync()
+		public async Task<IEnumerable<DoorViewModel>> GetAllDoorsAsync()
 		{
-			IEnumerable<AllDoorsIndexViewModel> allDoors =
+			IEnumerable<DoorViewModel> allDoors =
 				await this.doorRepository
 				.GetAllAttached()
 				.Take(4)
-				.Select(d => new AllDoorsIndexViewModel()
+				.Select(d => new DoorViewModel()
+				{
+					Id = d.DoorId.ToString(),
+					ImageUrl = d.ImageUrl,
+					Model = d.Model,
+					Price = d.Price.ToString(),
+				})
+				.ToListAsync();
+
+			return allDoors;
+		}
+
+		public async Task<IEnumerable<DoorViewModel>> GetAllDoorsWithColorAsync()
+		{
+			IEnumerable<DoorViewModel> allDoors =
+				await this.doorRepository
+				.GetAllAttached()
+				.Select(d => new DoorViewModel()
 				{
 					Id = d.DoorId.ToString(),
 					ImageUrl = d.ImageUrl,
@@ -122,19 +140,28 @@
 				Description = door.Description,
 				Height = door.Height.ToString(),
 				Width = door.Width.ToString(),
-				Thickness = door.Thickness.ToString()
+				Thickness = door.Thickness.ToString(),
+				DoorColors = door.DoorColors
+				  .Select(dc => new ColorViewModel()
+				  {
+					  Id = dc.ColorId.ToString(),
+					  NameColor = dc.Color.NameColor,
+					  HexCode = dc.Color.HexCode,
+					  TextureUrl = dc.Color.TextureUrl
+				  })
+				  .ToArray()
 			};
 
 			return doorDetailsViewModel;
 		}
 
-		public async Task<IEnumerable<AllDoorsIndexViewModel>> GetAllFilteredDoorsAsync(string filter)
+		public async Task<IEnumerable<DoorViewModel>> GetAllFilteredDoorsAsync(string filter)
 		{
-			IEnumerable<AllDoorsIndexViewModel> allDoors =
+			IEnumerable<DoorViewModel> allDoors =
 				await this.doorRepository
 				.GetAllAttached()
 				.Where(d => d.Type == filter)
-				.Select(d => new AllDoorsIndexViewModel()
+				.Select(d => new DoorViewModel()
 				{
 					Id = d.DoorId.ToString(),
 					ImageUrl = d.ImageUrl,
@@ -194,13 +221,13 @@
 
 		}
 
-		public async Task<IEnumerable<AllDoorsIndexViewModel>> SearchingDoorsAsync(string? searchDoorsName)
+		public async Task<IEnumerable<DoorViewModel>> SearchingDoorsAsync(string? searchDoorsName)
 		{
-			IEnumerable<AllDoorsIndexViewModel> searchDoors = await this.doorRepository
+			IEnumerable<DoorViewModel> searchDoors = await this.doorRepository
 				.GetAllAttached()
 				.Where(d => !string.IsNullOrEmpty(searchDoorsName) && 
 				  d.Model.Contains(searchDoorsName))
-				.Select(d => new AllDoorsIndexViewModel
+				.Select(d => new DoorViewModel
 				{
 					Id = d.DoorId.ToString(),
 					Model = d.Model,

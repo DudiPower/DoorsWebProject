@@ -27,8 +27,8 @@
 
 
 
-			//builder
-			//	.HasData(this.SeedCategories());
+			builder
+				.HasData(this.SeedCategories());
 		}
 
 		public List<Category> SeedCategories()

@@ -60,10 +60,10 @@
 
 		private async Task SeedUsersAsync()
 		{
-			string? testUserEmail = this.configuration["UserSeed:TestUser:Email"];
-			string? testUserPassword = this.configuration["UserSeed:TestUser:Password"];
-			string? adminUserEmail = this.configuration["UserSeed:AdminUser:Email"];
-			string? adminUserPassword = this.configuration["UserSeed:AdminUser:Password"];
+			string? testUserEmail = this.configuration["UserSeed:TestUser:Email"] ?? "testUser@cinemaApp.bg";
+			string? testUserPassword = this.configuration["UserSeed:TestUser:Password"] ?? "123456";
+			string? adminUserEmail = this.configuration["UserSeed:AdminUser:Email"] ?? "admin@cinemaApp.bg";
+			string? adminUserPassword = this.configuration["UserSeed:AdminUser:Password"] ?? "123456";
 
 			if (testUserEmail == null || testUserPassword == null ||
 				adminUserEmail == null || adminUserPassword == null)

@@ -7,14 +7,15 @@
 
 	public interface IDoorService
 	{
-		Task<IEnumerable<AllDoorsIndexViewModel>> GetAllDoorsAsync();
+		Task<IEnumerable<DoorViewModel>> GetAllDoorsAsync();
 
+		Task<IEnumerable<DoorViewModel>> GetAllDoorsWithColorAsync();
 		Task <DoorDetailsViewModel?> GetDoorDetailsByIdAsync(string id);
 		Task<bool> HardDeleteDoorAsync(string? id);
 
 		Task<bool> SoftDeleteDoorAsync(string? id);
 
-		Task<IEnumerable<AllDoorsIndexViewModel>> GetAllFilteredDoorsAsync(string filter);
+		Task<IEnumerable<DoorViewModel>> GetAllFilteredDoorsAsync(string filter);
 
 		Task<DoorFormInputModel?> GetEditableDoorByIdAsync(string id);
 
@@ -22,7 +23,7 @@
 		Task<DoorDeleteViewModel?> GetDoorDeleteDetailsById(string? id);
 		Task<Door?> FindDoorByStringId(string? id);
 
-		Task<IEnumerable<AllDoorsIndexViewModel>> SearchingDoorsAsync(string? searchDoors);
+		Task<IEnumerable<DoorViewModel>> SearchingDoorsAsync(string? searchDoors);
 
 		Task<bool> BuyDoor(string? id);
 
