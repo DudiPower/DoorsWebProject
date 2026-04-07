@@ -1,0 +1,30 @@
+﻿#zoomContainer {
+    position: relative;
+    width: 300px;
+}
+
+#doorImage {
+    width: 100%;
+}
+
+#doorTexture {
+    position: absolute;
+    /* ТОВА ОПРЕДЕЛЯ КЪДЕ ЩЕ СЕ СМЕНЯ ЦВЕТА */
+    top: 5%;
+    left: 30%;
+    width: 40%;
+    height: 75%;
+    mix-blend-mode: multiply;
+    opacity: 0.75;
+    background-blend-mode: multiply;
+    pointer-events: none;
+    background-size: cover;
+    background-position: center;
+}
+
+.color-container {
+    display: flex;
+    margin: 20px;
+}
+
+
