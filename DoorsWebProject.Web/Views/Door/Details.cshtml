@@ -2,9 +2,3 @@
 @model DoorDetailsViewModel
 <partial name="CommonDoorDetails" model="Model" />
 
-@foreach(var color in Model.DoorColors)
-{
-    <div class="color"
-         style="background:@color.HexCode">
-    </div>
-}

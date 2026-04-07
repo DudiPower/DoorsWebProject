@@ -10,10 +10,11 @@
         <div class="row g-4">
             <!-- Снимка на вратата -->
             <div class="col-md-6 text-center" id="zoomContainer">
-                <img src="@Model.ImageUrl" alt="Door image" id ="doorImage" class="img-fluid rounded shadow-sm" style="max-height: 500px;" />
+                <img src="@Url.Content(Model.ImageUrl)" alt="Door image" id="doorImage" class="img-fluid rounded shadow-sm"/>
                 <div class="zoom-lens" id="zoomLens">
                     <img src="@Model.ImageUrl" alt="Zoomed Door" id="zoomedImage">
                 </div>
+                <div id="doorTexture"></div>
             </div>
 
             <!-- Информация за вратата -->
@@ -36,6 +37,25 @@
                        <button class="quantity-btn" onclick="increase()">+</button>
                    </div>
                 </div>
+
+                <div class="color-container" >
+                @foreach (var color in Model.DoorColors)
+                {
+                    <div class="color"
+                         style="
+                    width:30px;
+                    height:30px;
+                    background-color:@color.HexCode;
+                    border-radius:50%;
+                    border:1px solid black;
+                    cursor:pointer;"
+                         data-texture-url="@Url.Content(color.TextureUrl)"
+                         data-color="@color.HexCode"
+                         title="@color.NameColor">
+                    </div>
+                }
+
+            </div>
             </div>
         </div>
     </div>

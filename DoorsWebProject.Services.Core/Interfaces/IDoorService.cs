@@ -9,7 +9,7 @@
 	{
 		Task<IEnumerable<DoorViewModel>> GetAllDoorsAsync();
 
-		Task<IEnumerable<DoorViewModel>> GetAllDoorsWithColorAsync();
+		Task<IEnumerable<DoorDetailsViewModel>> GetAllDoorsWithColorAsync();
 		Task <DoorDetailsViewModel?> GetDoorDetailsByIdAsync(string id);
 		Task<bool> HardDeleteDoorAsync(string? id);
 

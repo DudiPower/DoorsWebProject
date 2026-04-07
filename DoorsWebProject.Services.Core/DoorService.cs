@@ -38,17 +38,30 @@
 			return allDoors;
 		}
 
-		public async Task<IEnumerable<DoorViewModel>> GetAllDoorsWithColorAsync()
+		public async Task<IEnumerable<DoorDetailsViewModel>> GetAllDoorsWithColorAsync()
 		{
-			IEnumerable<DoorViewModel> allDoors =
+			IEnumerable<DoorDetailsViewModel> allDoors =
 				await this.doorRepository
 				.GetAllAttached()
-				.Select(d => new DoorViewModel()
+				.Select(d => new DoorDetailsViewModel()
 				{
 					Id = d.DoorId.ToString(),
 					ImageUrl = d.ImageUrl,
 					Model = d.Model,
-					Price = d.Price.ToString(),
+					Description = d.Description,
+					Height = d.Height.ToString(),
+					Width = d.Width.ToString(),
+					Thickness = d.Thickness.ToString(),
+					DoorColors = d.DoorColors
+					   .Select(dc => new ColorViewModel
+					   {
+						   Id = dc.ColorId.ToString(),
+						   NameColor = dc.Color.NameColor,
+						   HexCode = dc.Color.HexCode,
+						   TextureUrl = dc.Color.TextureUrl
+					   })
+					   .ToArray()
+
 				})
 				.ToListAsync();
 
@@ -122,6 +135,8 @@
 		{
 			var door = await doorRepository
 				.GetAllAttached()
+				.Include(d => d.DoorColors)
+		        .ThenInclude(dc => dc.Color)
 				.AsNoTracking()
 				.FirstOrDefaultAsync(d => d.DoorId.ToString() == id && !d.IsDeleted);
 

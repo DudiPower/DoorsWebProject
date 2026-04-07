@@ -29,13 +29,7 @@
 			return View(allDoors);
 		}
 
-		public async Task<IActionResult> DoorWithColor()
-		{
-			IEnumerable<DoorViewModel> allDoors = await this.doorService
-				.GetAllDoorsWithColorAsync() ?? Enumerable.Empty<DoorViewModel>(); ;
-
-			return View(allDoors);
-		}
+		
 
 		//[HttpGet]
 		//public async Task<IActionResult> Create()
