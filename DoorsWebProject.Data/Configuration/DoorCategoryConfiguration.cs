@@ -28,7 +28,10 @@
 				.HasOne(dc => dc.Category)
 				.WithMany(c => c.CategoryDoors)
 				.HasForeignKey(dc => dc.CategoryId);
-			    
+
+			//builder
+			//	.HasData(SeedDoorCategories());
+
 		}
 
 		public List<DoorCategory> SeedDoorCategories()
