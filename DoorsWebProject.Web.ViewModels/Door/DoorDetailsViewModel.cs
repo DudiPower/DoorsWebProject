@@ -16,11 +16,11 @@
 		public string Type { get; set; } = null!;
 		public string Description { get; set; } = null!;
 
-		public string Height { get; set; } = null!;
+		public decimal Height { get; set; } 
 
-		public string Width { get; set; } = null!;
+		public decimal Width { get; set; }
 
-		public string Thickness { get; set; } = null!;
+		public decimal Thickness { get; set; } 
 
 		public ICollection<ColorViewModel> DoorColors { get; set; } =
 			new HashSet<ColorViewModel>();

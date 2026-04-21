@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <!-- Set C# language version to 14.0 to enable new features like extensions -->
+    <LangVersion>14.0</LangVersion>
+  </PropertyGroup>
+</Project>

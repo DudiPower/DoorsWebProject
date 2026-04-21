@@ -31,42 +31,42 @@
 					Id = d.DoorId.ToString(),
 					ImageUrl = d.ImageUrl,
 					Model = d.Model,
-					Price = d.Price.ToString(),
+					Price = d.Price,
 				})
 				.ToListAsync();
 
 			return allDoors;
 		}
 
-		public async Task<IEnumerable<DoorDetailsViewModel>> GetAllDoorsWithColorAsync()
-		{
-			IEnumerable<DoorDetailsViewModel> allDoors =
-				await this.doorRepository
-				.GetAllAttached()
-				.Select(d => new DoorDetailsViewModel()
-				{
-					Id = d.DoorId.ToString(),
-					ImageUrl = d.ImageUrl,
-					Model = d.Model,
-					Description = d.Description,
-					Height = d.Height.ToString(),
-					Width = d.Width.ToString(),
-					Thickness = d.Thickness.ToString(),
-					DoorColors = d.DoorColors
-					   .Select(dc => new ColorViewModel
-					   {
-						   Id = dc.ColorId.ToString(),
-						   NameColor = dc.Color.NameColor,
-						   HexCode = dc.Color.HexCode,
-						   TextureUrl = dc.Color.TextureUrl
-					   })
-					   .ToArray()
+		//public async Task<IEnumerable<DoorDetailsViewModel>> GetAllDoorsWithColorAsync()
+		//{
+		//	IEnumerable<DoorDetailsViewModel> allDoors =
+		//		await this.doorRepository
+		//		.GetAllAttached()
+		//		.Select(d => new DoorDetailsViewModel()
+		//		{
+		//			Id = d.DoorId.ToString(),
+		//			ImageUrl = d.ImageUrl,
+		//			Model = d.Model,
+		//			Description = d.Description,
+		//			Height = d.Height.ToString(),
+		//			Width = d.Width.ToString(),
+		//			Thickness = d.Thickness.ToString(),
+		//			DoorColors = d.DoorColors
+		//			   .Select(dc => new ColorViewModel
+		//			   {
+		//				   Id = dc.ColorId.ToString(),
+		//				   NameColor = dc.Color.NameColor,
+		//				   HexCode = dc.Color.HexCode,
+		//				   TextureUrl = dc.Color.TextureUrl
+		//			   })
+		//			   .ToArray()
 
-				})
-				.ToListAsync();
+		//		})
+		//		.ToListAsync();
 
-			return allDoors;
-		}
+		//	return allDoors;
+		//}
 
 		public async Task<bool> HardDeleteDoorAsync(string? id)
 		{
@@ -153,9 +153,9 @@
 				ImageUrl = door.ImageUrl!,
 				Model = door.Model,
 				Description = door.Description,
-				Height = door.Height.ToString(),
-				Width = door.Width.ToString(),
-				Thickness = door.Thickness.ToString(),
+				Height = door.Height,
+				Width = door.Width,
+				Thickness = door.Thickness,
 				DoorColors = door.DoorColors
 				  .Select(dc => new ColorViewModel()
 				  {
@@ -181,7 +181,7 @@
 					Id = d.DoorId.ToString(),
 					ImageUrl = d.ImageUrl,
 					Model = d.Model,
-					Price = d.Price.ToString(),
+					Price = d.Price,
 				})
 				.ToListAsync();
 
@@ -247,7 +247,7 @@
 					Id = d.DoorId.ToString(),
 					Model = d.Model,
 					ImageUrl = d.ImageUrl,
-					Price = d.Price.ToString(),
+					Price = d.Price,
 				})
 				.ToListAsync();
 

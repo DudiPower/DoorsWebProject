@@ -112,9 +112,9 @@
 				ImageUrl = door.ImageUrl!,
 				Model = door.Model,
 				Description = door.Description,
-				Height = door.Height.ToString(),
-				Width = door.Width.ToString(),
-				Thickness = door.Thickness.ToString()
+				Height = door.Height,
+				Width = door.Width,
+				Thickness = door.Thickness
 			};
 
 			return doorDetailsViewModel;

@@ -14,7 +14,7 @@
 		public string? ImageUrl { get; set; } 
 		public string Model { get; set; } = null!;
 
-		public string Price { get; set; } = null!;
+		public decimal Price { get; set; }
 
 	}
 }
